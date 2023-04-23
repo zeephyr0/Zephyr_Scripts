@@ -1,0 +1,20 @@
+from telethon import TelegramClient, events
+import random
+from asyncio import sleep
+
+api_ids = [12346753, 12588062, 13123883] # список API-идентификаторов для каждого аккаунта
+api_hashes = [&#x27;8718f66054649d03ee1592cf77531bb2&#x27;, &#x27;d0f061c565991d6ed274285c0d032f7a&#x27;, &#x27;f1fab12098570c2bf8848ad6ea23c62f&#x27;] # список API-хешей для каждого аккаунта
+phones = [&#x27;+79587314826&#x27;, &#x27;+79816661471&#x27;, &#x27;+79676939873&#x27;] # список номеров телефонов для каждого аккаунта
+for i in range(3):
+    client = TelegramClient(phones[i], api_ids[i], api_hashes[i])
+    client.connect()
+    if not client.is_user_authorized():
+        client.send_code_request(phones[i])
+        client.sign_in(phones[i], input(&#x27;Enter the code: &#x27;))
+    async def send_message():
+        if message.chat_id == -1001870697043 and message.sender_id == 920762514:
+            if "ткоп" in message.raw_text:
+                 while True:
+                     await sleep(2);
+                     await self.client.send_message('@mine_evo_bot', 'коп');
+    client.run_until_disconnected()
