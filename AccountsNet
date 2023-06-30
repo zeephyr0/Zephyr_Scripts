@@ -1,3 +1,6 @@
+# coded by DEM
+# good luck =]
+
 from telethon import TelegramClient, sync
 from telethon import events
 from telethon.tl.functions.messages import GetDialogsRequest
@@ -166,7 +169,7 @@ if not client17.is_user_authorized():
     client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '))
 
 # Команда для отправки нескольких сообщений с задержкой
-@client1.on(events.NewMessage(pattern='/s'))
+@client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
     chat_id = event.chat_id
     # Извлечение сообщений после команды
