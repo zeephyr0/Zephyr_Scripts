@@ -99,34 +99,99 @@ client17 = TelegramClient('session17', api_id17, api_hash17)
 client1.connect()
 if not client1.is_user_authorized():
     client1.send_code_request(phone1)
-    client1.sign_in(phone1, input('1 Введите код подтверждения: '))
+    client1.sign_in(phone1, input('Session-1 Введите код подтверждения: '))
 client2.connect()
 if not client2.is_user_authorized():
     client2.send_code_request(phone2)
-    client2.sign_in(phone2, input('2 Введите код подтверждения: '))
+    client2.sign_in(phone2, input('Session-2 Введите код подтверждения: '))
 client3.connect()
 if not client3.is_user_authorized():
     client3.send_code_request(phone3)
-    client3.sign_in(phone3, input('3 Введите код подтверждения: '))
+    client3.sign_in(phone3, input('Session-3 Введите код подтверждения: '))
+client4.connect()
+if not client4.is_user_authorized():
+    client4.send_code_request(phone4)
+    client4.sign_in(phone4, input('Session-4 Введите код подтверждения: '))
+client5.connect()
+if not client5.is_user_authorized():
+    client5.send_code_request(phone5)
+    client5.sign_in(phone5, input('Session-5 Введите код подтверждения: '))
+client6.connect()
+if not client6.is_user_authorized():
+    client6.send_code_request(phone6)
+    client6.sign_in(phone6, input('Session-6 Введите код подтверждения: '))
+client7.connect()
+if not client7.is_user_authorized():
+    client7.send_code_request(phone7)
+    client7.sign_in(phone7, input('Session-7 Введите код подтверждения: '))
+client8.connect()
+if not client8.is_user_authorized():
+    client8.send_code_request(phone8)
+    client8.sign_in(phone8, input('Session-8 Введите код подтверждения: '))
+client9.connect()
+if not client9.is_user_authorized():
+    client9.send_code_request(phone9)
+    client9.sign_in(phone9, input('Session-9 Введите код подтверждения: '))
+client10.connect()
+if not client10.is_user_authorized():
+    client10.send_code_request(phone10)
+    client10.sign_in(phone10, input('Session-10 Введите код подтверждения: '))
+client11.connect()
+if not client11.is_user_authorized():
+    client11.send_code_request(phone11)
+    client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '))
+client12.connect()
+if not client12.is_user_authorized():
+    client12.send_code_request(phone12)
+    client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '))
+client13.connect()
+if not client13.is_user_authorized():
+    client13.send_code_request(phone13)
+    client13.sign_in(phone13, input('Session-13 Введите код подтверждения: '))
+client14.connect()
+if not client14.is_user_authorized():
+    client14.send_code_request(phone14)
+    client14.sign_in(phone14, input('Session-14 Введите код подтверждения: '))
+client15.connect()
+if not client15.is_user_authorized():
+    client15.send_code_request(phone15)
+    client15.sign_in(phone15, input('Session-15 Введите код подтверждения: '))
+client16.connect()
+if not client16.is_user_authorized():
+    client16.send_code_request(phone16)
+    client16.sign_in(phone16, input('Session-16 Введите код подтверждения: '))
+client17.connect()
+if not client17.is_user_authorized():
+    client17.send_code_request(phone17)
+    client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '))
+
 # Команда для отправки нескольких сообщений с задержкой
-@client1.on(events.NewMessage(pattern='/send_multiple'))
+@client1.on(events.NewMessage(pattern='/s'))
 async def send_multiple_messages(event):
     chat_id = event.chat_id
 # Извлечение сообщений после команды
 messages = event.raw_text.split(' ')[1:]
-for i in range(10):
+for i in range(1000000):
         for message in messages:
-            await client1(SendMessageRequest(chat_id, me
-ssage))
-            time.sleep(2)
-@client2.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages(event):
-    chat_id = event.chat_id
-    messages = event.raw_text.split(' ')[1:]
-    for i in range(10):
-        for message in messages:
+            await client1(SendMessageRequest(chat_id, message))
             await client2(SendMessageRequest(chat_id, message))
+            await client3(SendMessageRequest(chat_id, message))
+            await client4(SendMessageRequest(chat_id, message))
+            await client5(SendMessageRequest(chat_id, message))
+            await client6(SendMessageRequest(chat_id, message))
+            await client7(SendMessageRequest(chat_id, message))
+            await client8(SendMessageRequest(chat_id, message))
+            await client9(SendMessageRequest(chat_id, message))
+            await client10(SendMessageRequest(chat_id, message))
+            await client11(SendMessageRequest(chat_id, message))
+            await client12(SendMessageRequest(chat_id, message))
+            await client13(SendMessageRequest(chat_id, message))
+            await client14(SendMessageRequest(chat_id, message))
+            await client15(SendMessageRequest(chat_id, message))
+            await client16(SendMessageRequest(chat_id, message))
+            await client17(SendMessageRequest(chat_id, message))
             time.sleep(2)
+            
 # Запуск клиентов
 client1.start()
 client2.start()
@@ -162,4 +227,3 @@ client14.run_until_disconnected()
 client15.run_until_disconnected()
 client16.run_until_disconnected()
 client17.run_until_disconnected()
- 
