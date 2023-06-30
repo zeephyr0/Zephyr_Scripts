@@ -169,31 +169,31 @@ if not client17.is_user_authorized():
 @client1.on(events.NewMessage(pattern='/s'))
 async def send_multiple_messages(event):
     chat_id = event.chat_id
-# Извлечение сообщений после команды
-messages = event.raw_text.split(' ')[1:]
-# Цикл повторений
-for i in range(1000000):
-    for message in messages:
-        # Отправка сообщений 
-        await client1(SendMessageRequest(chat_id, message))
-        await client2(SendMessageRequest(chat_id, message))
-        await client3(SendMessageRequest(chat_id, message))
-        await client4(SendMessageRequest(chat_id, message))
-        await client5(SendMessageRequest(chat_id, message))
-        await client6(SendMessageRequest(chat_id, message))
-        await client7(SendMessageRequest(chat_id, message))
-        await client8(SendMessageRequest(chat_id, message))
-        await client9(SendMessageRequest(chat_id, message))
-        await client10(SendMessageRequest(chat_id, message))
-        await client11(SendMessageRequest(chat_id, message))
-        await client12(SendMessageRequest(chat_id, message))
-        await client13(SendMessageRequest(chat_id, message))
-        await client14(SendMessageRequest(chat_id, message))
-        await client15(SendMessageRequest(chat_id, message))
-        await client16(SendMessageRequest(chat_id, message))
-        await client17(SendMessageRequest(chat_id, message))
-        # Задержка
-        time.sleep(2)
+    # Извлечение сообщений после команды
+    messages = event.raw_text.split(' ')[1:]
+    # Цикл повторений
+    for i in range(1000000):
+        for message in messages:
+            # Отправка сообщений 
+            await client1(SendMessageRequest(chat_id, message))
+            await client2(SendMessageRequest(chat_id, message))
+            await client3(SendMessageRequest(chat_id, message))
+            await client4(SendMessageRequest(chat_id, message))
+            await client5(SendMessageRequest(chat_id, message))
+            await client6(SendMessageRequest(chat_id, message))
+            await client7(SendMessageRequest(chat_id, message))
+            await client8(SendMessageRequest(chat_id, message))
+            await client9(SendMessageRequest(chat_id, message))
+            await client10(SendMessageRequest(chat_id, message))
+            await client11(SendMessageRequest(chat_id, message))
+            await client12(SendMessageRequest(chat_id, message))
+            await client13(SendMessageRequest(chat_id, message))
+            await client14(SendMessageRequest(chat_id, message))
+            await client15(SendMessageRequest(chat_id, message))
+            await client16(SendMessageRequest(chat_id, message))
+            await client17(SendMessageRequest(chat_id, message))
+            # Задержка
+            time.sleep(2)
             
 # Запуск клиентов
 client1.start()
