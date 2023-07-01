@@ -9,6 +9,7 @@ from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
 import requests
 import time
 import random
+import asyncio
 
 # Данные аккаунтов
 api_id1 = '12588062'
@@ -172,6 +173,7 @@ if not client17.is_user_authorized():
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
     chat_id = event.chat_id
+    message_text = event.raw_text.encode('utf-8').decode('utf-8')
     # Извлечение сообщений после команды
     messages = event.raw_text.split(' ')[1:]
     # Цикл повторений
@@ -195,9 +197,131 @@ async def send_multiple_messages(event):
             await client15(SendMessageRequest(chat_id, message))
             await client16(SendMessageRequest(chat_id, message))
             await client17(SendMessageRequest(chat_id, message))
-            # Задержка
-            time.sleep(2)
-            
+
+# Модуль для проверки кейсов
+@client1.on(events.NewMessage(pattern='/cases'))
+async def cases_info(event):
+    chat_id = event.chat_id
+    for message in messages:
+        # Отправка сообщений 
+        await client1(SendMessageRequest(chat_id, кейсы'))
+        await client2(SendMessageRequest(chat_id, кейсы'))
+        await client3(SendMessageRequest(chat_id, кейсы'))
+        await client4(SendMessageRequest(chat_id, кейсы'))
+        await client5(SendMessageRequest(chat_id, кейсы'))
+        await client6(SendMessageRequest(chat_id, кейсы'))
+        await client7(SendMessageRequest(chat_id, кейсы'))
+        await client8(SendMessageRequest(chat_id, кейсы'))
+        await client9(SendMessageRequest(chat_id, кейсы'))
+        await client10(SendMessageRequest(chat_id, кейсы'))
+        await client11(SendMessageRequest(chat_id, 'кейсы'))
+        await client12(SendMessageRequest(chat_id, 'кейсы'))
+        await client13(SendMessageRequest(chat_id, 'кейсы'))
+        await client14(SendMessageRequest(chat_id, 'кейсы'))
+        await client15(SendMessageRequest(chat_id, 'кейсы'))
+        await client16(SendMessageRequest(chat_id, 'кейсы'))
+        await client17(SendMessageRequest(chat_id, 'кейсы'))
+
+# Отправка кейсов
+cases_list = {
+    "✉": "кт",
+    "🧧": "ркт",
+    "📦": "к",
+    "🗳": "рк",
+    "🕋": "миф",
+    "💎": "кр",
+    "🌌": "зв"
+}
+async def send_transfer_message(client, chat_id, case_name, quantity):
+    case_alias = cases_list.get(case_name, "")
+    transfer_message = f"Передать ZEPHYR_god {case_alias} {quantity}"
+    await client.send_message(chat_id, transfer_message)
+    # Задержка 
+    await asyncio.sleep(3)
+async def send_transfer_messages(client, event):
+    chat_id = event.chat_id
+    message = event.raw_text
+    lines = message.split("\n")
+    for line in lines:
+        for case in cases_list:
+            if case in line:
+                item = line.split("шт.")
+                if len(item) >= 2:
+                    item = item[0].split(":")
+                    if len(item) >= 2:
+                        item = item[1].strip()
+                        await send_transfer_message(client, chat_id, case, item)
+
+# Определение функции обработчика входящих сообщений
+@client1.on(events.NewMessage)
+async def handle_incoming_message_client1(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client1, event)
+@client2.on(events.NewMessage)
+async def handle_incoming_message_client2(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client2, event)
+@client3.on(events.NewMessage)
+async def handle_incoming_message_client3(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client3, event)
+@client4.on(events.NewMessage)
+async def handle_incoming_message_client4(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client4, event)
+@client5.on(events.NewMessage)
+async def handle_incoming_message_client5(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client5, event)
+@client6.on(events.NewMessage)
+async def handle_incoming_message_client6(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client6, event)
+@client7.on(events.NewMessage)
+async def handle_incoming_message_client7(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client7, event)
+@client8.on(events.NewMessage)
+async def handle_incoming_message_client8(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client8, event)
+@client9.on(events.NewMessage)
+async def handle_incoming_message_client9(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client9, event)
+@client10.on(events.NewMessage)
+async def handle_incoming_message_client10(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client10, event)
+@client11.on(events.NewMessage)
+async def handle_incoming_message_client11(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client11, event)
+@client12.on(events.NewMessage)
+async def handle_incoming_message_client12(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client12, event)
+@client13.on(events.NewMessage)
+async def handle_incoming_message_client13(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client13, event)
+@client14.on(events.NewMessage)
+async def handle_incoming_message_client14(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client14, event)
+@client15.on(events.NewMessage)
+async def handle_incoming_message_client15(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client15, event)
+@client16.on(events.NewMessage)
+async def handle_incoming_message_client16(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client16, event)
+@client17.on(events.NewMessage)
+async def handle_incoming_message_client17(event):
+    if "Кейсы игрока" in event.raw_text:
+        await send_transfer_messages(client17, event)
+
 # Запуск клиентов
 client1.start()
 client2.start()
@@ -216,20 +340,106 @@ client14.start()
 client15.start()
 client16.start()
 client17.start()
-client1.run_until_disconnected()
-client2.run_until_disconnected()
-client3.run_until_disconnected()
-client4.run_until_disconnected()
-client5.run_until_disconnected()
-client6.run_until_disconnected()
-client7.run_until_disconnected()
-client8.run_until_disconnected()
-client9.run_until_disconnected()
-client10.run_until_disconnected()
-client11.run_until_disconnected()
-client12.run_until_disconnected()
-client13.run_until_disconnected()
-client14.run_until_disconnected()
-client15.run_until_disconnected()
-client16.run_until_disconnected()
-client17.run_until_disconnected()
+try:
+    client1.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client1.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+try:
+    client.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client.disconnect()
+ 
