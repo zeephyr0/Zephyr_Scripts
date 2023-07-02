@@ -202,25 +202,26 @@ async def send_multiple_messages(event):
 @client1.on(events.NewMessage(pattern='/cases'))
 async def cases_info(event):
     chat_id = event.chat_id
+    messages = кейсы
     for message in messages:
         # Отправка сообщений 
-        await client1(SendMessageRequest(chat_id, 'кейсы'))
-        await client2(SendMessageRequest(chat_id, 'кейсы'))
-        await client3(SendMessageRequest(chat_id, 'кейсы'))
-        await client4(SendMessageRequest(chat_id, 'кейсы'))
-        await client5(SendMessageRequest(chat_id, 'кейсы'))
-        await client6(SendMessageRequest(chat_id, 'кейсы'))
-        await client7(SendMessageRequest(chat_id, 'кейсы'))
-        await client8(SendMessageRequest(chat_id, 'кейсы'))
-        await client9(SendMessageRequest(chat_id, 'кейсы'))
-        await client10(SendMessageRequest(chat_id, 'кейсы'))
-        await client11(SendMessageRequest(chat_id, 'кейсы'))
-        await client12(SendMessageRequest(chat_id, 'кейсы'))
-        await client13(SendMessageRequest(chat_id, 'кейсы'))
-        await client14(SendMessageRequest(chat_id, 'кейсы'))
-        await client15(SendMessageRequest(chat_id, 'кейсы'))
-        await client16(SendMessageRequest(chat_id, 'кейсы'))
-        await client17(SendMessageRequest(chat_id, 'кейсы'))
+        await client1(SendMessageRequest(chat_id, message))
+        await client2(SendMessageRequest(chat_id, message))
+        await client3(SendMessageRequest(chat_id, message))
+        await client4(SendMessageRequest(chat_id, message))
+        await client5(SendMessageRequest(chat_id, message))
+        await client6(SendMessageRequest(chat_id, message))
+        await client7(SendMessageRequest(chat_id, message))
+        await client8(SendMessageRequest(chat_id, message))
+        await client9(SendMessageRequest(chat_id, message))
+        await client10(SendMessageRequest(chat_id, message))
+        await client11(SendMessageRequest(chat_id, message))
+        await client12(SendMessageRequest(chat_id, message))
+        await client13(SendMessageRequest(chat_id, message))
+        await client14(SendMessageRequest(chat_id, message))
+        await client15(SendMessageRequest(chat_id, message))
+        await client16(SendMessageRequest(chat_id, message))
+        await client17(SendMessageRequest(chat_id, message))
 
 # Отправка кейсов
 cases_list = {
