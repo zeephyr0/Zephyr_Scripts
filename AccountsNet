@@ -327,10 +327,10 @@ async def handle_incoming_message_client17(event):
         await send_transfer_messages(client17, event)
 
 # Промо-Коды
+channel_username = '@twinsFarm_byDem'
 @client1.on(events.NewMessage(chats=channel_username))  
 async def process_new_message(event):
     mine_evo = '@mine_evo_bot'
-    channel_username = '@twinsFarm_byDem'
     message = event.message
     if 'Промо' in message.message:
         promo_code = message.message.split('Промо ')[1].split()[0]
