@@ -169,17 +169,23 @@ if not client17.is_user_authorized():
     client17.send_code_request(phone17)
     client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '))
 
+# Адресы
+channel_username = '@mine_evo_news'
+mine_evo = '@mine_evo_bot'
+
 # Команда для отправки нескольких сообщений с задержкой
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
+    # Определение id чата
     chat_id = event.chat_id
+    # Определение текста для отправки сообщения 
     message_text = event.raw_text.encode('utf-8').decode('utf-8')
     # Извлечение сообщений после команды
     messages = event.raw_text.split(' ')[1:]
     # Цикл повторений
     for i in range(1000000):
         for message in messages:
-            # Отправка сообщений 
+            # Отправка сообщений
             await client1(SendMessageRequest(chat_id, message))
             await client2(SendMessageRequest(chat_id, message))
             await client3(SendMessageRequest(chat_id, message))
@@ -198,35 +204,33 @@ async def send_multiple_messages(event):
             await client16(SendMessageRequest(chat_id, message))
             await client17(SendMessageRequest(chat_id, message))
 
-
-
 # Модуль для проверки кейсов
 @client1.on(events.NewMessage(pattern='/cases'))
 async def cases_info(event):
-    # Получаем идентификатор пользователя
-    chat_id = '@mine_evo_bot'
+    # Текст для отправки сообщения 
     message = 'кейсы'
-    for message in messages:
-        # Отправка сообщений 
-        await client1(SendMessageRequest(chat_id, message))
-        await client2(SendMessageRequest(chat_id, message))
-        await client3(SendMessageRequest(chat_id, message))
-        await client4(SendMessageRequest(chat_id, message))
-        await client5(SendMessageRequest(chat_id, message))
-        await client6(SendMessageRequest(chat_id, message))
-        await client7(SendMessageRequest(chat_id, message))
-        await client8(SendMessageRequest(chat_id, message))
-        await client9(SendMessageRequest(chat_id, message))
-        await client10(SendMessageRequest(chat_id, message))
-        await client11(SendMessageRequest(chat_id, message))
-        await client12(SendMessageRequest(chat_id, message))
-        await client13(SendMessageRequest(chat_id, message))
-        await client14(SendMessageRequest(chat_id, message))
-        await client15(SendMessageRequest(chat_id, message))
-        await client16(SendMessageRequest(chat_id, message))
-        await client17(SendMessageRequest(chat_id, message))
+    # Отправка сообщений 
+    await client1(SendMessageRequest(mine_evo, message))
+    await client2(SendMessageRequest(mine_evo, message))
+    await client3(SendMessageRequest(mine_evo, message))
+    await client4(SendMessageRequest(mine_evo, message))
+    await client5(SendMessageRequest(mine_evo, message))
+    await client6(SendMessageRequest(mine_evo, message))
+    await client7(SendMessageRequest(mine_evo, message))
+    await client8(SendMessageRequest(mine_evo, message))
+    await client9(SendMessageRequest(mine_evo, message))
+    await client10(SendMessageRequest(mine_evo, message))
+    await client11(SendMessageRequest(mine_evo, message))
+    await client12(SendMessageRequest(mine_evo, message))
+    await client13(SendMessageRequest(mine_evo, message))
+    await client14(SendMessageRequest(mine_evo, message))
+    await client15(SendMessageRequest(mine_evo, message))
+    await client16(SendMessageRequest(mine_evo, message))
+    await client17(SendMessageRequest(mine_evo, message))
 
 # Отправка кейсов
+
+# Список кейсов
 cases_list = {
     "✉": "кт",
     "🧧": "ркт",
@@ -237,15 +241,20 @@ cases_list = {
     "🌌": "зв"
 }
 async def send_transfer_message(client, chat_id, case_name, quantity):
+    # Определение названия кейса для передачи
     case_alias = cases_list.get(case_name, "")
+    # Сообщение о передаче
     transfer_message = f"Передать ZEPHYR_god {case_alias} {quantity}"
     await client.send_message(chat_id, transfer_message)
     # Задержка 
     await asyncio.sleep(3)
 async def send_transfer_messages(client, event):
+    # Определение id чата
     chat_id = event.chat_id
+    # Сообщение которое будет проверяться 
     message = event.raw_text
     lines = message.split("\n")
+    # Обработка сообщения и отправка
     for line in lines:
         for case in cases_list:
             if case in line:
@@ -327,12 +336,12 @@ async def handle_incoming_message_client17(event):
         await send_transfer_messages(client17, event)
 
 # Промо-Коды
-channel_username = '@twinsFarm_byDem'
 @client1.on(events.NewMessage(chats=channel_username))  
 async def process_new_message(event):
-    mine_evo = '@mine_evo_bot'
+    # Сообщение которое будет проверяться 
     message = event.message
     if 'Промо' in message.message:
+        # Определение вывод и отправка промокода
         promo_code = message.message.split('Промо ')[1].split()[0]
         await client1.send_message(mine_evo, f'промо {promo_code}')
         await client2.send_message(mine_evo, f'промо {promo_code}')
