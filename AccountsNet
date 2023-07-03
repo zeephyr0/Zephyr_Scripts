@@ -204,33 +204,27 @@ async def send_multiple_messages(event):
 @client1.on(events.NewMessage(pattern='/cases'))
 async def cases_info(event):
     # Получаем идентификатор пользователя
-    chat_id = event.chat_id
-    # Обновляем сущность пользователя, если у нас есть доступ к его профилю
-    try:
-        user_entity = client1.get_entity(chat_id)
-    except ValueError:
-        username = utils.get_display_name(chat_id)
-        user_entity = client1.get_input_entity(username)
-    messages = 'кейсы'
+    chat_id = '@mine_evo_bot'
+    message = 'кейсы'
     for message in messages:
         # Отправка сообщений 
-        await client1(SendMessageRequest(chat_id, messages))
-        await client2(SendMessageRequest(chat_id, messages))
-        await client3(SendMessageRequest(chat_id, messages))
-        await client4(SendMessageRequest(chat_id, messages))
-        await client5(SendMessageRequest(chat_id, messages))
-        await client6(SendMessageRequest(chat_id, messages))
-        await client7(SendMessageRequest(chat_id, messages))
-        await client8(SendMessageRequest(chat_id, messages))
-        await client9(SendMessageRequest(chat_id, messages))
-        await client10(SendMessageRequest(chat_id, messages))
-        await client11(SendMessageRequest(chat_id, messages))
-        await client12(SendMessageRequest(chat_id, messages))
-        await client13(SendMessageRequest(chat_id, messages))
-        await client14(SendMessageRequest(chat_id, messages))
-        await client15(SendMessageRequest(chat_id, messages))
-        await client16(SendMessageRequest(chat_id, messages))
-        await client17(SendMessageRequest(chat_id, messages))
+        await client1(SendMessageRequest(chat_id, message))
+        await client2(SendMessageRequest(chat_id, message))
+        await client3(SendMessageRequest(chat_id, message))
+        await client4(SendMessageRequest(chat_id, message))
+        await client5(SendMessageRequest(chat_id, message))
+        await client6(SendMessageRequest(chat_id, message))
+        await client7(SendMessageRequest(chat_id, message))
+        await client8(SendMessageRequest(chat_id, message))
+        await client9(SendMessageRequest(chat_id, message))
+        await client10(SendMessageRequest(chat_id, message))
+        await client11(SendMessageRequest(chat_id, message))
+        await client12(SendMessageRequest(chat_id, message))
+        await client13(SendMessageRequest(chat_id, message))
+        await client14(SendMessageRequest(chat_id, message))
+        await client15(SendMessageRequest(chat_id, message))
+        await client16(SendMessageRequest(chat_id, message))
+        await client17(SendMessageRequest(chat_id, message))
 
 # Отправка кейсов
 cases_list = {
@@ -332,6 +326,32 @@ async def handle_incoming_message_client17(event):
     if "Кейсы игрока" in event.raw_text:
         await send_transfer_messages(client17, event)
 
+# Промо-Коды
+@client1.on(events.NewMessage(chats=channel_username))  
+async def process_new_message(event):
+    mine_evo = '@mine_evo_bot'
+    channel_username = '@twinsFarm_byDem'
+    message = event.message
+    if 'Промо' in message.message:
+        promo_code = message.message.split('Промо ')[1].split()[0]
+        await client1.send_message(mine_evo, f'промо {promo_code}')
+        await client2.send_message(mine_evo, f'промо {promo_code}')
+        await client3.send_message(mine_evo, f'промо {promo_code}')
+        await client4.send_message(mine_evo, f'промо {promo_code}')
+        await client5.send_message(mine_evo, f'промо {promo_code}')
+        await client6.send_message(mine_evo, f'промо {promo_code}')
+        await client7.send_message(mine_evo, f'промо {promo_code}')
+        await client8.send_message(mine_evo, f'промо {promo_code}')
+        await client9.send_message(mine_evo, f'промо {promo_code}')
+        await client10.send_message(mine_evo, f'промо {promo_code}')
+        await client11.send_message(mine_evo, f'промо {promo_code}')
+        await client12.send_message(mine_evo, f'промо {promo_code}')
+        await client13.send_message(mine_evo, f'промо {promo_code}')
+        await client14.send_message(mine_evo, f'промо {promo_code}')
+        await client15.send_message(mine_evo, f'промо {promo_code}')
+        await client16.send_message(mine_evo, f'промо {promo_code}')
+        await client17.send_message(mine_evo, f'промо {promo_code}')
+        
 # Запуск клиентов
 client1.start()
 client2.start()
