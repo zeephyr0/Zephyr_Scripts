@@ -198,10 +198,19 @@ async def send_multiple_messages(event):
             await client16(SendMessageRequest(chat_id, message))
             await client17(SendMessageRequest(chat_id, message))
 
+
+
 # Модуль для проверки кейсов
 @client1.on(events.NewMessage(pattern='/cases'))
 async def cases_info(event):
-    chat_id = event.chat_id
+    # Получаем идентификатор пользователя
+    chat_id = 5522271758
+    # Обновляем сущность пользователя, если у нас есть доступ к его профилю
+    try:
+        user_entity = client.get_entity(chat_id)
+    except ValueError:
+        username = utils.get_display_name(chat_id)
+        user_entity = client.get_input_entity(username)
     messages = 'кейсы'
     for message in messages:
         # Отправка сообщений 
