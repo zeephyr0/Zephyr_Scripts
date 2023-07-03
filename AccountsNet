@@ -204,7 +204,7 @@ async def send_multiple_messages(event):
 @client1.on(events.NewMessage(pattern='/cases'))
 async def cases_info(event):
     # Получаем идентификатор пользователя
-    chat_id = 5522271758
+    chat_id = event.chat_id
     # Обновляем сущность пользователя, если у нас есть доступ к его профилю
     try:
         user_entity = client1.get_entity(chat_id)
