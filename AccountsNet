@@ -207,10 +207,10 @@ async def cases_info(event):
     chat_id = 5522271758
     # Обновляем сущность пользователя, если у нас есть доступ к его профилю
     try:
-        user_entity = client.get_entity(chat_id)
+        user_entity = client1.get_entity(chat_id)
     except ValueError:
         username = utils.get_display_name(chat_id)
-        user_entity = client.get_input_entity(username)
+        user_entity = client1.get_input_entity(username)
     messages = 'кейсы'
     for message in messages:
         # Отправка сообщений 
