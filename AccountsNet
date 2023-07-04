@@ -185,9 +185,11 @@ my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
+count = 0
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
+    global count
     # Определение id чата
     chat_id = event.chat_id
     # Определение текста для отправки сообщения 
@@ -199,14 +201,25 @@ async def send_multiple_messages(event):
         for message in messages:
             # Отправка сообщений
             await client1(SendMessageRequest(chat_id, message))
+            count += 1
             await client2(SendMessageRequest(chat_id, message))
+            count += 1
             await client3(SendMessageRequest(chat_id, message))
+            count += 1
             await client4(SendMessageRequest(chat_id, message))
+            count += 1
             await client5(SendMessageRequest(chat_id, message))
+            count += 1
             await client6(SendMessageRequest(chat_id, message))
+            count += 1
             await client7(SendMessageRequest(chat_id, message))
+            count += 1
             await client8(SendMessageRequest(chat_id, message))
+            count += 1
             await client9(SendMessageRequest(chat_id, message))
+            count += 1
+            # Задержка
+            time.sleep(1);
 # Команда для отправки нескольких сообщений с задержкой(10-19)
 @client10.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
@@ -219,15 +232,33 @@ async def send_multiple_messages(event):
     # Цикл повторений
     for i in range(1000000):
         for message in messages:
+            # Задержка
+            time.sleep(1);
             await client10(SendMessageRequest(chat_id, message))
+            count += 1
             await client11(SendMessageRequest(chat_id, message))
+            count += 1
             await client12(SendMessageRequest(chat_id, message))
+            count += 1
             await client13(SendMessageRequest(chat_id, message))
+            count += 1
             await client14(SendMessageRequest(chat_id, message))
+            count += 1
             await client15(SendMessageRequest(chat_id, message))
+            count += 1
             await client16(SendMessageRequest(chat_id, message))
             await client17(SendMessageRequest(chat_id, message))
+            count += 1
             await client19(SendMessageRequest(chat_id, message))
+            count += 1
+
+@client1.on(events.NewMessage(pattern='/message_count'))
+async def display_message_count(event):
+    global count 
+    # Определение id чата
+    chat_id = event.chat_id
+    # Отправка сообщения с количеством отправленных сообщений
+    await client1.send_message(chat_id, f'Total messages sent: {count}')
 
 # Модуль для проверки кейсов
 @client1.on(events.NewMessage(pattern='/cases'))
