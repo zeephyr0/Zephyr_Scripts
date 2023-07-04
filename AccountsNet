@@ -223,6 +223,7 @@ async def send_multiple_messages(event):
 # Команда для отправки нескольких сообщений с задержкой(10-19)
 @client10.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
+    global count
     # Определение id чата
     chat_id = event.chat_id
     # Определение текста для отправки сообщения 
