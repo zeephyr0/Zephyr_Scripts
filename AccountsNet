@@ -338,7 +338,7 @@ async def handle_incoming_message_client17(event):
         await send_transfer_messages(client17, event)
 
 # Промо-Коды
-@client1.on(events.NewMessage(chats=mineEvo_channel, my_channel))  
+@client1.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
 async def process_new_message(event):
     # Сообщение которое будет проверяться 
     message = event.message
