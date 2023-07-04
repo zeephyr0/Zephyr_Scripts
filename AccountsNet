@@ -170,8 +170,10 @@ if not client17.is_user_authorized():
     client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '))
 
 # Адресы
-channel_username = '@mine_evo_news'
+mineEvo_channel = '@mine_evo_news'
+my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
+twins_group = '@twinsFarm_byDem'
 
 # Команда для отправки нескольких сообщений с задержкой
 @client1.on(events.NewMessage(pattern='/send_multiple'))
@@ -336,7 +338,7 @@ async def handle_incoming_message_client17(event):
         await send_transfer_messages(client17, event)
 
 # Промо-Коды
-@client1.on(events.NewMessage(chats=channel_username))  
+@client1.on(events.NewMessage(chats=mineEvo_channel, my_channel))  
 async def process_new_message(event):
     # Сообщение которое будет проверяться 
     message = event.message
