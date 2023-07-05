@@ -309,7 +309,7 @@ async def send_transfer_message(client, chat_id, case_name, quantity):
     await asyncio.sleep(3)
 async def send_transfer_messages(client, event):
     # Определение id чата
-    chat_id = event.chat_id
+    chat_id = '@mine_evo_bot'
     # Сообщение которое будет проверяться 
     message = event.raw_text
     lines = message.split("\n")
