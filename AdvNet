@@ -90,8 +90,8 @@ async def handle_incoming_message_handler(event):
             channel = await event.client.get_entity(channel_username)
             if not await event.client.is_chat_subscribed(channel.username):
                 await event.client(JoinChannelRequest(channel.username))
-        except Exception as e:
-            continue
+        except:
+            pass
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17, client19:
     client10.add_event_handler(send_multiple_messages_handler)
