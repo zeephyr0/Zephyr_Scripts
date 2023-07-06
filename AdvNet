@@ -158,7 +158,7 @@ async def handle_incoming_message_handler(event):
                 await event.client15(JoinChannelRequest(channel.username))
             if not await event.client16.is_chat_subscribed(channel.username):
                 await event.client16(JoinChannelRequest(channel.username))
-            if not await event.17client.is_chat_subscribed(channel.username):
+            if not await event.client17.is_chat_subscribed(channel.username):
                 await event.client17(JoinChannelRequest(channel.username))
         except:
             pass
