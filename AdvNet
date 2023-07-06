@@ -80,7 +80,8 @@ client17 = TelegramClient('session17', api_id17, api_hash17)
 # Объявление функций обработчиков событий для каждого клиента
 @events.register(events.NewMessage(pattern='/send_adv'))
 async def send_multiple_messages_handler(event):
-    await send_multiple_messages(event.client, event.client.get_me().username)
+    me = await event.client.get_me()
+    await send_multiple_messages(event.client, me.username)
 @events.register(events.NewMessage(incoming=True))
 async def handle_incoming_message_handler(event):
     if has_my_username_and_subscription_request(event.message, event.client.get_me().username):
