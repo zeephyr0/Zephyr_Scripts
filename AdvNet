@@ -84,7 +84,8 @@ async def send_multiple_messages_handler(event):
     await send_multiple_messages(event.client, me.username)
 @events.register(events.NewMessage(incoming=True))
 async def handle_incoming_message_handler(event):
-    if has_my_username_and_subscription_request(event.message, event.client.get_me().username):
+    me = await event.client.get_me()
+    if has_my_username_and_subscription_request(event.message, me.username):
         # Вытаскиваем имя канала из сообщения и подписываемся на него
         channel_username = event.message.text.split(' ')[-1]
         try:
