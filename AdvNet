@@ -90,24 +90,25 @@ async def send_multiple_messages(client17, my_username):
         except:
             pass
 # Бесконечный цикл отправки сообщений
-while True:
-    # Выбираем случайный чат и сообщение из списков
-    chat_username = random.choice(chat_usernames)
-    message = random.choice(messages)
+async def send_message():
+    while True:
+        # Выбираем случайный чат и сообщение из списков
+        chat_username = random.choice(chat_usernames)
+        message = random.choice(messages)
         
-    try:
-        # Отправка сообщений
-        await client10.send_message(chat_username, message)
-        await client11.send_message(chat_username, message)
-        await client12.send_message(chat_username, message)
-        await client13.send_message(chat_username, message)
-        await client14.send_message(chat_username, message)
-        await client15.send_message(chat_username, message)
-        await client16.send_message(chat_username, message)
-        await client17.send_message(chat_username, message)
-        time.sleep(77);
-    except:
-         pass
+        try:
+            # Отправка сообщений
+            await client10.send_message(chat_username, message)
+            await client11.send_message(chat_username, message)
+            await client12.send_message(chat_username, message)
+            await client13.send_message(chat_username, message)
+            await client14.send_message(chat_username, message)
+            await client15.send_message(chat_username, message)
+            await client16.send_message(chat_username, message)
+            await client17.send_message(chat_username, message)
+            time.sleep(77);
+        except:
+            pass
 
 # Инициализация клиентов
 api_id10 = '26056020'
