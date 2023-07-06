@@ -12,39 +12,66 @@ def has_my_username_and_subscription_request(message, my_username):
     return '@' + my_username.lower() in message.raw_text.lower() and ('подпишитесь на канал' in message.text.lower() or 'подписаться на' in message.text.lower())
 # Функция для отправки сообщений
 async def send_multiple_messages(client10, my_username):
-async def send_multiple_messages(client11, my_username):
-async def send_multiple_messages(client12, my_username):
-async def send_multiple_messages(client13, my_username):
-async def send_multiple_messages(client14, my_username):
-async def send_multiple_messages(client15, my_username):
-async def send_multiple_messages(client16, my_username):
-async def send_multiple_messages(client17, my_username):
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
         try:
             chat10 = await client10.get_entity(chat_username)
-            chat11 = await client11.get_entity(chat_username)
-            chat12 = await client12.get_entity(chat_username)
-            chat13 = await client13.get_entity(chat_username)
-            chat14 = await client14.get_entity(chat_username)
-            chat15 = await client15.get_entity(chat_username)
-            chat16 = await client16.get_entity(chat_username)
-            chat17 = await client17.get_entity(chat_username)
             if chat.megagroup:
                 if not await client10.is_chat_subscribed(chat.username):
                     await client10(JoinChannelRequest(chat.username))
+
+async def send_multiple_messages(client11, my_username):
+    # Подписываемся на каналы или группы из списка
+    for chat_username in chat_usernames:
+        try:
+            chat11 = await client11.get_entity(chat_username)
+            if chat.megagroup:
                 if not await client11.is_chat_subscribed(chat.username):
                     await client11(JoinChannelRequest(chat.username))
+async def send_multiple_messages(client12, my_username):
+    # Подписываемся на каналы или группы из списка
+    for chat_username in chat_usernames:
+        try:
+            chat12 = await client12.get_entity(chat_username)
+            if chat.megagroup:
                 if not await client12.is_chat_subscribed(chat.username):
                     await client12(JoinChannelRequest(chat.username))
+async def send_multiple_messages(client13, my_username):
+    # Подписываемся на каналы или группы из списка
+    for chat_username in chat_usernames:
+        try:
+            chat13 = await client13.get_entity(chat_username)
+            if chat.megagroup:
                 if not await client13.is_chat_subscribed(chat.username):
                     await client13(JoinChannelRequest(chat.username))
+async def send_multiple_messages(client14, my_username):
+    # Подписываемся на каналы или группы из списка
+    for chat_username in chat_usernames:
+        try:
+            chat14 = await client14.get_entity(chat_username)
+            if chat.megagroup:
                 if not await client14.is_chat_subscribed(chat.username):
                     await client14(JoinChannelRequest(chat.username))
+async def send_multiple_messages(client15, my_username):
+    # Подписываемся на каналы или группы из списка
+    for chat_username in chat_usernames:
+        try:
+            chat15 = await client15.get_entity(chat_username)
+            if chat.megagroup:
                 if not await client15.is_chat_subscribed(chat.username):
                     await client15(JoinChannelRequest(chat.username))
+async def send_multiple_messages(client16, my_username):
+    # Подписываемся на каналы или группы из списка
+    for chat_username in chat_usernames:
+        try:
+            chat16 = await client16.get_entity(chat_username)
+            if chat.megagroup:
                 if not await client16.is_chat_subscribed(chat.username):
                     await client16(JoinChannelRequest(chat.username))
+async def send_multiple_messages(client17, my_username):
+        try:
+            chat17 = await client17.get_entity(chat_username)
+            if chat.megagroup:
                 if not await client17.is_chat_subscribed(chat.username):
                     await client17(JoinChannelRequest(chat.username))
 
