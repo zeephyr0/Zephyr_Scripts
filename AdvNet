@@ -40,8 +40,9 @@ async def send_multiple_messages(client, my_username):
             await client.send_message(chat_username, message)
             count += 1  # Увеличиваем счетчик сообщений
             time.sleep(77);
-        except Exception as e:
-            continue
+        except:
+            pass
+
 # Инициализация клиентов
 api_id10 = '26056020'
 api_hash10 = 'b285005edea91f8c55172d66d0c163a2'
