@@ -57,8 +57,8 @@ def join_chats(client, chats):
 
 if __name__ == '__main__':
     # Создаем клиентов для каждого аккаунта
-    client10 = TelegramClient('client10_session', client10_id, client10_hash)
-    client11 = TelegramClient('client11_session', client11_id, client11_hash)
+    client10 = TelegramClient('client10_session', api_id10, api_hash10)
+    client11 = TelegramClient('client11_session', api_id11, api_hash11)
 
     # Запускаем клиентов
     with client10:
