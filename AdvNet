@@ -11,16 +11,9 @@ messages = ['лучший чат для взаимных сообщений: @De
 def has_my_username_and_subscription_request(message, my_username):
     return '@' + my_username.lower() in message.raw_text.lower() and ('подпишитесь на канал' in message.text.lower() or 'подписаться на' in message.text.lower())
 
-me10 = await event.client10.get_me()
-me11 = await event.client11.get_me()
-me12 = await event.client12.get_me()
-me13 = await event.client13.get_me()
-me14 = await event.client14.get_me()
-me15 = await event.client15.get_me()
-me16 = await event.client16.get_me()
-me17 = await event.client17.get_me()
 # Функция для отправки сообщений
 async def send_multiple_messages10(client10, event, my_username):
+    me10 = await event.client10.get_me()
     my_username = "@tw10fredd" 
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
@@ -32,6 +25,7 @@ async def send_multiple_messages10(client10, event, my_username):
         except:
             pass
 async def send_multiple_messages11(client11, event, my_username):
+    me11 = await event.client11.get_me()
     my_username = "@tw11fredd"
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
@@ -43,6 +37,7 @@ async def send_multiple_messages11(client11, event, my_username):
         except:
             pass
 async def send_multiple_messages12(client12, event, my_username):
+    me12 = await event.client12.get_me()
     my_username = "@tw12fredd"
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
@@ -54,6 +49,7 @@ async def send_multiple_messages12(client12, event, my_username):
         except:
             pass
 async def send_multiple_messages13(client13, event, my_username):
+    me13 = await event.client13.get_me()
     my_username = "@tw113fredd"
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
@@ -65,6 +61,7 @@ async def send_multiple_messages13(client13, event, my_username):
         except:
             pass
 async def send_multiple_messages14(client14, event, my_username):
+    me14 = await event.client14.get_me()
     my_username = "@tw14fredd"
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
@@ -76,6 +73,7 @@ async def send_multiple_messages14(client14, event, my_username):
         except:
             pass
 async def send_multiple_messages15(client15, event, my_username):
+    me15 = await event.client15.get_me()
     my_username = "@tw15fredd"
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
@@ -87,6 +85,7 @@ async def send_multiple_messages15(client15, event, my_username):
         except:
             pass
 async def send_multiple_messages16(client16, event, my_username):
+    me16 = await event.client16.get_me()
     my_username = "@tw16fredd"
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
@@ -98,6 +97,7 @@ async def send_multiple_messages16(client16, event, my_username):
         except:
             pass
 async def send_multiple_messages17(client17, event, my_username):
+    me17 = await event.client17.get_me()
     my_username = "@tw17fredd"
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
