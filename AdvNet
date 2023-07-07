@@ -5,6 +5,8 @@ import random
 import time 
 from telethon.sync import TelegramClient, events
 from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.errors import FloodWaitError
+
 chat_usernames = ['@vzaimnaya_podpiskac', '@vzaimnopodpiskaru', '@kolomio', '@PIAR_VILON', '@vzsubs1']  # Список юзернеймов чатов
 messages = ['лучший чат для взаимных сообщений: @Dem1_PiarChat', 'взаимный пиар чат и ролок @Dem1_PiarChat']  # Список сообщений для отправки
 
@@ -35,54 +37,41 @@ client15 = TelegramClient('session15', api_id15, api_hash15)
 client16 = TelegramClient('session16', api_id16, api_hash16)
 client17 = TelegramClient('session17', api_id17, api_hash17)
 
-
-# Функция для отправки сообщений
-@client10.on(events.NewMessage(pattern='/join'))
-async def join_groups(client10):
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat = await client10.get_entity(chat_username)
-            if chat.megagroup:
-                if not await client10.is_chat_subscribed(chat.username):
-                    await client10(JoinChannelRequest(chat.username))
-                if not await client11.is_chat_subscribed(chat.username):
-                    await client11(JoinChannelRequest(chat.username))
-                if not await client12.is_chat_subscribed(chat.username):
-                    await client12(JoinChannelRequest(chat.username))
-                if not await client13.is_chat_subscribed(chat.username):
-                    await client13(JoinChannelRequest(chat.username))
-                if not await client14.is_chat_subscribed(chat.username):
-                    await client14(JoinChannelRequest(chat.username))
-                if not await client15.is_chat_subscribed(chat.username):
-                    await client15(JoinChannelRequest(chat.username))
-                if not await client16.is_chat_subscribed(chat.username):
-                    await client16(JoinChannelRequest(chat.username))
-                if not await client17.is_chat_subscribed(chat.username):
-                    await client17(JoinChannelRequest(chat.username))
-        except:
-            pass
- 
-# Бесконечный цикл отправки сообщений
-@client10.on(events.NewMessage(pattern='/send_adv'))
-async def send_message():
+def send_messages(client, chats, messages):
     while True:
-        # Выбираем случайный чат и сообщение из списков
-        chat_username = random.choice(chat_usernames)
-        message = random.choice(messages)
+        for chat in chats:
+            try:
+                client.send_message(chat, random.choice(messages))
+            except FloodWaitError as e:
+                # Если возникла ошибка FloodWait, скрипт будет ждать указанное количество времени
+                time.sleep(e.seconds)
+            except Exception as e:
+                print(f"Произошла ошибка при отправке сообщения в чат {chat}: {e}")
+
+
+def join_chats(client, chats):
+    for chat in chats:
         try:
-            # Отправка сообщений
-            await client10.send_message(chat_username, message)
-            await client11.send_message(chat_username, message)
-            await client12.send_message(chat_username, message)
-            await client13.send_message(chat_username, message)
-            await client14.send_message(chat_username, message)
-            await client15.send_message(chat_username, message)
-            await client16.send_message(chat_username, message)
-            await client17.send_message(chat_username, message)
-            time.sleep(77);
-        except:
-            pass
+            client(JoinChannelRequest(chat))
+        except Exception as e:
+            print(f"Ошибка при вступлении в чат {chat}: {e}")
+
+
+if __name__ == '__main__':
+    # Создаем клиентов для каждого аккаунта
+    client1 = TelegramClient('client1_session', client1_id, client1_hash)
+    client2 = TelegramClient('client2_session', client2_id, client2_hash)
+
+    # Запускаем клиентов
+    with client1:
+        with client2:
+            # Отправляем сообщения
+            send_messages(client1, chat_list, message_list)
+            send_messages(client2, chat_list, message_list)
+            
+            # Присоединяемся к чатам, если клиенты не являются их участниками
+            join_chats(client1, chat_list)
+            join_chats(client2, chat_list)
 
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
