@@ -43,18 +43,6 @@ def send_messages(client, chats, messages):
         client.send_message(chat, message)
         time.sleep(7)
 
-# Проверяем каждое входящее сообщение в чатах из списка
-@client.on(events.NewMessage(chats=chat_list))
-async def handle_new_message(event):
-    message = event.message
-    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
-        # Извлекаем пользователя или канал из сообщения
-        entity = message.entities[0].user_id if message.entities else message.chat_id
-        try:
-            # Подписываемся на указанный канал или чат
-            await client(JoinChannelRequest(entity))
-        except Exception as e:
-            print(f"Ошибка при попытке подписки на {entity}: {e}")
 
 if __name__ == '__main__':
     # Создаем клиентов для каждого аккаунта
@@ -94,6 +82,105 @@ if __name__ == '__main__':
                                     send_messages(client15, chat, message)
                                     send_messages(client16, chat, message)
                                     send_messages(client17, chat, message)
+
+# Проверяем каждое входящее сообщение в чатах из списка
+@client10.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client10(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
+
+# Проверяем каждое входящее сообщение в чатах из списка
+@client11.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client11(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
+
+# Проверяем каждое входящее сообщение в чатах из списка
+@client12.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client12(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
+# Проверяем каждое входящее сообщение в чатах из списка
+@client13.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client13(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
+# Проверяем каждое входящее сообщение в чатах из списка
+@client14.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client14(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
+# Проверяем каждое входящее сообщение в чатах из списка
+@client15.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client15(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
+# Проверяем каждое входящее сообщение в чатах из списка
+@client16.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client16(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
+# Проверяем каждое входящее сообщение в чатах из списка
+@client17.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client17(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
 
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
