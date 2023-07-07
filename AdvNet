@@ -42,11 +42,6 @@ def send_messages(client, chats, messages):
         message = random.choice(message_list)
         client.send_message(chat, message)
         time.sleep(7)
-    except FloodWaitError as e:
-        # Если возникла ошибка FloodWait, скрипт будет ждать указанное количество времени
-        time.sleep(e.seconds)
-    except Exception as e:
-        print(f"Произошла ошибка при отправке сообщения в чат {chat}: {e}")
 
 # Проверяем каждое входящее сообщение в чатах из списка
 @client.on(events.NewMessage(chats=chat_list))
