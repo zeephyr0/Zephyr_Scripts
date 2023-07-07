@@ -28,17 +28,11 @@ api_hash16 = '0612b354524635bbfbd4e440299b4e65'
 api_id17 = '29202662'
 api_hash17 = 'e093efde1201cc926ad478cc129a4ff5'
 
-client12 = TelegramClient('session12', api_id12, api_hash12)
-client13 = TelegramClient('session13', api_id13, api_hash13)
-client14 = TelegramClient('session14', api_id14, api_hash14)
-client15 = TelegramClient('session15', api_id15, api_hash15)
-client16 = TelegramClient('session16', api_id16, api_hash16)
-client17 = TelegramClient('session17', api_id17, api_hash17)
-
 def join_chats(client, chats):
     for chat in chats:
         try:
             client(JoinChannelRequest(chat))
+            print(f"Клиент успешно вступил в чат {chat}")
         except Exception as e:
             print(f"Ошибка при вступлении в чат {chat}: {e}")
 
@@ -54,24 +48,44 @@ def send_messages(client, chats, messages):
                 print(f"Произошла ошибка при отправке сообщения в чат {chat}: {e}")
 
 
-
-
 if __name__ == '__main__':
     # Создаем клиентов для каждого аккаунта
-    client10 = TelegramClient('client10_session', api_id10, api_hash10)
-    client11 = TelegramClient('client11_session', api_id11, api_hash11)
+    client10 = TelegramClient('session10', api_id10, api_hash10)
+    client11 = TelegramClient('session11', api_id11, api_hash11)
+    client12 = TelegramClient('session12', api_id12, api_hash12)
+    client13 = TelegramClient('session13', api_id13, api_hash13)
+    client14 = TelegramClient('session14', api_id14, api_hash14)
+    client15 = TelegramClient('session15', api_id15, api_hash15)
+    client16 = TelegramClient('session16', api_id16, api_hash16)
+    client17 = TelegramClient('session17', api_id17, api_hash17)
 
     # Запускаем клиентов
     with client10:
         with client11:
-            # Присоединяемся к чатам, если клиенты не являются их участниками
-            join_chats(client10, chat_list)
-            join_chats(client11, chat_list)
-            # Отправляем сообщения
-            send_messages(client10, chat_list, message_list)
-            send_messages(client11, chat_list, message_list)
-
-
+            with client12:
+                with client13:
+                    with client14:
+                        with client15:
+                            with client16:
+                                with client17:
+                                    # Присоединяемся к чатам, если клиенты не являются их участниками
+                                    join_chats(client10, chat_list)
+                                    join_chats(client11, chat_list)
+                                    join_chats(client12, chat_list)
+                                    join_chats(client13, chat_list)
+                                    join_chats(client14, chat_list)
+                                    join_chats(client15, chat_list)
+                                    join_chats(client16, chat_list)
+                                    join_chats(client17, chat_list)
+                                    # Отправляем сообщения
+                                    send_messages(client10, chat_list, message_list)
+                                    send_messages(client11, chat_list, message_list)
+                                    send_messages(client12, chat_list, message_list)
+                                    send_messages(client13, chat_list, message_list)
+                                    send_messages(client14, chat_list, message_list)
+                                    send_messages(client15, chat_list, message_list)
+                                    send_messages(client16, chat_list, message_list)
+                                    send_messages(client17, chat_list, message_list)
 
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
