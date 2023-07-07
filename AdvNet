@@ -9,7 +9,8 @@ chat_usernames = ['@vzaimnaya_podpiskac', '@vzaimnopodpiskaru', '@kolomio', '@PI
 messages = ['лучший чат для взаимных сообщений: @Dem1_PiarChat', 'взаимный пиар чат и ролок @Dem1_PiarChat']  # Список сообщений для отправки
 
 # Функция для отправки сообщений
-async def send_multiple_messages10(client10, client11, client12, client13, client14, client15, client16, client17, event):
+@client10.on(events.NewMessage(pattern='/join'))
+async def join_groups(client10, client11, client12, client13, client14, client15, client16, client17, event):
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
         try:
@@ -83,22 +84,14 @@ client17 = TelegramClient('session17', api_id17, api_hash17)
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
     client10.start()
-    client10.add_event_handler(handle_incoming_message_handler)
-    client11.add_event_handler(send_multiple_messages11, me11)
-    client11.add_event_handler(handle_incoming_message_handler)
-    client12.add_event_handler(send_multiple_messages12, me12)
-    client12.add_event_handler(handle_incoming_message_handler)
-    client13.add_event_handler(send_multiple_messages13, me13)
-    client13.add_event_handler(handle_incoming_message_handler)
-    client14.add_event_handler(send_multiple_messages14, me14)
-    client14.add_event_handler(handle_incoming_message_handler)
-    client15.add_event_handler(send_multiple_messages15, me15)
-    client15.add_event_handler(handle_incoming_message_handler)
-    client16.add_event_handler(send_multiple_messages16, me16)
-    client16.add_event_handler(handle_incoming_message_handler)
-    client17.add_event_handler(send_multiple_messages17, me17)
-    client17.add_event_handler(handle_incoming_message_handler)
-    
+    client11.start()
+    client12.start()
+    client13.start()
+    client14.start()
+    client15.start()
+    client16.start()
+    client17.start()
+ 
     client10.run_until_disconnected()
     client11.run_until_disconnected()
     client12.run_until_disconnected()
