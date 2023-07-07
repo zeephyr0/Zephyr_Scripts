@@ -35,6 +35,13 @@ client15 = TelegramClient('session15', api_id15, api_hash15)
 client16 = TelegramClient('session16', api_id16, api_hash16)
 client17 = TelegramClient('session17', api_id17, api_hash17)
 
+def join_chats(client, chats):
+    for chat in chats:
+        try:
+            client(JoinChannelRequest(chat))
+        except Exception as e:
+            print(f"Ошибка при вступлении в чат {chat}: {e}")
+
 def send_messages(client, chats, messages):
     while True:
         for chat in chats:
@@ -47,12 +54,6 @@ def send_messages(client, chats, messages):
                 print(f"Произошла ошибка при отправке сообщения в чат {chat}: {e}")
 
 
-def join_chats(client, chats):
-    for chat in chats:
-        try:
-            client(JoinChannelRequest(chat))
-        except Exception as e:
-            print(f"Ошибка при вступлении в чат {chat}: {e}")
 
 
 if __name__ == '__main__':
@@ -63,13 +64,14 @@ if __name__ == '__main__':
     # Запускаем клиентов
     with client10:
         with client11:
-            # Отправляем сообщения
-            send_messages(client10, chat_list, message_list)
-            send_messages(client11, chat_list, message_list)
-            
             # Присоединяемся к чатам, если клиенты не являются их участниками
             join_chats(client10, chat_list)
             join_chats(client11, chat_list)
+            # Отправляем сообщения
+            send_messages(client10, chat_list, message_list)
+            send_messages(client11, chat_list, message_list)
+
+
 
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
