@@ -74,6 +74,8 @@ if __name__ == '__main__':
                                     join_chats(client16, chat_list)
                                     join_chats(client17, chat_list)
                                     # Отправляем сообщения
+                                    chat = random.choice(chat_list)
+                                    message = random.choice(message_list)
                                     send_messages(client10, chat, message)
                                     send_messages(client11, chat, message)
                                     send_messages(client12, chat, message)
