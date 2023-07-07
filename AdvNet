@@ -7,8 +7,8 @@ from telethon.sync import TelegramClient, events
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.errors import FloodWaitError
 
-chat_usernames = ['@vzaimnaya_podpiskac', '@vzaimnopodpiskaru', '@kolomio', '@PIAR_VILON', '@vzsubs1']  # Список юзернеймов чатов
-messages = ['лучший чат для взаимных сообщений: @Dem1_PiarChat', 'взаимный пиар чат и ролок @Dem1_PiarChat']  # Список сообщений для отправки
+chat_list = ['@vzaimnaya_podpiskac', '@vzaimnopodpiskaru', '@kolomio', '@PIAR_VILON', '@vzsubs1']  # Список юзернеймов чатов
+message_list = ['лучший чат для взаимных сообщений: @Dem1_PiarChat', 'взаимный пиар чат и ролок @Dem1_PiarChat']  # Список сообщений для отправки
 
 # Инициализация клиентов
 api_id10 = '26056020'
