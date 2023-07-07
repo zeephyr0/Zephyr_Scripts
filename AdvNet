@@ -38,15 +38,28 @@ def join_chats(client, chats):
 
 def send_messages(client, chats, messages):
     while True:
-        for chat in chats:
-            try:
-                client.send_message(chat, random.choice(messages))
-            except FloodWaitError as e:
-                # Если возникла ошибка FloodWait, скрипт будет ждать указанное количество времени
-                time.sleep(e.seconds)
-            except Exception as e:
-                print(f"Произошла ошибка при отправке сообщения в чат {chat}: {e}")
+        chat = random.choice(chat_list)
+        message = random.choice(message_list)
+        client.send_message(chat, message)
+        time.sleep(7)
+    except FloodWaitError as e:
+        # Если возникла ошибка FloodWait, скрипт будет ждать указанное количество времени
+        time.sleep(e.seconds)
+    except Exception as e:
+        print(f"Произошла ошибка при отправке сообщения в чат {chat}: {e}")
 
+# Проверяем каждое входящее сообщение в чатах из списка
+@client.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
 
 if __name__ == '__main__':
     # Создаем клиентов для каждого аккаунта
@@ -78,27 +91,14 @@ if __name__ == '__main__':
                                     join_chats(client16, chat_list)
                                     join_chats(client17, chat_list)
                                     # Отправляем сообщения
-                                    send_messages(client10, chat_list, message_list)
-                                    send_messages(client11, chat_list, message_list)
-                                    send_messages(client12, chat_list, message_list)
-                                    send_messages(client13, chat_list, message_list)
-                                    send_messages(client14, chat_list, message_list)
-                                    send_messages(client15, chat_list, message_list)
-                                    send_messages(client16, chat_list, message_list)
-                                    send_messages(client17, chat_list, message_list)
-
-# Проверяем каждое входящее сообщение в чатах из списка
-@client.on(events.NewMessage(chats=chat_list))
-async def handle_new_message(event):
-    message = event.message
-    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
-        # Извлекаем пользователя или канал из сообщения
-        entity = message.entities[0].user_id if message.entities else message.chat_id
-        try:
-            # Подписываемся на указанный канал или чат
-            await client(JoinChannelRequest(entity))
-        except Exception as e:
-            print(f"Ошибка при попытке подписки на {entity}: {e}")
+                                    send_messages(client10, chat, message)
+                                    send_messages(client11, chat, message)
+                                    send_messages(client12, chat, message)
+                                    send_messages(client13, chat, message)
+                                    send_messages(client14, chat, message)
+                                    send_messages(client15, chat, message)
+                                    send_messages(client16, chat, message)
+                                    send_messages(client17, chat, message)
 
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
