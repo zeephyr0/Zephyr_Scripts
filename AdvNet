@@ -145,7 +145,7 @@ client16 = TelegramClient('session16', api_id16, api_hash16)
 client17 = TelegramClient('session17', api_id17, api_hash17)
 
 # Объявление функций обработчиков событий для каждого клиента
-@client1.on(events.NewMessage(pattern='/send_adv'))
+@client10.on(events.NewMessage(pattern='/send_adv'))
 async def handle_message_client1(event):
     me10 = await event.client10.get_me()
     await send_multiple_messages(event.client10, me.username)
