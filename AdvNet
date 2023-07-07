@@ -145,23 +145,37 @@ client16 = TelegramClient('session16', api_id16, api_hash16)
 client17 = TelegramClient('session17', api_id17, api_hash17)
 
 # Объявление функций обработчиков событий для каждого клиента
-@events.register(events.NewMessage(pattern='/send_adv'))
-async def send_multiple_messages_handler(event):
+@client1.on(events.NewMessage(pattern='/send_adv'))
+async def handle_message_client1(event):
     me10 = await event.client10.get_me()
-    me11 = await event.client11.get_me()
-    me12 = await event.client12.get_me()
-    me13 = await event.client13.get_me()
-    me14 = await event.client14.get_me()
-    me15 = await event.client15.get_me()
-    me16 = await event.client16.get_me()
-    me17 = await event.client17.get_me()
     await send_multiple_messages(event.client10, me.username)
+@client11.on(events.NewMessage(pattern='/send_adv'))
+async def handle_message_client11(event):
+    me11 = await event.client11.get_me()
     await send_multiple_messages(event.client11, me.username)
+@client12.on(events.NewMessage(pattern='/send_adv'))
+async def handle_message_client12(event):
+    me12 = await event.client12.get_me()
     await send_multiple_messages(event.client12, me.username)
+@client13.on(events.NewMessage(pattern='/send_adv'))
+async def handle_message_client13(event):
+    me13 = await event.client13.get_me()
     await send_multiple_messages(event.client13, me.username)
+@client14.on(events.NewMessage)
+async def handle_message_client14(event):
+    me14 = await event.client14.get_me()
     await send_multiple_messages(event.client14, me.username)
+@client15.on(events.NewMessage)
+async def handle_message_client15(event):
+    me15 = await event.client15.get_me()
     await send_multiple_messages(event.client15, me.username)
+@client16.on(events.NewMessage)
+async def handle_message_client16(event):
+    me16 = await event.client16.get_me()
     await send_multiple_messages(event.client16, me.username)
+@client17.on(events.NewMessage)
+async def handle_message_client17(event):
+    me17 = await event.client17.get_me()
     await send_multiple_messages(event.client17, me.username)
 @events.register(events.NewMessage(incoming=True))
 async def handle_incoming_message_handler(event):
