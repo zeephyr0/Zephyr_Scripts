@@ -86,6 +86,21 @@ if __name__ == '__main__':
                                     send_messages(client15, chat_list, message_list)
                                     send_messages(client16, chat_list, message_list)
                                     send_messages(client17, chat_list, message_list)
+except:
+    pass
+
+# Проверяем каждое входящее сообщение в чатах из списка
+@client.on(events.NewMessage(chats=chat_list))
+async def handle_new_message(event):
+    message = event.message
+    if "подписаться на" in message.text or "прошу подпишитесь на" in message.text:
+        # Извлекаем пользователя или канал из сообщения
+        entity = message.entities[0].user_id if message.entities else message.chat_id
+        try:
+            # Подписываемся на указанный канал или чат
+            await client(JoinChannelRequest(entity))
+        except Exception as e:
+            print(f"Ошибка при попытке подписки на {entity}: {e}")
 
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
