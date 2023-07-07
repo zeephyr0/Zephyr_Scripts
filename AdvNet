@@ -31,7 +31,9 @@ async def join_groups(client10, client11, client12, client13, client14, client15
                 if not await client16.is_chat_subscribed(chat.username):
                     await client16(JoinChannelRequest(chat.username))
                 if not await client17.is_chat_subscribed(chat.username):
-                    await client17(JoinChannelRequest(chat.username))
+                    await client17(JoinChannelRequest(chat.username)
+        except:
+            pass
  
 # Бесконечный цикл отправки сообщений
 @client10.on(events.NewMessage(pattern='/send_adv'))
