@@ -7,114 +7,38 @@ from telethon.sync import TelegramClient, events
 from telethon.tl.functions.channels import JoinChannelRequest
 chat_usernames = ['@vzaimnaya_podpiskac', '@vzaimnopodpiskaru', '@kolomio', '@PIAR_VILON', '@vzsubs1']  # Список юзернеймов чатов
 messages = ['лучший чат для взаимных сообщений: @Dem1_PiarChat', 'взаимный пиар чат и ролок @Dem1_PiarChat']  # Список сообщений для отправки
-# Функция для проверки наличия вашего имени в тегах сообщения и призыва к подписке
-def has_my_username_and_subscription_request(message, my_username):
-    return '@' + my_username.lower() in message.raw_text.lower() and ('подпишитесь на канал' in message.text.lower() or 'подписаться на' in message.text.lower())
 
 # Функция для отправки сообщений
-async def send_multiple_messages10(client10, event, my_username):
-    me10 = await event.client10.get_me()
-    my_username = "@tw10fredd" 
+async def send_multiple_messages10(client10, client11, client12, client13, client14, client15, client16, client17, event):
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
         try:
-            chat10 = await client10.get_entity(chat_username)
+            chat = await client10.get_entity(chat_username)
             if chat.megagroup:
                 if not await client10.is_chat_subscribed(chat.username):
                     await client10(JoinChannelRequest(chat.username))
-        except:
-            pass
-async def send_multiple_messages11(client11, event, my_username):
-    me11 = await event.client11.get_me()
-    my_username = "@tw11fredd"
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat11 = await client11.get_entity(chat_username)
-            if chat.megagroup:
                 if not await client11.is_chat_subscribed(chat.username):
                     await client11(JoinChannelRequest(chat.username))
-        except:
-            pass
-async def send_multiple_messages12(client12, event, my_username):
-    me12 = await event.client12.get_me()
-    my_username = "@tw12fredd"
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat12 = await client12.get_entity(chat_username)
-            if chat.megagroup:
                 if not await client12.is_chat_subscribed(chat.username):
                     await client12(JoinChannelRequest(chat.username))
-        except:
-            pass
-async def send_multiple_messages13(client13, event, my_username):
-    me13 = await event.client13.get_me()
-    my_username = "@tw113fredd"
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat13 = await client13.get_entity(chat_username)
-            if chat.megagroup:
                 if not await client13.is_chat_subscribed(chat.username):
                     await client13(JoinChannelRequest(chat.username))
-        except:
-            pass
-async def send_multiple_messages14(client14, event, my_username):
-    me14 = await event.client14.get_me()
-    my_username = "@tw14fredd"
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat14 = await client14.get_entity(chat_username)
-            if chat.megagroup:
                 if not await client14.is_chat_subscribed(chat.username):
                     await client14(JoinChannelRequest(chat.username))
-        except:
-            pass
-async def send_multiple_messages15(client15, event, my_username):
-    me15 = await event.client15.get_me()
-    my_username = "@tw15fredd"
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat15 = await client15.get_entity(chat_username)
-            if chat.megagroup:
                 if not await client15.is_chat_subscribed(chat.username):
                     await client15(JoinChannelRequest(chat.username))
-        except:
-            pass
-async def send_multiple_messages16(client16, event, my_username):
-    me16 = await event.client16.get_me()
-    my_username = "@tw16fredd"
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat16 = await client16.get_entity(chat_username)
-            if chat.megagroup:
                 if not await client16.is_chat_subscribed(chat.username):
                     await client16(JoinChannelRequest(chat.username))
-        except:
-            pass
-async def send_multiple_messages17(client17, event, my_username):
-    me17 = await event.client17.get_me()
-    my_username = "@tw17fredd"
-    # Подписываемся на каналы или группы из списка
-    for chat_username in chat_usernames:
-        try:
-            chat17 = await client17.get_entity(chat_username)
-            if chat.megagroup:
                 if not await client17.is_chat_subscribed(chat.username):
                     await client17(JoinChannelRequest(chat.username))
-        except:
-            pass
+ 
 # Бесконечный цикл отправки сообщений
+@client10.on(events.NewMessage(pattern='/send_adv'))
 async def send_message():
     while True:
         # Выбираем случайный чат и сообщение из списков
         chat_username = random.choice(chat_usernames)
         message = random.choice(messages)
-        
         try:
             # Отправка сообщений
             await client10.send_message(chat_username, message)
@@ -132,25 +56,18 @@ async def send_message():
 # Инициализация клиентов
 api_id10 = '26056020'
 api_hash10 = 'b285005edea91f8c55172d66d0c163a2'
-
 api_id11 = '27250768'
 api_hash11 = '88fa6db6643659749f0e107130dedc70'
-
 api_id12 = '26637536'
 api_hash12 = '95dacc89867e3089d9722be702afd959'
-
 api_id13 = '20244628'
 api_hash13 = '31f1eac97bf8851425d620b69cc87d75'
-
 api_id14 = '28781052'
 api_hash14 = 'da8a73f5fb61c1cf67a871a2a5afef9a'
-
 api_id15 = '22823126'
 api_hash15 = '07b238927248c53498fa9f013cc75809'
-
 api_id16 = '28506932'
 api_hash16 = '0612b354524635bbfbd4e440299b4e65'
-
 api_id17 = '29202662'
 api_hash17 = 'e093efde1201cc926ad478cc129a4ff5'
 
@@ -163,77 +80,9 @@ client15 = TelegramClient('session15', api_id15, api_hash15)
 client16 = TelegramClient('session16', api_id16, api_hash16)
 client17 = TelegramClient('session17', api_id17, api_hash17)
 
-# Объявление функций обработчиков событий для каждого клиента
-@client10.on(events.NewMessage(pattern='/send_adv'))
-async def handle_message_client1(event):
-    me10 = await event.client10.get_me()
-    await send_multiple_messages(event.client10, me.username)
-@client11.on(events.NewMessage(pattern='/send_adv'))
-async def handle_message_client11(event):
-    me11 = await event.client11.get_me()
-    await send_multiple_messages(event.client11, me.username)
-@client12.on(events.NewMessage(pattern='/send_adv'))
-async def handle_message_client12(event):
-    me12 = await event.client12.get_me()
-    await send_multiple_messages(event.client12, me.username)
-@client13.on(events.NewMessage(pattern='/send_adv'))
-async def handle_message_client13(event):
-    me13 = await event.client13.get_me()
-    await send_multiple_messages(event.client13, me.username)
-@client14.on(events.NewMessage)
-async def handle_message_client14(event):
-    me14 = await event.client14.get_me()
-    await send_multiple_messages(event.client14, me.username)
-@client15.on(events.NewMessage)
-async def handle_message_client15(event):
-    me15 = await event.client15.get_me()
-    await send_multiple_messages(event.client15, me.username)
-@client16.on(events.NewMessage)
-async def handle_message_client16(event):
-    me16 = await event.client16.get_me()
-    await send_multiple_messages(event.client16, me.username)
-@client17.on(events.NewMessage)
-async def handle_message_client17(event):
-    me17 = await event.client17.get_me()
-    await send_multiple_messages(event.client17, me.username)
-
-@events.register(events.NewMessage(incoming=True))
-async def handle_incoming_message_handler(event):
-    if has_my_username_and_subscription_request(event.message, me.username):
-        # Вытаскиваем имя канала из сообщения и подписываемся на него
-        channel_username = event.message.text.split(' ')[-1]
-        try:
-            channel10 = await event.client10.get_entity(channel_username)
-            channel11 = await event.client11.get_entity(channel_username)
-            channel12 = await event.client12.get_entity(channel_username)
-            channel13 = await event.client13.get_entity(channel_username)
-            channel14 = await event.client14.get_entity(channel_username)
-            channel15 = await event.client15.get_entity(channel_username)
-            channel16 = await event.client16.get_entity(channel_username)
-            channel17 = await event.client17.get_entity(channel_username)
-
-            if not await event.client10.is_chat_subscribed(channel.username):
-                await event.client10(JoinChannelRequest(channel.username))
-            if not await event.client11.is_chat_subscribed(channel.username):
-                await event.client11(JoinChannelRequest(channel.username))
-            if not await event.client12.is_chat_subscribed(channel.username):
-                await event.client12(JoinChannelRequest(channel.username))
-            if not await event.client13.is_chat_subscribed(channel.username):
-                await event.client13(JoinChannelRequest(channel.username))
-            if not await event.client14.is_chat_subscribed(channel.username):
-                await event.client14(JoinChannelRequest(channel.username))
-            if not await event.client15.is_chat_subscribed(channel.username):
-                await event.client15(JoinChannelRequest(channel.username))
-            if not await event.client16.is_chat_subscribed(channel.username):
-                await event.client16(JoinChannelRequest(channel.username))
-            if not await event.client17.is_chat_subscribed(channel.username):
-                await event.client17(JoinChannelRequest(channel.username))
-        except:
-            pass
-
 # Запуск клиентов
 with client10, client11, client12, client13, client14, client15, client16, client17:
-    client10.add_event_handler(send_multiple_messages10, me10)
+    client10.start()
     client10.add_event_handler(handle_incoming_message_handler)
     client11.add_event_handler(send_multiple_messages11, me11)
     client11.add_event_handler(handle_incoming_message_handler)
