@@ -38,7 +38,7 @@ client17 = TelegramClient('session17', api_id17, api_hash17)
 
 # Функция для отправки сообщений
 @client10.on(events.NewMessage(pattern='/join'))
-async def join_groups(client10, client11, client12, client13, client14, client15, client16, client17, event):
+async def join_groups(client10):
     # Подписываемся на каналы или группы из списка
     for chat_username in chat_usernames:
         try:
