@@ -9,6 +9,7 @@ from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
 import requests
 import time
 import random
+import tracemalloc
 import asyncio
 import concurrent.futures
 
@@ -355,6 +356,7 @@ async def process_new_message(event):
         await globals()[f'client{j}'](SendMessageRequest(mine_evo, f'промо {promo_code}'))
         
 # Запуск клиентов
+tracemalloc.start()
 client1.start()
 client2.start()
 client3.start()
@@ -481,4 +483,8 @@ except KeyboardInterrupt:
     pass
 finally:
     client18.disconnect()
- 
+
+snapshot = tracemalloc.take_snapshot()
+top_stats = snapshot.statistics('traceback')
+for stat in top_stats[:10]:
+    print(stat.traceback)
