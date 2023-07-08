@@ -182,6 +182,7 @@ if not client17.is_user_authorized():
 
 clients = ["client1", "client2", "client3", "client4", "client5", "client6", "client7", "client8", "client9", "client10", "client11", "client12", "client13", "client14", "client15", "client16", "client17", "client19"]
 
+
 # Адресы
 mineEvo_channel = '@mine_evo_news'
 my_channel = '@Demo_minePromo'
@@ -192,8 +193,7 @@ def send_multiple_messages(clients, message, chat):
     def send_message(client):
         # Здесь ты можешь добавить код для отправки сообщения клиенту в указанный чат
         # Например:
-        send_message(clients, message, chat)
-
+        print(f"Отправляю сообщение '{message}' клиенту {client} в чат {chat}")
     threads = []
     for client in clients:
         thread = threading.Thread(target=send_message, args=(client,))
@@ -204,10 +204,19 @@ def send_multiple_messages(clients, message, chat):
     for thread in threads:
         thread.join()
 
-# Пример использования функции
-message = "коп"
-chat = mine_evo
+
+def send_multiple_messages_infinite(clients, message, chat):
+    while True:
+        send_multiple_messages(clients, message, chat)
+        time.sleep(2)  # Задержка между отправкой сообщений
+
+# Пример использования функции с отправкой сообщений по одному разу
+message = "Привет, всем!"
+chat = "общий чат"
 send_multiple_messages(clients, message, chat)
+
+# Пример использования функции с бесконечной отправкой сообщений
+send_multiple_messages_infinite(clients, "коп", "@mine_evo_bot")
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
