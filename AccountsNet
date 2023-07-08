@@ -227,7 +227,6 @@ async def send_multiple_messages(event):
             coroutines.append(send_message(client15, chat_id, message))
             coroutines.append(send_message(client16, chat_id, message))
             coroutines.append(send_message(client17, chat_id, message))
-            coroutines.append(send_message(client18, chat_id, message))
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
