@@ -249,11 +249,11 @@ async def send_multiple_messages(event):
             await client15(SendMessageRequest(chat_id, message))
             count += 1
             await client16(SendMessageRequest(chat_id, message))
+            count += 1
             await client17(SendMessageRequest(chat_id, message))
             count += 1
             await client19(SendMessageRequest(chat_id, message))
             count += 1
-            time.sleep(1)
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
