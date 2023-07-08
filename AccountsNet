@@ -210,10 +210,14 @@ async def send_multiple_messages2(event):
         # Цикл повторений
         while True:
             for message in messages:
-                for j in range(1, 18):
-                    # Отправка сообщения в отдельном потоке
+                for j in range(1, 9):
+                    # Enable tracemalloc to get the object allocation traceback
+                    tracemalloc.start()
                     executor.submit(send_message, globals()[f'client{j}'], chat_id, message)
-
+                    snapshot = tracemalloc.take_snapshot()
+                    top_stats = snapshot.statistics('traceback')
+                    for stat in top_stats[:10]:
+                        print(stat.traceback
 
 
 
