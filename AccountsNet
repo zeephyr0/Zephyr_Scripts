@@ -81,9 +81,9 @@ api_id17 = '29202662'
 api_hash17 = 'e093efde1201cc926ad478cc129a4ff5'
 phone17 = '+213774991926'
 
-api_id19 = '23432483'
-api_hash19 = '68d100c6a514e67bf60ff86745bca406'
-phone19 = '+79857390622'
+api_id18 = '23432483'
+api_hash18 = '68d100c6a514e67bf60ff86745bca406'
+phone18 = '+79857390622'
 
 # Создание клиентов 
 client1 = TelegramClient('session1', api_id1, api_hash1)
@@ -103,7 +103,7 @@ client14 = TelegramClient('session14', api_id14, api_hash14)
 client15 = TelegramClient('session15', api_id15, api_hash15)
 client16 = TelegramClient('session16', api_id16, api_hash16)
 client17 = TelegramClient('session17', api_id17, api_hash17)
-client19 = TelegramClient('session19', api_id19, api_hash19)
+client18 = TelegramClient('session19', api_id19, api_hash19)
 
 
 # Авторизация
@@ -175,10 +175,10 @@ client17.connect()
 if not client17.is_user_authorized():
     client17.send_code_request(phone17)
     client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '))
-client19.connect()
-if not client17.is_user_authorized():
-    client19.send_code_request(phone17)
-    client19.sign_in(phone19, input('Session-19 Введите код подтверждения: '))
+client18.connect()
+if not client18.is_user_authorized():
+    client18.send_code_request(phone18)
+    client18.sign_in(phone19, input('Session-18 Введите код подтверждения: '))
 
 # Адресы
 mineEvo_channel = '@mine_evo_news'
@@ -198,45 +198,12 @@ async def send_multiple_messages(event):
     # Извлечение сообщений после команды
     messages = event.raw_text.split(' ')[1:]
     # Цикл повторений
-    for i in range(1000000):
+    while True:
         for message in messages:
-            for j in range(1, 19):
+            for j in range(1, 18):
                 await globals()[f'client{j}'](SendMessageRequest(chat_id, message))
                 count += 1
             time.sleep(1)
-
-# Команда для отправки нескольких сообщений с задержкой(10-19)
-@client10.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages(event):
-    global count
-    # Определение id чата
-    chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Цикл повторений
-    for i in range(1000000):
-        for message in messages:
-            # Задержка
-            await client10(SendMessageRequest(chat_id, message))
-            count += 1
-            await client11(SendMessageRequest(chat_id, message))
-            count += 1
-            await client12(SendMessageRequest(chat_id, message))
-            count += 1
-            await client13(SendMessageRequest(chat_id, message))
-            count += 1
-            await client14(SendMessageRequest(chat_id, message))
-            count += 1
-            await client15(SendMessageRequest(chat_id, message))
-            count += 1
-            await client16(SendMessageRequest(chat_id, message))
-            count += 1
-            await client17(SendMessageRequest(chat_id, message))
-            count += 1
-            await client19(SendMessageRequest(chat_id, message))
-            count += 1
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
@@ -251,25 +218,8 @@ async def display_message_count(event):
 async def cases_info(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
-    # Отправка сообщений 
-    await client1(SendMessageRequest(mine_evo, message))
-    await client2(SendMessageRequest(mine_evo, message))
-    await client3(SendMessageRequest(mine_evo, message))
-    await client4(SendMessageRequest(mine_evo, message))
-    await client5(SendMessageRequest(mine_evo, message))
-    await client6(SendMessageRequest(mine_evo, message))
-    await client7(SendMessageRequest(mine_evo, message))
-    await client8(SendMessageRequest(mine_evo, message))
-    await client9(SendMessageRequest(mine_evo, message))
-    await client10(SendMessageRequest(mine_evo, message))
-    await client11(SendMessageRequest(mine_evo, message))
-    await client12(SendMessageRequest(mine_evo, message))
-    await client13(SendMessageRequest(mine_evo, message))
-    await client14(SendMessageRequest(mine_evo, message))
-    await client15(SendMessageRequest(mine_evo, message))
-    await client16(SendMessageRequest(mine_evo, message))
-    await client17(SendMessageRequest(mine_evo, message))
-    await client19(SendMessageRequest(mine_evo, message))
+    # Отправка сообщений
+    await globals()[f'client{j}'](SendMessageRequest(mine_evo, message))
 
 # Отправка кейсов
 
@@ -377,10 +327,10 @@ async def handle_incoming_message_client16(event):
 async def handle_incoming_message_client17(event):
     if "Кейсы игрока" in event.raw_text:
         await send_transfer_messages(client17, event)
-@client19.on(events.NewMessage)
-async def handle_incoming_message_client19(event):
+@client18.on(events.NewMessage)
+async def handle_incoming_message_client18(event):
     if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client19, event)
+        await send_transfer_messages(client18, event)
 
 # Промо-Коды
 @client1.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
@@ -390,24 +340,7 @@ async def process_new_message(event):
     if 'Промо' in message.message:
         # Определение вывод и отправка промокода
         promo_code = message.message.split('Промо ')[1].split()[0]
-        await client1.send_message(mine_evo, f'промо {promo_code}')
-        await client2.send_message(mine_evo, f'промо {promo_code}')
-        await client3.send_message(mine_evo, f'промо {promo_code}')
-        await client4.send_message(mine_evo, f'промо {promo_code}')
-        await client5.send_message(mine_evo, f'промо {promo_code}')
-        await client6.send_message(mine_evo, f'промо {promo_code}')
-        await client7.send_message(mine_evo, f'промо {promo_code}')
-        await client8.send_message(mine_evo, f'промо {promo_code}')
-        await client9.send_message(mine_evo, f'промо {promo_code}')
-        await client10.send_message(mine_evo, f'промо {promo_code}')
-        await client11.send_message(mine_evo, f'промо {promo_code}')
-        await client12.send_message(mine_evo, f'промо {promo_code}')
-        await client13.send_message(mine_evo, f'промо {promo_code}')
-        await client14.send_message(mine_evo, f'промо {promo_code}')
-        await client15.send_message(mine_evo, f'промо {promo_code}')
-        await client16.send_message(mine_evo, f'промо {promo_code}')
-        await client17.send_message(mine_evo, f'промо {promo_code}')
-        await client19.send_message(mine_evo, f'промо {promo_code}')
+        await globals()[f'client{j}'](SendMessageRequest(mine_evo, f'промо {promo_code}'))
         
 # Запуск клиентов
 client1.start()
@@ -427,7 +360,7 @@ client14.start()
 client15.start()
 client16.start()
 client17.start()
-client19.start()
+client18.start()
 try:
     client1.run_until_disconnected()
 except KeyboardInterrupt:
@@ -531,9 +464,9 @@ except KeyboardInterrupt:
 finally:
     client17.disconnect()
 try:
-    client19.run_until_disconnected()
+    client18.run_until_disconnected()
 except KeyboardInterrupt:
     pass
 finally:
-    client19.disconnect()
+    client18.disconnect()
  
