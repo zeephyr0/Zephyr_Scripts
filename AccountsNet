@@ -189,74 +189,37 @@ my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
-count = 0
-# Команда для отправки нескольких сообщений с задержкой(1-9)
-@client1.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages(event):
-    global count
-    # Определение id чата
-    chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Цикл повторений
-    for i in range(1000000):
-        for message in messages:
-            # Отправка сообщений
-            await client1(SendMessageRequest(chat_id, message))
-            count += 1
-            await client2(SendMessageRequest(chat_id, message))
-            count += 1
-            await client3(SendMessageRequest(chat_id, message))
-            count += 1
-            await client4(SendMessageRequest(chat_id, message))
-            count += 1
-            await client5(SendMessageRequest(chat_id, message))
-            count += 1
-            await client6(SendMessageRequest(chat_id, message))
-            count += 1
-            await client7(SendMessageRequest(chat_id, message))
-            count += 1
-            await client8(SendMessageRequest(chat_id, message))
-            count += 1
-            await client9(SendMessageRequest(chat_id, message))
-            count += 1
-            # Задержка
-            time.sleep(1);
+def send_multiple_messages(clients, message, chat):
+    async def send_message(client):
+        # Send the message to the specified chat using the Telethon client
+        await client.send_message(chat, message)
 
-# Команда для отправки нескольких сообщений с задержкой(10-19)
-@client10.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages(event):
-    global count
-    # Определение id чата
-    chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Цикл повторений
-    for i in range(1000000):
-        for message in messages:
-            # Задержка
-            await client10(SendMessageRequest(chat_id, message))
-            count += 1
-            await client11(SendMessageRequest(chat_id, message))
-            count += 1
-            await client12(SendMessageRequest(chat_id, message))
-            count += 1
-            await client13(SendMessageRequest(chat_id, message))
-            count += 1
-            await client14(SendMessageRequest(chat_id, message))
-            count += 1
-            await client15(SendMessageRequest(chat_id, message))
-            count += 1
-            await client16(SendMessageRequest(chat_id, message))
-            await client17(SendMessageRequest(chat_id, message))
-            count += 1
-            await client19(SendMessageRequest(chat_id, message))
-            count += 1
-            time.sleep(1);
+    threads = []
+    with client:
+        for client_id in clients:
+            thread = threading.Thread(target=client.loop.run_until_complete, args=(send_message(client_id),))
+            thread.start()
+            threads.append(thread)
+            time.sleep(2)  # Delay between sending messages to each client
+
+    for thread in threads:
+        thread.join()
+
+
+def send_multiple_messages_infinite(clients, message, chat):
+    while True:
+        send_multiple_messages(clients, message, chat)
+        time.sleep(2)  # Delay between sending messages
+
+# Example usage of the function to send messages once
+clients = ["client1", "client2", "client3"]
+message = "коп"
+chat = mine_evo
+
+send_multiple_messages(clients, message, chat)
+
+# Example usage of the function to send messages infinitely
+send_multiple_messages_infinite(clients, message, mine_evo)
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
