@@ -187,10 +187,9 @@ mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
 count = 0
-# Команда для отправки нескольких сообщений с задержкой(1-9)
+# Команда для отправки нескольких сообщений с задержкой(1-6)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
-    clients = ["client1", "client2", "client3", "client4", "client5", "client6", "client7", "client8", "client9", "client10", "client11", "client12", "client13", "client14", "client15", "client16", "client17", "client19"]
     global count
     # Определение id чата
     chat_id = event.chat_id
@@ -200,7 +199,68 @@ async def send_multiple_messages(event):
     for i in range(1000000):
         for message in message_text:
             # Отправка сообщений
-            await clients(SendMessageRequest(chat_id, message))
+            await client1(SendMessageRequest(chat_id, message))
+            count += 1
+            await client2(SendMessageRequest(chat_id, message))
+            count += 1
+            await client3(SendMessageRequest(chat_id, message))
+            count += 1
+            await client4(SendMessageRequest(chat_id, message))
+            count += 1
+            await client5(SendMessageRequest(chat_id, message))
+            count += 1
+            await client6(SendMessageRequest(chat_id, message))
+            count += 1
+            time.sleep(1);
+
+# Команда для отправки нескольких сообщений с задержкой(7-12)
+@client7.on(events.NewMessage(pattern='/send_multiple'))
+async def send_multiple_messages(event):
+    global count
+    # Определение id чата
+    chat_id = event.chat_id
+    # Определение текста для отправки сообщения 
+    message_text = event.raw_text.encode('utf-8').decode('utf-8')
+    # Цикл повторений
+    for i in range(1000000):
+        for message in message_text:
+            # Отправка сообщений
+            await client7(SendMessageRequest(chat_id, message))
+            count += 1
+            await client8(SendMessageRequest(chat_id, message))
+            count += 1
+            await client9(SendMessageRequest(chat_id, message))
+            count += 1
+            await client10(SendMessageRequest(chat_id, message))
+            count += 1
+            await client11(SendMessageRequest(chat_id, message))
+            count += 1
+            await client12(SendMessageRequest(chat_id, message))
+            count += 1
+            time.sleep(1);
+
+# Команда для отправки нескольких сообщений с задержкой(13-18)
+@client13.on(events.NewMessage(pattern='/send_multiple'))
+async def send_multiple_messages(event):
+    global count
+    # Определение id чата
+    chat_id = event.chat_id
+    # Определение текста для отправки сообщения 
+    message_text = event.raw_text.encode('utf-8').decode('utf-8')
+    # Цикл повторений
+    for i in range(1000000):
+        for message in message_text:
+            # Отправка сообщений
+            await client13(SendMessageRequest(chat_id, message))
+            count += 1
+            await client14(SendMessageRequest(chat_id, message))
+            count += 1
+            await client15(SendMessageRequest(chat_id, message))
+            count += 1
+            await client16(SendMessageRequest(chat_id, message))
+            await client17(SendMessageRequest(chat_id, message))
+            count += 1
+            await client19(SendMessageRequest(chat_id, message))
             count += 1
             time.sleep(1);
 
