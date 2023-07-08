@@ -213,6 +213,7 @@ async def send_multiple_messages1(event):
             count += 1
             await client6(SendMessageRequest(chat_id, message))
             count += 1
+            time.sleep(1)
 
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client7.on(events.NewMessage(pattern='/send_multiple'))
@@ -240,6 +241,7 @@ async def send_multiple_messages2(event):
             count += 1
             await client12(SendMessageRequest(chat_id, message))
             count += 1
+            time.sleep(1)
 
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client13.on(events.NewMessage(pattern='/send_multiple'))
@@ -267,6 +269,7 @@ async def send_multiple_messages3(event):
             count += 1
             await client19(SendMessageRequest(chat_id, message))
             count += 1
+            time.sleep(1)
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
