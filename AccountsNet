@@ -196,12 +196,12 @@ def send_multiple_messages(clients, message, chat):
 
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
-    async def send_multiple_messages_infinite(clients, message, chat):
-        message = 'кейсы'
-        chat = '@mine_evo_bot'
-        while True:
-            send_multiple_messages(clients, message, chat)
-            time.sleep(2)  # Delay between sending messages
+async def send_multiple_messages_infinite(clients, message, chat):
+    message = 'кейсы'
+    chat = '@mine_evo_bot'
+    while True:
+        send_multiple_messages(clients, message, chat)
+        time.sleep(2)  # Delay between sending messages
 
 
 @client1.on(events.NewMessage(pattern='/message_count'))
