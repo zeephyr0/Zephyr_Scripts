@@ -11,6 +11,7 @@ import time
 import random
 import asyncio
 import tracemalloc
+import concurrent.futures
 
 # Данные аккаунтов
 api_id1 = '12588062'
@@ -186,11 +187,6 @@ my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
-count = 0
-import concurrent.futures
-
-count = 0
-
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages2(event):
@@ -207,7 +203,7 @@ async def send_multiple_messages2(event):
         client(SendMessageRequest(chat_id, message))
         # Увеличение счетчика
         global count
-
+        count += 1
     
     # Создание пула потоков
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -217,7 +213,6 @@ async def send_multiple_messages2(event):
                 for j in range(1, 18):
                     # Отправка сообщения в отдельном потоке
                     executor.submit(send_message, globals()[f'client{j}'], chat_id, message)
-                     count += 1
 
 
 
