@@ -198,7 +198,7 @@ async def send_multiple_messages(event):
     message_text = event.raw_text.encode('utf-8').decode('utf-8')
     # Цикл повторений
     for i in range(1000000):
-        for message in messages:
+        for message in message_text:
             # Отправка сообщений
             await clients(SendMessageRequest(chat_id, message))
             count += 1
