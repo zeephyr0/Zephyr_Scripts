@@ -213,22 +213,6 @@ async def send_multiple_messages1(event):
             count += 1
             await client6(SendMessageRequest(chat_id, message))
             count += 1
-            time.sleep(1)
-
-# Команда для отправки нескольких сообщений с задержкой(1-9)
-@client7.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages2(event):
-    global count
-    # Определение id чата
-    chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Цикл повторений
-    for i in range(1000000):
-        for message in messages:
-            # Отправка сообщений
             await client7(SendMessageRequest(chat_id, message))
             count += 1
             await client8(SendMessageRequest(chat_id, message))
@@ -241,22 +225,6 @@ async def send_multiple_messages2(event):
             count += 1
             await client12(SendMessageRequest(chat_id, message))
             count += 1
-            time.sleep(1)
-
-# Команда для отправки нескольких сообщений с задержкой(1-9)
-@client13.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages3(event):
-    global count
-    # Определение id чата
-    chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Цикл повторений
-    for i in range(1000000):
-        for message in messages:
-            # Отправка сообщений
             await client13(SendMessageRequest(chat_id, message))
             count += 1
             await client14(SendMessageRequest(chat_id, message))
@@ -269,7 +237,6 @@ async def send_multiple_messages3(event):
             count += 1
             await client19(SendMessageRequest(chat_id, message))
             count += 1
-            time.sleep(1)
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
