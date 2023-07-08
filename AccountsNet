@@ -195,9 +195,11 @@ async def send_multiple_messages(event):
     chat_id = event.chat_id
     # Определение текста для отправки сообщения 
     message_text = event.raw_text.encode('utf-8').decode('utf-8')
+    # Извлечение сообщений после команды
+    messages = event.raw_text.split(' ')[1:]
     # Цикл повторений
     for i in range(1000000):
-        for message in message_text:
+        for message in messages:
             # Отправка сообщений
             await client1(SendMessageRequest(chat_id, message))
             count += 1
@@ -221,9 +223,11 @@ async def send_multiple_messages(event):
     chat_id = event.chat_id
     # Определение текста для отправки сообщения 
     message_text = event.raw_text.encode('utf-8').decode('utf-8')
+    # Извлечение сообщений после команды
+    messages = event.raw_text.split(' ')[1:]
     # Цикл повторений
     for i in range(1000000):
-        for message in message_text:
+        for message in messages:
             # Отправка сообщений
             await client7(SendMessageRequest(chat_id, message))
             count += 1
@@ -247,9 +251,11 @@ async def send_multiple_messages(event):
     chat_id = event.chat_id
     # Определение текста для отправки сообщения 
     message_text = event.raw_text.encode('utf-8').decode('utf-8')
+    # Извлечение сообщений после команды
+    messages = event.raw_text.split(' ')[1:]
     # Цикл повторений
     for i in range(1000000):
-        for message in message_text:
+        for message in messages:
             # Отправка сообщений
             await client13(SendMessageRequest(chat_id, message))
             count += 1
