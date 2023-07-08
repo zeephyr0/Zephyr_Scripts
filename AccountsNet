@@ -10,6 +10,7 @@ import requests
 import time
 import random
 import asyncio
+import threading
 
 # Данные аккаунтов
 api_id1 = '12588062'
@@ -179,80 +180,34 @@ if not client17.is_user_authorized():
     client19.send_code_request(phone17)
     client19.sign_in(phone19, input('Session-19 Введите код подтверждения: '))
 
+clients = ["client1", "client2", "client3", "client4", "client5", "client6", "client7", "client8", "client9", "client10", "client11", "client12", "client13", "client14", "client15", "client16", "client17", "client19"]
+
 # Адресы
 mineEvo_channel = '@mine_evo_news'
 my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
-count = 0
-# Команда для отправки нескольких сообщений с задержкой(1-9)
-@client1.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages(event):
-    global count
-    # Определение id чата
-    chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Цикл повторений
-    for i in range(1000000):
-        for message in messages:
-            # Отправка сообщений
-            await client1(SendMessageRequest(chat_id, message))
-            count += 1
-            await client2(SendMessageRequest(chat_id, message))
-            count += 1
-            await client3(SendMessageRequest(chat_id, message))
-            count += 1
-            await client4(SendMessageRequest(chat_id, message))
-            count += 1
-            await client5(SendMessageRequest(chat_id, message))
-            count += 1
-            await client6(SendMessageRequest(chat_id, message))
-            count += 1
-            await client7(SendMessageRequest(chat_id, message))
-            count += 1
-            await client8(SendMessageRequest(chat_id, message))
-            count += 1
-            await client9(SendMessageRequest(chat_id, message))
-            count += 1
-            # Задержка
-            time.sleep(1);
+def send_multiple_messages(clients, message, chat):
+    def send_message(client):
+        # Здесь ты можешь добавить код для отправки сообщения клиенту в указанный чат
+        # Например:
+        print(f"Отправляю сообщение '{message}' клиенту {client} в чат {chat}")
 
-# Команда для отправки нескольких сообщений с задержкой(10-19)
-@client10.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages(event):
-    global count
-    # Определение id чата
-    chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Цикл повторений
-    for i in range(1000000):
-        for message in messages:
-            # Задержка
-            await client10(SendMessageRequest(chat_id, message))
-            count += 1
-            await client11(SendMessageRequest(chat_id, message))
-            count += 1
-            await client12(SendMessageRequest(chat_id, message))
-            count += 1
-            await client13(SendMessageRequest(chat_id, message))
-            count += 1
-            await client14(SendMessageRequest(chat_id, message))
-            count += 1
-            await client15(SendMessageRequest(chat_id, message))
-            count += 1
-            await client16(SendMessageRequest(chat_id, message))
-            await client17(SendMessageRequest(chat_id, message))
-            count += 1
-            await client19(SendMessageRequest(chat_id, message))
-            count += 1
-            time.sleep(1);
+    threads = []
+    for client in clients:
+        thread = threading.Thread(target=send_message, args=(client,))
+        thread.start()
+        threads.append(thread)
+        time.sleep(2)  # Задержка между отправкой сообщений одного клиента
+
+    for thread in threads:
+        thread.join()
+
+# Пример использования функции
+message = "коп"
+chat = mine_evo
+send_multiple_messages(clients, message, chat)
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
