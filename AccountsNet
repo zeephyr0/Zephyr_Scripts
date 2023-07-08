@@ -214,11 +214,11 @@ async def send_multiple_messages2(event):
                     # Enable tracemalloc to get the object allocation traceback
                     tracemalloc.start()
                     executor.submit(send_message, globals()[f'client{j}'], chat_id, message)
-                    snapshot = tracemalloc.take_snapshot()
-                    top_stats = snapshot.statistics('traceback')
-                    for stat in top_stats[:10]:
-                        print(stat.traceback)
-
+                    if count % 100 == 0:  # Print tracebacks every 100 iterations
+                        snapshot = tracemalloc.take_snapshot()
+                        top_stats = snapshot.statistics('traceback')
+                        for stat in top_stats[:10]:
+                            print(stat.traceback)
 
 
 @client1.on(events.NewMessage(pattern='/message_count'))
