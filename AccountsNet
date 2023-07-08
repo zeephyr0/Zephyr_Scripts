@@ -194,20 +194,15 @@ def send_multiple_messages(clients, message, chat):
         # Send the message to the specified chat using the Telethon client
         await client.send_message(chat, message)
 
-def send_multiple_messages_infinite(clients, message, chat):
-    while True:
-        send_multiple_messages(clients, message, chat)
-        time.sleep(2)  # Delay between sending messages
+# Команда для отправки нескольких сообщений с задержкой(1-9)
+@client1.on(events.NewMessage(pattern='/send_multiple'))
+    async def send_multiple_messages_infinite(clients, message, chat):
+        message = 'кейсы'
+        chat = '@mine_evo_bot'
+        while True:
+            send_multiple_messages(clients, message, chat)
+            time.sleep(2)  # Delay between sending messages
 
-# Example usage of the function to send messages once
-clients = ["client1", "client2", "client3"]
-message = "коп"
-chat = mine_evo
-
-send_multiple_messages(clients, message, chat)
-
-# Example usage of the function to send messages infinitely
-send_multiple_messages_infinite(clients, message, mine_evo)
 
 @client1.on(events.NewMessage(pattern='/message_count'))
 async def display_message_count(event):
