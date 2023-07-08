@@ -10,7 +10,6 @@ import requests
 import time
 import random
 import asyncio
-import tracemalloc
 import concurrent.futures
 
 # Данные аккаунтов
