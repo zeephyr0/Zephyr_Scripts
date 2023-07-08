@@ -194,17 +194,6 @@ def send_multiple_messages(clients, message, chat):
         # Send the message to the specified chat using the Telethon client
         await client.send_message(chat, message)
 
-    threads = []
-    for client_id in clients:
-        thread = threading.Thread(target=client.loop.run_until_complete, args=(send_message(client_id),))
-        thread.start()
-        threads.append(thread)
-        time.sleep(2)  # Delay between sending messages to each client
-
-    for thread in threads:
-        thread.join()
-
-
 def send_multiple_messages_infinite(clients, message, chat):
     while True:
         send_multiple_messages(clients, message, chat)
