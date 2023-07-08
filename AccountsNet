@@ -187,9 +187,17 @@ my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
+count = 0
+
+# Асинхронная функция для отправки сообщений одновременно
+async def send_message(client, chat_id, message):
+    global count
+    await client(SendMessageRequest(chat_id, message))
+    count += 1
+
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
-async def send_multiple_messages2(event):
+async def send_multiple_messages(event):
     global count
     # Определение id чата
     chat_id = event.chat_id
@@ -197,28 +205,34 @@ async def send_multiple_messages2(event):
     message_text = event.raw_text.encode('utf-8').decode('utf-8')
     # Извлечение сообщений после команды
     messages = event.raw_text.split(' ')[1:]
-    
-    # Функция для отправки сообщений
-    def send_message(client, chat_id, message):
-        client(SendMessageRequest(chat_id, message))
-        # Увеличение счетчика
-        global count
-        count += 1
-    
-    # Создание пула потоков
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        # Цикл повторений
-        while True:
-            for message in messages:
-                for j in range(1, 9):
-                    # Enable tracemalloc to get the object allocation traceback
-                    tracemalloc.start()
-                    executor.submit(send_message, globals()[f'client{j}'], chat_id, message)
-                    if count % 100 == 0:  # Print tracebacks every 100 iterations
-                        snapshot = tracemalloc.take_snapshot()
-                        top_stats = snapshot.statistics('traceback')
-                        for stat in top_stats[:10]:
-                            print(stat.traceback)
+    # Создание списка корутин для каждого клиента
+    while True:
+        # Создание списка корутин для каждого клиента
+        coroutines = []
+        for message in messages:
+            coroutines.append(send_message(client1, chat_id, message))
+            coroutines.append(send_message(client2, chat_id, message))
+            coroutines.append(send_message(client3, chat_id, message))
+            coroutines.append(send_message(client4, chat_id, message))
+            coroutines.append(send_message(client5, chat_id, message))
+            coroutines.append(send_message(client6, chat_id, message))
+            coroutines.append(send_message(client7, chat_id, message))
+            coroutines.append(send_message(client8, chat_id, message))
+            coroutines.append(send_message(client9, chat_id, message))
+            coroutines.append(send_message(client10, chat_id, message))
+            coroutines.append(send_message(client11, chat_id, message))
+            coroutines.append(send_message(client12, chat_id, message))
+            coroutines.append(send_message(client13, chat_id, message))
+            coroutines.append(send_message(client14, chat_id, message))
+            coroutines.append(send_message(client15, chat_id, message))
+            coroutines.append(send_message(client16, chat_id, message))
+            coroutines.append(send_message(client17, chat_id, message))
+            coroutines.append(send_message(client18, chat_id, message))
+        # Одновременное выполнение всех корутин
+        await asyncio.gather(*coroutines)
+        # Задержка
+        await asyncio.sleep(2);
+
 
 
 @client1.on(events.NewMessage(pattern='/message_count'))
