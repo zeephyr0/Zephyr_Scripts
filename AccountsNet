@@ -192,7 +192,7 @@ def send_multiple_messages(clients, message, chat):
     def send_message(client):
         # Здесь ты можешь добавить код для отправки сообщения клиенту в указанный чат
         # Например:
-        print(f"Отправляю сообщение '{message}' клиенту {client} в чат {chat}")
+        await send_message(clients, message, chat)
 
     threads = []
     for client in clients:
