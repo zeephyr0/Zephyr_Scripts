@@ -189,11 +189,6 @@ my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
-def send_multiple_messages(clients, message, chat):
-    async def send_message(client):
-        # Send the message to the specified chat using the Telethon client
-        await client.send_message(chat, message)
-
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages_infinite(clients, message, chat):
