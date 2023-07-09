@@ -289,78 +289,15 @@ async def send_transfer_messages(client, event):
                         await send_transfer_message(client, chat_id, case, item)
 
 # Определение функции обработчика входящих сообщений
-@client1.on(events.NewMessage)
-async def handle_incoming_message_client1(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client1, event)
-@client2.on(events.NewMessage)
-async def handle_incoming_message_client2(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client2, event)
-@client3.on(events.NewMessage)
-async def handle_incoming_message_client3(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client3, event)
-@client4.on(events.NewMessage)
-async def handle_incoming_message_client4(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client4, event)
-@client5.on(events.NewMessage)
-async def handle_incoming_message_client5(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client5, event)
-@client6.on(events.NewMessage)
-async def handle_incoming_message_client6(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client6, event)
-@client7.on(events.NewMessage)
-async def handle_incoming_message_client7(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client7, event)
-@client8.on(events.NewMessage)
-async def handle_incoming_message_client8(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client8, event)
-@client9.on(events.NewMessage)
-async def handle_incoming_message_client9(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client9, event)
-@client10.on(events.NewMessage)
-async def handle_incoming_message_client10(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client10, event)
-@client11.on(events.NewMessage)
-async def handle_incoming_message_client11(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client11, event)
-@client12.on(events.NewMessage)
-async def handle_incoming_message_client12(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client12, event)
-@client13.on(events.NewMessage)
-async def handle_incoming_message_client13(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client13, event)
-@client14.on(events.NewMessage)
-async def handle_incoming_message_client14(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client14, event)
-@client15.on(events.NewMessage)
-async def handle_incoming_message_client15(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client15, event)
-@client16.on(events.NewMessage)
-async def handle_incoming_message_client16(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client16, event)
-@client17.on(events.NewMessage)
-async def handle_incoming_message_client17(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client17, event)
-@client18.on(events.NewMessage)
-async def handle_incoming_message_client18(event):
-    if "Кейсы игрока" in event.raw_text:
-        await send_transfer_messages(client18, event)
+client_list = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18]
+player_names = ['aboba1', 'aboba2', 'aboba3', 'aboba4', 'aboba5', 'aboba6', 'aboba7', 'aboba8', 'aboba9', 'aboba10', 'aboba11', 'aboba12', 'aboba13', 'aboba14', 'aboba15', 'aboba16', 'aboba17', 'aboba19']
+
+for i, client in enumerate(client_list):
+    @client.on(events.NewMessage)
+    async def handle_incoming_message(event, client=client):
+        for player_name in player_names:
+            if f"📦 Кейсы игрока\n{player_name}" in event.raw_text:
+                await send_transfer_messages(client, event)
 
 # Промо-Коды
 @client1.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
