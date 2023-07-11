@@ -265,7 +265,7 @@ async def send_multiple_messages(event):
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
-        await asyncio.sleep(1);
+        await asyncio.sleep(2);
         count += len(messages) * 21
         cycles += 1
 
@@ -275,7 +275,7 @@ async def get_info(event):
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client1, chat_id, f'Отправлено сообщений: {count}')
+    await send_message(client1, chat_id, f'🧑‍💻ScriptInfo\n👥Аккаунтов работает: 21/21\n📨Отправлено сообщений: {count}\n🌀Пройдено циклов: {cycles}')
 
 # Модуль для проверки кейсов
 @client1.on(events.NewMessage(pattern='/cases'))
