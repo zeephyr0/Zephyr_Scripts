@@ -82,7 +82,7 @@ api_id17 = '29202662'
 api_hash17 = 'e093efde1201cc926ad478cc129a4ff5'
 phone17 = '+213774991926'
 
-api_id18 = '26663385'
+api_id18 = '25863889'
 api_hash18 = 'edeee3ae160773f177843eeb1ee3413a'
 phone18 = '+37368201044'
 
@@ -96,7 +96,7 @@ phone20 = '+37060278729'
 
 api_id21 = '23683219'
 api_hash21 = '3712b06daec849ace954b67a522acb63'
-phone21 = '+37360615885'
+phone21 = '+996999899010'
 
 # Создание клиентов 
 client1 = TelegramClient('session1', api_id1, api_hash1)
@@ -216,17 +216,20 @@ mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
 count = 0
+cycles = 0
 
 # Асинхронная функция для отправки сообщений одновременно
 async def send_message(client, chat_id, message):
     global count
+    global cycles
     await client(SendMessageRequest(chat_id, message))
-    count += 1
+
 
 # Команда для отправки нескольких сообщений с задержкой(1-9)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
     global count
+    global cycles
     # Определение id чата
     chat_id = event.chat_id
     # Определение текста для отправки сообщения 
@@ -264,6 +267,8 @@ async def send_multiple_messages(event):
         # Задержка
         await asyncio.sleep(2);
         count += len(messages) * 21
+        cycles += 1
+
 @client1.on(events.NewMessage(pattern='/info'))
 async def get_info(event):
     global count
@@ -271,7 +276,6 @@ async def get_info(event):
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
     await send_message(client1, chat_id, f'Отправлено сообщений: {count}')
-
 
 # Модуль для проверки кейсов
 @client1.on(events.NewMessage(pattern='/cases'))
