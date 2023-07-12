@@ -279,8 +279,6 @@ cases_list = {
     "🌌": "зв"
 }
 
-case_statistics = {}
-
 async def send_transfer_message(client, chat_id, case_name, quantity):
     # Определение названия кейса для передачи
     case_alias = cases_list.get(case_name, "")
@@ -289,13 +287,6 @@ async def send_transfer_message(client, chat_id, case_name, quantity):
     await client.send_message(chat_id, transfer_message)
     # Задержка 
     await asyncio.sleep(3)
-
-async def collect_case_statistics(message):
-    global case_statistics
-    for case in cases_list:
-        if message.find(case) != -1 and "Ты нашел(ла)" in message:
-            case_statistics[case] = case_statistics.get(case, 0) + 1
-
 async def send_transfer_messages(client, event):
     # Определение id чата
     chat_id = '@mine_evo_bot'
@@ -315,7 +306,7 @@ async def send_transfer_messages(client, event):
 
 # Определение функции обработчика входящих сообщений
 client_list = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20]
-player_names = ['aboba1', 'aboba2', 'aboba3', 'aboba4', 'aboba5', 'aboba6', 'aboba7', 'aboba8', 'aboba9', 'aboba10', 'aboba11', 'aboba12', 'aboba13', 'aboba14', 'aboba15', 'aboba16', 'aboba17', 'aboba8', 'aboba19', 'aboba20']
+player_names = ['aboba1', 'aboba2', 'aboba3', 'aboba4', 'aboba5', 'aboba6', 'aboba7', 'aboba8', 'aboba9', 'aboba10', 'aboba11', 'aboba12', 'aboba13', 'aboba14', 'aboba15', 'aboba16', 'aboba17', 'aboba19', 'aboba20', 'aboba21']
 
 for i, client in enumerate(client_list):
     @client.on(events.NewMessage)
@@ -327,19 +318,11 @@ for i, client in enumerate(client_list):
 @client1.on(events.NewMessage(pattern='/msg_info'))
 async def get_info(event):
     global count
+    global cycles
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client1, chat_id, f'🧑‍💻ScriptInfo\n👥Аккаунтов работает: 20/20\n📨Отправлено сообщений: {count}\n🌀Пройдено циклов: {cycles}')
-
-@client1.on(events.NewMessage(pattern='/case_info'))
-async def show_case_statistics(event):
-    global case_statistics
-    statistics_message = "📊Статистика найденных кейсов:\n"
-    for case, count in case_statistics.items():
-        case_name = cases_list.get(case, "")
-        statistics_message += f"{case_name}: {count}\n"
-    await send_message(client1, event.chat_id, statistics_message)
+    await send_message(client1, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: 20/20\n📨 Отправлено сообщений: {count}\n🌀 Пройдено циклов: {cycles}')
 
 # Промо-Коды
 @client1.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
