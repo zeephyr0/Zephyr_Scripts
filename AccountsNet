@@ -6,6 +6,7 @@ from telethon import events
 from telethon.tl.functions.messages import GetDialogsRequest
 from telethon.tl.functions.messages import SendMessageRequest
 from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
+from telethon.errors import FloodWaitError
 import requests
 import time
 import random
@@ -34,81 +35,13 @@ api_id5 = '19179697'
 api_hash5 = 'dd96018b9f53d55342f0c2c754c4fb29'
 phone5 = '+79697678142'
 
-api_id6 = '10904880'
-api_hash6 = '0bce5ceebd00a5fe38dff632595b0bad'
-phone6 = '+79587314180'
+api_id6 = '29202662'
+api_hash6 = 'e093efde1201cc926ad478cc129a4ff5'
+phone6 = '+213774991926'
 
-api_id7 = '27465489'
-api_hash7 = 'e1647013c9838e05ccd9cf1c7e34e8ad'
-phone7 = '+923414381467'
-
-api_id8 = '25919669'
-api_hash8 = '7b81c08ae57981f7beb4908c79094e44'
-phone8 = '+923474233748'
-
-api_id9 = '26917589'
-api_hash9 = '202267394797ab983214ddf1c1cfb29c'
-phone9 = '+529511991262'
-
-api_id10 = '26056020'
-api_hash10 = 'b285005edea91f8c55172d66d0c163a2'
-phone10 = '+529381323150'
-
-api_id11 = '27250768'
-api_hash11 = '88fa6db6643659749f0e107130dedc70'
-phone11 = '+528715749591'
-
-api_id12 = '26637536'
-api_hash12 = '95dacc89867e3089d9722be702afd959'
-phone12 = '+527225359861'
-
-api_id13 = '20244628'
-api_hash13 = '31f1eac97bf8851425d620b69cc87d75'
-phone13 = '+529921022973'
-
-api_id14 = '28781052'
-api_hash14 = 'da8a73f5fb61c1cf67a871a2a5afef9a'
-phone14 = '+525517689385'
-
-api_id15 = '22823126'
-api_hash15 = '07b238927248c53498fa9f013cc75809'
-phone15 = '+923081667405'
-
-api_id16 = '28506932'
-api_hash16 = '0612b354524635bbfbd4e440299b4e65'
-phone16 = '+923071908872'
-
-api_id17 = '29202662'
-api_hash17 = 'e093efde1201cc926ad478cc129a4ff5'
-phone17 = '+213774991926'
-
-api_id18 = '26663385'
-api_hash18 = '302bd00b3f182259e075008557d06a00'
-phone18 = '+37360615885'
-
-api_id19 = '22116060'
-api_hash19 = '87aad9e6209606a3862c971c4ac7ade7'
-phone19 = '+37060278729'
-
-api_id20 = '23683219'
-api_hash20 = '3712b06daec849ace954b67a522acb63'
-phone20 = '+996999899010'
-
-api_id21 = '20666174'
-api_hash21 = 'e79c5231dbec3c405996205ac7b340d3'
-phone21 = '+420722759968'
-
-api_id22 = '28895356'
-api_hash22 = 'db329e6927cdf7eae404c18b093bb6c4'
-phone22 = '+420730615093'
-
-api_id23 = '20985286'
-api_hash23 = '1e0f16c2b5676c6a463de61aff15fbf3'
-phone23 = '+37127193319'
-
-api_id24 = '9114523'
-api_hash24 = '50a11a05529030b6c0a8af5eda6f4a80'
-phone24 = '+37378696350'
+api_id7 = '23683219'
+api_hash7 = '3712b06daec849ace954b67a522acb63'
+phone7 = '+996999899010'
 
 
 # Создание клиентов 
@@ -120,22 +53,6 @@ client5 = TelegramClient('session5', api_id5, api_hash5)
 client6 = TelegramClient('session6', api_id6, api_hash6)
 client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
-client9 = TelegramClient('session9', api_id9, api_hash9)
-client10 = TelegramClient('session10', api_id10, api_hash10)
-client11 = TelegramClient('session11', api_id11, api_hash11)
-client12 = TelegramClient('session12', api_id12, api_hash12)
-client13 = TelegramClient('session13', api_id13, api_hash13)
-client14 = TelegramClient('session14', api_id14, api_hash14)
-client15 = TelegramClient('session15', api_id15, api_hash15)
-client16 = TelegramClient('session16', api_id16, api_hash16)
-client17 = TelegramClient('session17', api_id17, api_hash17)
-client18 = TelegramClient('session18', api_id18, api_hash18)
-client19 = TelegramClient('session19', api_id19, api_hash19)
-client20 = TelegramClient('session20', api_id20, api_hash20)
-client21 = TelegramClient('session21', api_id21, api_hash21)
-client22 = TelegramClient('session22', api_id22, api_hash22)
-client23 = TelegramClient('session23', api_id23, api_hash23)
-client24 = TelegramClient('session24', api_id24, api_hash24)
 
 
 # Авторизация
@@ -171,70 +88,7 @@ client8.connect()
 if not client8.is_user_authorized():
     client8.send_code_request(phone8)
     client8.sign_in(phone8, input('Session-8 Введите код подтверждения: '))
-client9.connect()
-if not client9.is_user_authorized():
-    client9.send_code_request(phone9)
-    client9.sign_in(phone9, input('Session-9 Введите код подтверждения: '))
-client10.connect()
-if not client10.is_user_authorized():
-    client10.send_code_request(phone10)
-    client10.sign_in(phone10, input('Session-10 Введите код подтверждения: '))
-client11.connect()
-if not client11.is_user_authorized():
-    client11.send_code_request(phone11)
-    client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '))
-client12.connect()
-if not client12.is_user_authorized():
-    client12.send_code_request(phone12)
-    client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '))
-client13.connect()
-if not client13.is_user_authorized():
-    client13.send_code_request(phone13)
-    client13.sign_in(phone13, input('Session-13 Введите код подтверждения: '))
-client14.connect()
-if not client14.is_user_authorized():
-    client14.send_code_request(phone14)
-    client14.sign_in(phone14, input('Session-14 Введите код подтверждения: '))
-client15.connect()
-if not client15.is_user_authorized():
-    client15.send_code_request(phone15)
-    client15.sign_in(phone15, input('Session-15 Введите код подтверждения: '))
-client16.connect()
-if not client16.is_user_authorized():
-    client16.send_code_request(phone16)
-    client16.sign_in(phone16, input('Session-16 Введите код подтверждения: '))
-client17.connect()
-if not client17.is_user_authorized():
-    client17.send_code_request(phone17)
-    client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '))
-client18.connect()
-if not client18.is_user_authorized():
-    client18.send_code_request(phone18)
-    client18.sign_in(phone18, input('Session-18 Введите код подтверждения: '))
-client19.connect()
-if not client19.is_user_authorized():
-    client19.send_code_request(phone19)
-    client19.sign_in(phone19, input('Session-19 Введите код подтверждения: '))
-client20.connect()
-if not client20.is_user_authorized():
-    client20.send_code_request(phone20)
-    client20.sign_in(phone20, input('Session-20 Введите код подтверждения: '))
-client21.connect()
-if not client21.is_user_authorized():
-    client21.send_code_request(phone21)
-    client21.sign_in(phone21, input('Session-21 Введите код подтверждения: '))
-client22.connect()
-if not client22.is_user_authorized():
-    client22.send_code_request(phone22)
-    client22.sign_in(phone22, input('Session-22 Введите код подтверждения: '))
-client23.connect()
-if not client23.is_user_authorized():
-    client23.send_code_request(phone23)
-    client23.sign_in(phone23, input('Session-23 Введите код подтверждения: '))
-client24.connect()
-if not client24.is_user_authorized():
-    client24.send_code_request(phone24)
-    client24.sign_in(phone24, input('Session-24 Введите код подтверждения: '))
+
 
 # Адресы
 mineEvo_channel = '@mine_evo_news'
@@ -276,42 +130,28 @@ async def send_multiple_messages(event):
             coroutines.append(send_message(client6, chat_id, message))
             coroutines.append(send_message(client7, chat_id, message))
             coroutines.append(send_message(client8, chat_id, message))
-            coroutines.append(send_message(client9, chat_id, message))
-            coroutines.append(send_message(client10, chat_id, message))
-            coroutines.append(send_message(client11, chat_id, message))
-            coroutines.append(send_message(client12, chat_id, message))
-            coroutines.append(send_message(client13, chat_id, message))
-            coroutines.append(send_message(client14, chat_id, message))
-            coroutines.append(send_message(client15, chat_id, message))
-            coroutines.append(send_message(client16, chat_id, message))
-            coroutines.append(send_message(client17, chat_id, message))
-            coroutines.append(send_message(client18, chat_id, message))
-            coroutines.append(send_message(client19, chat_id, message))
-            coroutines.append(send_message(client20, chat_id, message))
-            coroutines.append(send_message(client21, chat_id, message))
-            coroutines.append(send_message(client22, chat_id, message))
-            coroutines.append(send_message(client23, chat_id, message))
-            coroutines.append(send_message(client24, chat_id, message))
-            # Одновременное выполнение всех корутин
+        # Одновременное выполнение всех корутин
         results = await asyncio.gather(*coroutines, return_exceptions=True)
 
         for i, result in enumerate(results):
             if isinstance(result, FloodWaitError):
                 # Ошибка FloodWaitError произошла для клиента в позиции i в списке coroutines
-                client_index = i % 24  # Получить индекс клиента
+                client_index = i % 8  # Получить индекс клиента
                 print(f"Ошибка FloodWaitError для клиента {client_index + 1}")
 
         # Задержка
         await asyncio.sleep(2)
-        count += len(messages) * 24
+        count += len(messages) * 8
         cycles += 1
+
+clients = [client1, client2, client3, client4, client5, client6, client7, client8]
+
 
 # Модуль для проверки кейсов
 @client1.on(events.NewMessage(pattern='/cases'))
 async def cases_info(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
-    clients = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client23, client24]
     for client in clients:
         await client(SendMessageRequest(mine_evo, message))
 
@@ -332,7 +172,7 @@ async def send_transfer_message(client, chat_id, case_name, quantity):
     # Определение названия кейса для передачи
     case_alias = cases_list.get(case_name, "")
     # Сообщение о передаче
-    transfer_message = f"Передать ZEPHYR_god {case_alias} {quantity}"
+    transfer_message = f"Передать godMODE_ZEPHYR {case_alias} {quantity}"
     await client.send_message(chat_id, transfer_message)
     # Задержка 
     await asyncio.sleep(3)
@@ -354,10 +194,8 @@ async def send_transfer_messages(client, event):
                         await send_transfer_message(client, chat_id, case, item)
 
 # Определение функции обработчика входящих сообщений
-client_list = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client23, client24]
-player_names = ['aboba1', 'aboba2', 'aboba3', 'aboba4', 'aboba5', 'aboba6', 'aboba7', 'aboba8', 'aboba9', 'aboba10', 'aboba11', 'aboba12', 'aboba13', 'aboba14', 'aboba15', 'aboba16', 'aboba17', 'aboba19', 'aboba20', 'aboba21', 'aboba23', 'aboba24', 'aboba25', 'aboba26']
-
-for i, client in enumerate(client_list):
+player_names = ['gnom1', 'gnom2', 'gnom3', 'gnom4', 'gnom5', 'gnom6', 'gnom7', 'gnom8']
+for i, client in enumerate(clients):
     @client.on(events.NewMessage)
     async def handle_incoming_message(event, client=client):
         for player_name in player_names:
@@ -371,14 +209,13 @@ async def get_info(event):
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client1, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: 24/24\n📨 Отправлено сообщений: {count}\n🌀 Пройдено циклов: {cycles}')
+    await send_message(client1, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count}\n🌀 Пройдено циклов: {cycles}')
 
 # Промо-Коды
 @client1.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
 async def process_new_message(event):
     # Сообщение которое будет проверяться 
     message = event.message
-    clients = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client23, client24]
     if 'Промо' in message.message:
         promo_code = message.message.split('Промо ')[1].split()[0]
         for client in clients:
@@ -394,22 +231,7 @@ client5.start()
 client6.start()
 client7.start()
 client8.start()
-client9.start()
-client10.start()
-client11.start()
-client12.start()
-client13.start()
-client14.start()
-client15.start()
-client16.start()
-client17.start()
-client18.start()
-client19.start()
-client20.start()
-client21.start()
-client22.start()
-client23.start()
-client24.start()
+
 try:
     client1.run_until_disconnected()
 except KeyboardInterrupt:
@@ -458,99 +280,4 @@ except KeyboardInterrupt:
     pass
 finally:
     client8.disconnect()
-try:
-    client9.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client9.disconnect()
-try:
-    client10.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client10.disconnect()
-try:
-    client11.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client11.disconnect()
-try:
-    client12.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client12.disconnect()
-try:
-    client13.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client13.disconnect()
-try:
-    client14.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client14.disconnect()
-try:
-    client15.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client15.disconnect()
-try:
-    client16.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client16.disconnect()
-try:
-    client17.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client17.disconnect()
-try:
-    client18.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client18.disconnect()
-try:
-    client19.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client19.disconnect()
-try:
-    client20.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client20.disconnect()
-try:
-    client21.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client21.disconnect()
-try:
-    client22.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client22.disconnect()
-try:
-    client23.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client23.disconnect()
-try:
-    client24.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client24.disconnect()
+
