@@ -35,13 +35,17 @@ api_id5 = '19179697'
 api_hash5 = 'dd96018b9f53d55342f0c2c754c4fb29'
 phone5 = '+79697678142'
 
-api_id6 = '29202662'
-api_hash6 = 'e093efde1201cc926ad478cc129a4ff5'
-phone6 = '+213774991926'
+api_id6 = '10904880'
+api_hash6 = '0bce5ceebd00a5fe38dff632595b0bad'
+phone6 = '+79587314180'
 
-api_id7 = '23683219'
-api_hash7 = '3712b06daec849ace954b67a522acb63'
-phone7 = '+996999899010'
+api_id7 = '29202662'
+api_hash7 = 'e093efde1201cc926ad478cc129a4ff5'
+phone7 = '+213774991926'
+
+api_id8 = '23683219'
+api_hash8 = '3712b06daec849ace954b67a522acb63'
+phone8 = '+996999899010'
 
 
 # Создание клиентов 
