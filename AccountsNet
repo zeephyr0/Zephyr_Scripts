@@ -292,10 +292,17 @@ async def send_multiple_messages(event):
             coroutines.append(send_message(client22, chat_id, message))
             coroutines.append(send_message(client23, chat_id, message))
             coroutines.append(send_message(client24, chat_id, message))
-        # Одновременное выполнение всех корутин
-        await asyncio.gather(*coroutines)
+            # Одновременное выполнение всех корутин
+        results = await asyncio.gather(*coroutines, return_exceptions=True)
+
+        for i, result in enumerate(results):
+            if isinstance(result, FloodWaitError):
+                # Ошибка FloodWaitError произошла для клиента в позиции i в списке coroutines
+                client_index = i % 24  # Получить индекс клиента
+                print(f"Ошибка FloodWaitError для клиента {client_index + 1}")
+
         # Задержка
-        await asyncio.sleep(2);
+        await asyncio.sleep(2)
         count += len(messages) * 24
         cycles += 1
 
