@@ -198,7 +198,7 @@ async def send_transfer_messages(client, event):
                         await send_transfer_message(client, chat_id, case, item)
 
 # Определение функции обработчика входящих сообщений
-player_names = ['gGnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8']
+player_names = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8']
 for i, client in enumerate(clients):
     @client.on(events.NewMessage)
     async def handle_incoming_message(event, client=client):
