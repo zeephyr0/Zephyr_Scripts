@@ -47,6 +47,9 @@ api_id8 = '23683219'
 api_hash8 = '3712b06daec849ace954b67a522acb63'
 phone8 = '+996999899010'
 
+api_id9 = '22111820'
+api_hash9 = '8bae40de3d4f79bded38694e2d3e678b'
+phone9 = '+79620106790'
 
 # Создание клиентов 
 client1 = TelegramClient('session1', api_id1, api_hash1)
@@ -57,6 +60,7 @@ client5 = TelegramClient('session5', api_id5, api_hash5)
 client6 = TelegramClient('session6', api_id6, api_hash6)
 client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
+client9 = TelegramClient('session9', api_id9, api_hash9)
 
 
 # Авторизация
@@ -92,6 +96,10 @@ client8.connect()
 if not client8.is_user_authorized():
     client8.send_code_request(phone8)
     client8.sign_in(phone8, input('Session-8 Введите код подтверждения: '))
+client9.connect()
+if not client9.is_user_authorized():
+    client.send_code_request(phone9)
+    client9.sign_in(phone9, input('Session-9 Введите код подтверждения: '))
 
 
 # Адресы
@@ -134,21 +142,22 @@ async def send_multiple_messages(event):
             coroutines.append(send_message(client6, chat_id, message))
             coroutines.append(send_message(client7, chat_id, message))
             coroutines.append(send_message(client8, chat_id, message))
+            coroutines.append(send_message(client9, chat_id, message))
         # Одновременное выполнение всех корутин
         results = await asyncio.gather(*coroutines, return_exceptions=True)
 
         for i, result in enumerate(results):
             if isinstance(result, FloodWaitError):
                 # Ошибка FloodWaitError произошла для клиента в позиции i в списке coroutines
-                client_index = i % 8  # Получить индекс клиента
+                client_index = i % 9  # Получить индекс клиента
                 print(f"Ошибка FloodWaitError для клиента {client_index + 1}")
 
         # Задержка
         await asyncio.sleep(2)
-        count += len(messages) * 8
+        count += len(messages) * 9
         cycles += 1
 
-clients = [client1, client2, client3, client4, client5, client6, client7, client8]
+clients = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
 
 
 # Модуль для проверки кейсов
@@ -198,7 +207,7 @@ async def send_transfer_messages(client, event):
                         await send_transfer_message(client, chat_id, case, item)
 
 # Определение функции обработчика входящих сообщений
-player_names = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8']
+player_names = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom9']
 for i, client in enumerate(clients):
     @client.on(events.NewMessage)
     async def handle_incoming_message(event, client=client):
@@ -235,7 +244,7 @@ client5.start()
 client6.start()
 client7.start()
 client8.start()
-
+client9.start()
 try:
     client1.run_until_disconnected()
 except KeyboardInterrupt:
@@ -284,4 +293,10 @@ except KeyboardInterrupt:
     pass
 finally:
     client8.disconnect()
+try:
+    client9.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client9.disconnect()
 
