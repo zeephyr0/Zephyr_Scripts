@@ -98,7 +98,7 @@ if not client8.is_user_authorized():
     client8.sign_in(phone8, input('Session-8 Введите код подтверждения: '))
 client9.connect()
 if not client9.is_user_authorized():
-    client.send_code_request(phone9)
+    client9.send_code_request(phone9)
     client9.sign_in(phone9, input('Session-9 Введите код подтверждения: '))
 
 
