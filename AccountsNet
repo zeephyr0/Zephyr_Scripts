@@ -137,11 +137,11 @@ async def stop_sending_messages(event):
 async def start_sending_messages(event):
     global stop_sending
     stop_sending = False
-    await event.message.edit'✅Отправка сообщений включена')
+    await event.message.edit('✅Отправка сообщений включена')
 
 @client1.on(events.NewMessage(pattern='/send'))
 async def send_multiple_messages(event):
-    global counts
+    global count
     global cycles
     await event.message.edit('Начали копать')
     # Определение id чата
