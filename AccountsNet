@@ -140,8 +140,6 @@ async def start_sending_messages(event):
 async def send_multiple_messages(event):
     # Определение id чата
     chat_id = event.chat_id
-    # Подключение к серверу Telegram
-    await connect_clients()
     while not stop_sending:  # Проверка флага перед каждой итерацией цикла
         # Создание списка корутин для каждого клиента
         coroutines = []
