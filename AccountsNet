@@ -146,7 +146,7 @@ async def send_multiple_messages(event):
         # Создание списка корутин для каждого клиента
         coroutines = []
         for client in (client1, client2, client3, client4, client5, client6, client7, client8, client9):
-            coroutines.append(send_message(client, chat_id, 'коп')
+            coroutines.append(send_message(client, chat_id, 'коп'))
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
