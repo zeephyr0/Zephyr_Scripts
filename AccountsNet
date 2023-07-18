@@ -111,47 +111,36 @@ twins_group = '@twinsFarm_byDem'
 count = 0
 cycles = 0
 
-# Асинхронная функция для отправки сообщений одновременно
+# Функция для отправки сообщений
 async def send_message(client, chat_id, message):
-    global count
-    global cycles
-    await client(SendMessageRequest(chat_id, message))
+    try:
+        await client.send_message(chat_id, message)
+    except FloodWaitError as e:
+        # Обработка ошибки FloodWaitError
+        print(f"Ошибка FloodWaitError для клиента {client.session_name}: {e}")
+        await asyncio.sleep(e.seconds)  # Задержка на время указанное в ошибке
+        await send_message(client, chat_id, message)
+    except Exception as e:
+        # Обработка других исключений
+        print(f"Ошибка при отправке сообщения для клиента {client.session_name}: {e}")
 
-
-# Команда для отправки нескольких сообщений с задержкой(1-9)
 @client1.on(events.NewMessage(pattern='/send_multiple'))
 async def send_multiple_messages(event):
-    global count
-    global cycles
     # Определение id чата
     chat_id = event.chat_id
-    # Определение текста для отправки сообщения 
-    message_text = event.raw_text.encode('utf-8').decode('utf-8')
-    # Извлечение сообщений после команды
-    messages = event.raw_text.split(' ')[1:]
-    # Создание списка корутин для каждого клиента
+
+    # Подключение к серверу Telegram
+    await connect_clients()
+
     while True:
         # Создание списка корутин для каждого клиента
         coroutines = []
-        for message in messages:
-            coroutines.append(send_message(client1, chat_id, message))
-            coroutines.append(send_message(client2, chat_id, message))
-            coroutines.append(send_message(client3, chat_id, message))
-            coroutines.append(send_message(client4, chat_id, message))
-            coroutines.append(send_message(client5, chat_id, message))
-            coroutines.append(send_message(client6, chat_id, message))
-            coroutines.append(send_message(client7, chat_id, message))
-            coroutines.append(send_message(client8, chat_id, message))
-            coroutines.append(send_message(client9, chat_id, message))
+        for client in (client1, client2, client3, client4, client5, client6, client7, client8, client9):
+            coroutines.append(send_message(client, chat_id, 'коп'))
+            # ...
+
         # Одновременное выполнение всех корутин
-        results = await asyncio.gather(*coroutines, return_exceptions=True)
-
-        for i, result in enumerate(results):
-            if isinstance(result, FloodWaitError):
-                # Ошибка FloodWaitError произошла для клиента в позиции i в списке coroutines
-                client_index = i % 9  # Получить индекс клиента
-                print(f"Ошибка FloodWaitError для клиента {client_index + 1}")
-
+        await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
         count += len(messages) * 9
