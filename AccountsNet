@@ -110,6 +110,7 @@ twins_group = '@twinsFarm_byDem'
 
 count = 0
 cycles = 0
+stop_sending = False
 
 # Функция для отправки сообщений
 async def send_message(client, chat_id, message):
