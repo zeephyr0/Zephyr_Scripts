@@ -123,22 +123,30 @@ async def send_message(client, chat_id, message):
     except Exception as e:
         # Обработка других исключений
         print(f"Ошибка при отправке сообщения для клиента {client.session_name}: {e}")
+        await asyncio.sleep(5)
+        await send_message(client, chat_id, message)
 
-@client1.on(events.NewMessage(pattern='/send_multiple'))
+@client1.on(events.NewMessage(pattern='/stop'))
+async def stop_sending_messages(event):
+    global stop_sending
+    stop_sending = True
+
+@client1.on(events.NewMessage(pattern='/start'))
+async def start_sending_messages(event):
+    global stop_sending
+    stop_sending = False
+
+@client1.on(events.NewMessage(pattern='/send'))
 async def send_multiple_messages(event):
     # Определение id чата
     chat_id = event.chat_id
-
     # Подключение к серверу Telegram
     await connect_clients()
-
-    while True:
+    while not stop_sending:  # Проверка флага перед каждой итерацией цикла
         # Создание списка корутин для каждого клиента
         coroutines = []
         for client in (client1, client2, client3, client4, client5, client6, client7, client8, client9):
-            coroutines.append(send_message(client, chat_id, 'коп'))
-            # ...
-
+            coroutines.append(send_message(client, chat_id, 'коп')
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
