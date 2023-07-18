@@ -131,18 +131,21 @@ async def send_message(client, chat_id, message):
 async def stop_sending_messages(event):
     global stop_sending
     stop_sending = True
-    await client1.send_message(event.chat_id, 'Отправка сообщений включена')
+    await event.message.edit('❌Отправка сообщений выключена')
 
 @client1.on(events.NewMessage(pattern='/start'))
 async def start_sending_messages(event):
     global stop_sending
     stop_sending = False
-    await client1.send_message(event.chat_id, 'Отправка сообщений выключена')
+    await event.message.edit'✅Отправка сообщений включена')
 
 @client1.on(events.NewMessage(pattern='/send'))
 async def send_multiple_messages(event):
+    global counts
+    global cycles
+    await event.message.edit('Начали копать')
     # Определение id чата
-    chat_id = event.chat_id
+    chat_id = mine_evo
     while not stop_sending:  # Проверка флага перед каждой итерацией цикла
         # Создание списка корутин для каждого клиента
         coroutines = []
