@@ -143,7 +143,7 @@ async def start_sending_messages(event):
 async def send_multiple_messages(event):
     global count
     global cycles
-    await event.message.edit('Начали копать')
+    await event.message.edit('Пробуем копать...')
     # Определение id чата
     chat_id = mine_evo
     while not stop_sending:  # Проверка флага перед каждой итерацией цикла
@@ -155,7 +155,7 @@ async def send_multiple_messages(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count += len(messages) * 9
+        count += 9
         cycles += 1
 
 clients = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
