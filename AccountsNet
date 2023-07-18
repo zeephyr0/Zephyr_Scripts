@@ -130,11 +130,13 @@ async def send_message(client, chat_id, message):
 async def stop_sending_messages(event):
     global stop_sending
     stop_sending = True
+    await client1.send_message(event.chat_id, 'Отправка сообщений включена')
 
 @client1.on(events.NewMessage(pattern='/start'))
 async def start_sending_messages(event):
     global stop_sending
     stop_sending = False
+    await client1.send_message(event.chat_id, 'Отправка сообщений выключена')
 
 @client1.on(events.NewMessage(pattern='/send'))
 async def send_multiple_messages(event):
