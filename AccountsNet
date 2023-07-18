@@ -127,19 +127,19 @@ async def send_message(client, chat_id, message):
         await asyncio.sleep(5)
         await send_message(client, chat_id, message)
 
-@client1.on(events.NewMessage(pattern='/stop'))
+@client1.on(events.NewMessage(pattern='!off'))
 async def stop_sending_messages(event):
     global stop_sending
     stop_sending = True
     await event.message.edit('❌Отправка сообщений выключена')
 
-@client1.on(events.NewMessage(pattern='/start'))
+@client1.on(events.NewMessage(pattern='!on'))
 async def start_sending_messages(event):
     global stop_sending
     stop_sending = False
     await event.message.edit('✅Отправка сообщений включена')
 
-@client1.on(events.NewMessage(pattern='/send'))
+@client1.on(events.NewMessage(pattern='!send'))
 async def send_multiple_messages(event):
     global count
     global cycles
@@ -162,7 +162,7 @@ clients = [client1, client2, client3, client4, client5, client6, client7, client
 
 
 # Модуль для проверки кейсов
-@client1.on(events.NewMessage(pattern='/cases'))
+@client1.on(events.NewMessage(pattern='!cases'))
 async def cases_info(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
@@ -216,7 +216,7 @@ for i, client in enumerate(clients):
             if f"📦 Кейсы игрока\n{player_name}" in event.raw_text:
                 await send_transfer_messages(client, event)
 
-@client1.on(events.NewMessage(pattern='/msg_info'))
+@client1.on(events.NewMessage(pattern='!msg_info'))
 async def get_info(event):
     global count
     global cycles
