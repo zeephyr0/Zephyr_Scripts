@@ -175,13 +175,13 @@ async def start_sending_messages(event):
 @client01.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
     global stop_sending2
-    stop_sending1 = True
+    stop_sending2 = True
     await event.message.edit('❌Отправка сообщений выключена')
 
 @client01.on(events.NewMessage(pattern='m.on'))
 async def start_sending_messages(event):
     global stop_sending2
-    stop_sending1 = False
+    stop_sending2 = False
     await event.message.edit('✅Отправка сообщений включена')
 
 
