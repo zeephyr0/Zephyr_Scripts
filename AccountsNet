@@ -118,7 +118,6 @@ if not client02.is_user_authorized():
     client02.sign_in(phone02, input('Session-02 Введите код подтверждения: '))
 
 # Запуск клиентов
-tracemalloc.start()
 client1.start()
 client2.start()
 client3.start()
