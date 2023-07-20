@@ -140,10 +140,12 @@ twins_group = '@twinsFarm_byDem'
 
 count1 = 0
 cycles1 = 0
-stop_sending1 = True
 count2 = 0
 cycles2 = 0
+stop_sending1 = True
 stop_sending2 = True
+stop_sending3 = False
+stop_sending4 = False
 
 # Функция для отправки сообщений
 async def send_message(client, chat_id, message):
@@ -183,7 +185,6 @@ async def start_sending_messages(event):
     global stop_sending2
     stop_sending2 = False
     await event.message.edit('✅Отправка сообщений включена')
-
 
 @client1.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages1(event):
@@ -235,6 +236,56 @@ async def send_multiple_messages2(event):
         count2 += 2
         cycles2 += 1
 
+@client1.on(events.NewMessage(pattern='gl.send'))
+async def send_multiple_messages1(event):
+    global count2
+    global cycles2
+    await event.message.edit('Пробуем копать...')
+    # Определение id чата
+    chat_id = mine_evo
+    if stop_sending3:
+        await asyncio.sleep(2)
+        await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
+    else:
+        await asyncio.sleep(2)
+        await event.message.edit('💢Начинаем копать')
+    while not stop_sending3:  # Проверка флага перед каждой итерацией цикла
+        # Создание списка корутин для каждого клиента
+        coroutines = []
+        for client in clients2:
+            coroutines.append(send_message(client, chat_id, 'коп'))
+        # Одновременное выполнение всех корутин
+        await asyncio.gather(*coroutines)
+        # Задержка
+        await asyncio.sleep(5)
+        count1 += 2
+        cycles1 += 1
+
+@client01.on(events.NewMessage(pattern='gl.send'))
+async def send_multiple_messages2(event):
+    global count1
+    global cycles1
+    await event.message.edit('Пробуем копать...')
+    # Определение id чата
+    chat_id = mine_evo
+    if stop_sending3:
+        await asyncio.sleep(2)
+        await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
+    else:
+        await asyncio.sleep(2)
+        await event.message.edit('💢Начинаем копать')
+    while not stop_sending3:  # Проверка флага перед каждой итерацией цикла
+        # Создание списка корутин для каждого клиента
+        coroutines = []
+        for client in clients1:
+            coroutines.append(send_message(client, chat_id, 'коп'))
+        # Одновременное выполнение всех корутин
+        await asyncio.gather(*coroutines)
+        # Задержка
+        await asyncio.sleep(2)
+        count2 += 9
+        cycles2 += 1
+
 
 # Модуль для проверки кейсов
 @client1.on(events.NewMessage(pattern='m.cases'))
@@ -274,7 +325,7 @@ async def send_transfer_message1(client, chat_id, case_name, quantity):
     await client.send_message(chat_id, transfer_message1)
     # Задержка 
     await asyncio.sleep(3)
-async def send_transfer_messages(client, event):
+async def send_transfer_messages1(client, event):
     # Определение id чата
     chat_id = '@mine_evo_bot'
     # Сообщение которое будет проверяться 
