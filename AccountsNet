@@ -73,6 +73,19 @@ client9 = TelegramClient('session9', api_id9, api_hash9)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
+# Запуск клиентов
+tracemalloc.start()
+client1.start()
+client2.start()
+client3.start()
+client4.start()
+client5.start()
+client6.start()
+client7.start()
+client8.start()
+client9.start()
+client01.start()
+client02.start()
 
 # Авторизация
 client1.connect()
@@ -355,19 +368,6 @@ async def process_new_message(event):
         for client in clients3:
             await client(SendMessageRequest(mine_evo, f'промо {promo_code}'))
 
-# Запуск клиентов
-tracemalloc.start()
-client1.start()
-client2.start()
-client3.start()
-client4.start()
-client5.start()
-client6.start()
-client7.start()
-client8.start()
-client9.start()
-client01.start()
-client02.start()
 try:
     client1.run_until_disconnected()
 except KeyboardInterrupt:
