@@ -307,7 +307,7 @@ clients1 = [client1, client2, client3, client4, client5, client6, client7, clien
 clients2 = [client01, client02]
 clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client01, client02]
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom9']
-player_names2 = ['','']
+player_names2 = ['Тоука','Bisbaka']
 
 # Определение функции обработчика входящих сообщений1
 for i, client in enumerate(clients1):
