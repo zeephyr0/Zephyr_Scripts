@@ -110,9 +110,11 @@ client9.connect()
 if not client9.is_user_authorized():
     client9.send_code_request(phone9)
     client9.sign_in(phone9, input('Session-9 Введите код подтверждения: '))
+client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
     client01.sign_in(phone01, input('Session-01 Введите код подтверждения: '))
+client02.connect()
 if not client02.is_user_authorized():
     client02.send_code_request(phone02)
     client02.sign_in(phone02, input('Session-02 Введите код подтверждения: '))
