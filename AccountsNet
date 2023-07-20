@@ -231,7 +231,7 @@ async def send_multiple_messages2(event):
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
-        await asyncio.sleep(2)
+        await asyncio.sleep(5)
         count2 += 2
         cycles2 += 1
 
@@ -356,7 +356,7 @@ async def get_info1(event):
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client1, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count2}\n🌀 Пройдено циклов: {cycles2}')
+    await send_message(client01, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count2}\n🌀 Пройдено циклов: {cycles2}')
 
 # Промо-Коды
 @client1.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
