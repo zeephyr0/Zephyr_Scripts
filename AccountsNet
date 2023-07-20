@@ -210,7 +210,7 @@ async def send_multiple_messages1(event):
         count1 += 9
         cycles1 += 1
 
-@client1.on(events.NewMessage(pattern='m.send'))
+@client01.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages2(event):
     global count2
     global cycles2
