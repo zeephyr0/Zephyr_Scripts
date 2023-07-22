@@ -222,7 +222,7 @@ async def send_multiple_messages2(event):
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
-        await asyncio.sleep(5)
+        await asyncio.sleep(2)
         count2 += 2
         cycles2 += 1
 
