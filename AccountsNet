@@ -47,10 +47,6 @@ api_id8 = '23683219'
 api_hash8 = '3712b06daec849ace954b67a522acb63'
 phone8 = '+996999899010'
 
-api_id9 = '22111820'
-api_hash9 = '8bae40de3d4f79bded38694e2d3e678b'
-phone9 = '+79620106790'
-
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
@@ -69,7 +65,6 @@ client5 = TelegramClient('session5', api_id5, api_hash5)
 client6 = TelegramClient('session6', api_id6, api_hash6)
 client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
-client9 = TelegramClient('session9', api_id9, api_hash9)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
@@ -106,10 +101,6 @@ client8.connect()
 if not client8.is_user_authorized():
     client8.send_code_request(phone8)
     client8.sign_in(phone8, input('Session-8 Введите код подтверждения: '))
-client9.connect()
-if not client9.is_user_authorized():
-    client9.send_code_request(phone9)
-    client9.sign_in(phone9, input('Session-9 Введите код подтверждения: '))
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -128,7 +119,6 @@ client5.start()
 client6.start()
 client7.start()
 client8.start()
-client9.start()
 client01.start()
 client02.start()
 
@@ -202,13 +192,13 @@ async def send_multiple_messages1(event):
     while not stop_sending1:  # Проверка флага перед каждой итерацией цикла
         # Создание списка корутин для каждого клиента
         coroutines = []
-        for client in (client1, client2, client3, client4, client5, client6, client7, client8, client9):
+        for client in (client1, client2, client3, client4, client5, client6, client7, client8):
             coroutines.append(send_message(client, chat_id, 'коп'))
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 9
+        count1 += 8
         cycles1 += 1
 
 @client01.on(events.NewMessage(pattern='m.send'))
@@ -257,7 +247,7 @@ async def send_multiple_messages1(event):
         # Одновременное выполнение всех корутин
         await asyncio.gather(*coroutines)
         # Задержка
-        await asyncio.sleep(5)
+        await asyncio.sleep(2)
         count1 += 2
         cycles1 += 1
 
@@ -283,7 +273,7 @@ async def send_multiple_messages2(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count2 += 9
+        count2 += 8
         cycles2 += 1
 
 
@@ -367,9 +357,9 @@ async def send_transfer_messages2(client, event):
                         item = item[1].strip()
                         await send_transfer_message2(client, chat_id, case, item)
 
-clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9]
+clients1 = [client1, client2, client3, client4, client5, client6, client7, client8]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client01, client02]
+clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client01, client02]
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom9']
 player_names2 = ['Тоука','Bisbaka']
 
@@ -467,12 +457,6 @@ except KeyboardInterrupt:
     pass
 finally:
     client8.disconnect()
-try:
-    client9.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client9.disconnect()
 try:
     client01.run_until_disconnected()
 except KeyboardInterrupt:
