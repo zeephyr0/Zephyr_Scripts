@@ -56,6 +56,18 @@ api_id10 = '28888745'
 api_hash10 = '7eef99c62523e769d6e6313f884f0ee5'
 phone10 = '+251910330082'
 
+api_id11 = ''
+api_hash11 = ''
+phone11 = ''
+
+api_id12 = ''
+api_hash12 = ''
+phone12 = ''
+
+api_id13 = ''
+api_hash13 = ''
+phone13 = ''
+
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
@@ -75,6 +87,11 @@ client5 = TelegramClient('session5', api_id5, api_hash5)
 client6 = TelegramClient('session6', api_id6, api_hash6)
 client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
+client9 = TelegramClient('session9', api_id9, api_hash9)
+client10 = TelegramClient('session10', api_id10, api_hash10)
+client11 = TelegramClient('session11', api_id11, api_hash11)
+client12 = TelegramClient('session12', api_id12, api_hash12)
+client13 = TelegramClient('session13', api_id13, api_hash13)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
@@ -128,6 +145,27 @@ if not client10.is_user_authorized():
         client10.sign_in(phone10, input('Session-10 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client10.sign_in(password=cloud_password1)
+client11.connect()
+if not client11.is_user_authorized():
+    client11.send_code_request(phone11)
+    try:
+        client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client11.sign_in(password=cloud_password1)
+client12.connect()
+if not client12.is_user_authorized():
+    client12.send_code_request(phone12)
+    try:
+        client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client12.sign_in(password=cloud_password1)
+client13.connect()
+if not client13.is_user_authorized():
+    client13.send_code_request(phone13)
+    try:
+        client13.sign_in(phone13, input('Session-13 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client13.sign_in(password=cloud_password1)
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -148,6 +186,9 @@ client7.start()
 client8.start()
 client9.start()
 client10.start()
+client11.start()
+client12.start()
+client13.start()
 client01.start()
 client02.start()
 
@@ -165,10 +206,10 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client01, client02]
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom10', 'Gnom11']
+clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client01, client02]
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom10', 'Gnom11', 'Gnom12', 'Gnom13', 'Gnom14']
 player_names2 = ['Тоука','Bisbaka']
 
 # Функция для отправки сообщений
@@ -232,7 +273,7 @@ async def send_multiple_messages1(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 10
+        count1 += 13
         cycles1 += 1
 
 @client01.on(events.NewMessage(pattern='m.send'))
@@ -307,7 +348,7 @@ async def send_multiple_messages2(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count2 += 10
+        count2 += 13
         cycles2 += 1
 
 
@@ -497,6 +538,24 @@ except KeyboardInterrupt:
     pass
 finally:
     client10.disconnect()
+try:
+    client11.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client11.disconnect()
+try:
+    client12.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client12.disconnect()
+try:
+    client13.run_until_disconnected()
+except KeyboardInterrupt:
+    pass
+finally:
+    client13.disconnect()
 try:
     client01.run_until_disconnected()
 except KeyboardInterrupt:
