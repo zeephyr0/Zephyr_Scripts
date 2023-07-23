@@ -55,6 +55,7 @@ api_id02 = '28598285'
 api_hash02 = '01cb9ab33587a314e3b6bfeab6d91e6e'
 phone02 = '+79787917812'
 
+cloud_passworld = '2303'
 
 # Создание клиентов 
 client1 = TelegramClient('session1', api_id1, api_hash1)
@@ -72,7 +73,10 @@ client02 = TelegramClient('session02', api_id02, api_hash02)
 client1.connect()
 if not client1.is_user_authorized():
     client1.send_code_request(phone1)
-    client1.sign_in(phone1, input('Session-1 Введите код подтверждения: '))
+    try:
+        client1.sign_in(phone1, input('Session-1 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client1.sign_in(password=cloud_password1)
 client2.connect()
 if not client2.is_user_authorized():
     client2.send_code_request(phone2)
