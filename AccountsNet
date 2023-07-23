@@ -478,94 +478,11 @@ async def process_new_message(event):
         for client in clients3:
             await client(SendMessageRequest(mine_evo, f'промо {promo_code}'))
 
-try:
-    client1.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client1.disconnect()
-try:
-    client2.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client2.disconnect()
-try:
-    client3.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client3.disconnect()
-try:
-    client4.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client4.disconnect()
-try:
-    client5.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client5.disconnect()
-try:
-    client6.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client6.disconnect()
-try:
-    client7.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client7.disconnect()
-try:
-    client8.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client8.disconnect()
-try:
-    client9.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client9.disconnect()
-try:
-    client10.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client10.disconnect()
-try:
-    client11.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client11.disconnect()
-try:
-    client12.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client12.disconnect()
-try:
-    client13.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client13.disconnect()
-try:
-    client01.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client01.disconnect()
-try:
-    client02.run_until_disconnected()
-except KeyboardInterrupt:
-    pass
-finally:
-    client02.disconnect()
+for client in clients3:
+    try:
+        client.run_until_disconnected()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        client.disconnect()
 
