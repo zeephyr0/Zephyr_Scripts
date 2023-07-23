@@ -7,6 +7,7 @@ from telethon.tl.functions.messages import GetDialogsRequest
 from telethon.tl.functions.messages import SendMessageRequest
 from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
 from telethon.errors import FloodWaitError
+from telethon.errors import SessionPasswordNeededError
 import requests
 import time
 import random
@@ -55,7 +56,7 @@ api_id02 = '28598285'
 api_hash02 = '01cb9ab33587a314e3b6bfeab6d91e6e'
 phone02 = '+79787917812'
 
-cloud_passworld = '2303'
+cloud_passworld1 = '2303'
 
 # Создание клиентов 
 client1 = TelegramClient('session1', api_id1, api_hash1)
