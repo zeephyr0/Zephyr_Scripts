@@ -48,25 +48,21 @@ api_id8 = '23683219'
 api_hash8 = '3712b06daec849ace954b67a522acb63'
 phone8 = '+996999899010'
 
-api_id9 = '23369138'
-api_hash9 = '229ec3996481810805991abde0053d18'
-phone9 = '+251910046443'
+api_id9 = '28888745'
+api_hash9 = '7eef99c62523e769d6e6313f884f0ee5'
+phone9 = '+251910330082'
 
-api_id10 = '28888745'
-api_hash10 = '7eef99c62523e769d6e6313f884f0ee5'
-phone10 = '+251910330082'
+api_id10 = '21106848'
+api_hash10 = 'ead495a3f75cacec6656671de5e96ecc'
+phone10 = '+251911698801'
 
-api_id11 = '21106848'
-api_hash11 = 'ead495a3f75cacec6656671de5e96ecc'
-phone11 = '+251911698801'
+api_id11 = '26344028'
+api_hash11 = 'aa920e0ab554994282bddfae8e9743e1'
+phone11 = '+66644508357'
 
-api_id12 = '26344028'
-api_hash12 = 'aa920e0ab554994282bddfae8e9743e1'
-phone12 = '+66644508357'
-
-api_id13 = '24391372'
-api_hash13 = 'f91208774fb18619d661aa988357327d'
-phone13 = '+8801929321074'
+api_id12 = '24391372'
+api_hash12 = 'f91208774fb18619d661aa988357327d'
+phone12 = '+8801929321074'
 
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
@@ -91,7 +87,6 @@ client9 = TelegramClient('session9', api_id9, api_hash9)
 client10 = TelegramClient('session10', api_id10, api_hash10)
 client11 = TelegramClient('session11', api_id11, api_hash11)
 client12 = TelegramClient('session12', api_id12, api_hash12)
-client13 = TelegramClient('session13', api_id13, api_hash13)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
@@ -159,13 +154,6 @@ if not client12.is_user_authorized():
         client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client12.sign_in(password=cloud_password1)
-client13.connect()
-if not client13.is_user_authorized():
-    client13.send_code_request(phone13)
-    try:
-        client13.sign_in(phone13, input('Session-13 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client13.sign_in(password=cloud_password1)
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -188,7 +176,6 @@ client9.start()
 client10.start()
 client11.start()
 client12.start()
-client13.start()
 client01.start()
 client02.start()
 
@@ -206,10 +193,10 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13]
+clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client01, client02]
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom10', 'Gnom11', 'Gnom12', 'Gnom13', 'Gnom14']
+clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client01, client02]
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom11', 'Gnom12', 'Gnom13', 'Gnom14']
 player_names2 = ['Тоука','Bisbaka']
 
 # Функция для отправки сообщений
@@ -273,7 +260,7 @@ async def send_multiple_messages1(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 13
+        count1 += 12
         cycles1 += 1
 
 @client01.on(events.NewMessage(pattern='m.send'))
@@ -348,7 +335,7 @@ async def send_multiple_messages2(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 13
+        count1 += 12
         cycles1 += 1
 
 
