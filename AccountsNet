@@ -48,17 +48,13 @@ api_id8 = '23683219'
 api_hash8 = '3712b06daec849ace954b67a522acb63'
 phone8 = '+996999899010'
 
-api_id9 = '21106848'
-api_hash9 = 'ead495a3f75cacec6656671de5e96ecc'
-phone9 = '+251911698801'
+api_id9 = '26344028'
+api_hash9 = 'aa920e0ab554994282bddfae8e9743e1'
+phone9 = '+66644508357'
 
-api_id10 = '26344028'
-api_hash10 = 'aa920e0ab554994282bddfae8e9743e1'
-phone10= '+66644508357'
-
-api_id11 = '24391372'
-api_hash11 = 'f91208774fb18619d661aa988357327d'
-phone11 = '+8801929321074'
+api_id10 = '24391372'
+api_hash10 = 'f91208774fb18619d661aa988357327d'
+phone10 = '+8801929321074'
 
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
@@ -81,7 +77,6 @@ client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
 client9 = TelegramClient('session9', api_id9, api_hash9)
 client10 = TelegramClient('session10', api_id10, api_hash10)
-client11 = TelegramClient('session11', api_id11, api_hash11)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
@@ -135,14 +130,6 @@ if not client10.is_user_authorized():
         client10.sign_in(phone10, input('Session-10 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client10.sign_in(password=cloud_password1)
-client11.connect()
-if not client11.is_user_authorized():
-    client11.send_code_request(phone11)
-    try:
-        client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client11.sign_in(password=cloud_password1)
-client12.connect()
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -163,7 +150,6 @@ client7.start()
 client8.start()
 client9.start()
 client10.start()
-client11.start()
 client01.start()
 client02.start()
 
@@ -181,9 +167,9 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11]
+clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client01, client02]
+clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client01, client02]
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom12', 'Gnom13', 'Gnom14']
 player_names2 = ['Тоука','Bisbaka']
 
