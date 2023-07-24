@@ -348,8 +348,8 @@ async def send_multiple_messages2(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count2 += 13
-        cycles2 += 1
+        count1 += 13
+        cycles1 += 1
 
 
 # Модуль для проверки кейсов
