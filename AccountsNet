@@ -212,6 +212,7 @@ async def start_sending_messages(event):
 
 @client1.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages1(event):
+    nonlocal clients1
     global count1
     global cycles1
     await event.message.edit('Пробуем копать...')
