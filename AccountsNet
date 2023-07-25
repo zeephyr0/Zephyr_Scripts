@@ -269,7 +269,7 @@ async def send_multiple_messages2(event):
         cycles2 += 1
 
 @client1.on(events.NewMessage(pattern='gl.send'))
-async def send_multiple_messages1(event):
+async def send_multiple_messages3(event):
     global count2
     global cycles2
     await event.message.edit('Пробуем копать...')
@@ -294,7 +294,7 @@ async def send_multiple_messages1(event):
         cycles1 += 1
 
 @client01.on(events.NewMessage(pattern='gl.send'))
-async def send_multiple_messages2(event):
+async def send_multiple_messages4(event):
     global count1
     global cycles1
     await event.message.edit('Пробуем копать...')
