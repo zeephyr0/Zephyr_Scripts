@@ -180,13 +180,11 @@ async def send_message(client, mine_evo, message):
     except FloodWaitError as e:
         # Обработка ошибки FloodWaitError
         print(f"Ошибка FloodWaitError для клиента {client}: {e}")
-        await asyncio.sleep(e.seconds)  # Задержка на время указанное в ошибке
-        await send_message(client, mine_evo, message)
+        clients1.remove(client)
     except Exception as e:
         # Обработка других исключений
         print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
-        await asyncio.sleep(5)
-        await send_message(client, mine_evo, message)
+        clients1.remove(client)
 
 @client1.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
@@ -236,6 +234,14 @@ async def send_multiple_messages1(event):
         await asyncio.sleep(2)
         count1 += 11
         cycles1 += 1
+
+        # Удаление отключенных клиентов
+        clients1 = [client for client in clients1 if client.is_connected()]
+        
+        # Проверка наличия активных клиентов
+        if not clients1:
+            print("Все клиенты потеряли соединение.")
+            break
 
 @client01.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages2(event):
