@@ -14,6 +14,7 @@ import random
 import tracemalloc
 import asyncio
 import concurrent.futures
+import json
 
 # Данные аккаунтов
 api_id1 = '12588062'
@@ -173,6 +174,20 @@ clients3 = [client1, client2, client3, client4, client5, client6, client7, clien
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom12', 'Gnom13', 'Gnom14']
 player_names2 = ['Тоука','Bisbaka']
 
+# Function to save the list of clients to a file
+def save_clients(clients, filename):
+    with open(filename, 'w') as file:
+        json.dump(clients, file)
+
+# Function to load the list of clients from a file
+def load_clients(filename):
+    try:
+        with open(filename, 'r') as file:
+            clients = json.load(file)
+    except FileNotFoundError:
+        clients = []
+    return clients
+
 # Функция для отправки сообщений
 async def send_message(client, mine_evo, message):
     try:
@@ -216,7 +231,6 @@ async def send_multiple_messages1(event):
     global count1
     global cycles1
     await event.message.edit('Пробуем копать...')
-    # Определение id чата
     peer = await client1.get_input_entity(mine_evo)
     if stop_sending1:
         await asyncio.sleep(2) 
@@ -224,25 +238,25 @@ async def send_multiple_messages1(event):
     else:
         await asyncio.sleep(2)
         await event.message.edit('💢Начинаем копать')
-    while not stop_sending1:  # Проверка флага перед каждой итерацией цикла
-        # Создание списка корутин для каждого клиента
+    while not stop_sending1:
         coroutines = []
         for client in clients1:
-            coroutines.append(send_message(client, mine_evo, 'коп'))
-        # Одновременное выполнение всех корутин
+            coroutines.append(send_message(client, peer, 'коп'))
         await asyncio.gather(*coroutines)
-        # Задержка
         await asyncio.sleep(2)
         count1 += 11
         cycles1 += 1
-
-        # Удаление отключенных клиентов
         clients1 = [client for client in clients1 if client.is_connected()]
-        
-        # Проверка наличия активных клиентов
+
+        # Save the updated list of clients
+        save_clients(clients1, 'clients1.json')
+
         if not clients1:
             print("Все клиенты потеряли соединение.")
             break
+
+# Load the list of clients from the file when the code starts
+clients1 = load_clients('clients1.json')
 
 @client01.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages2(event):
