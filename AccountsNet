@@ -225,9 +225,11 @@ async def start_sending_messages(event):
     stop_sending2 = False
     await event.message.edit('✅Отправка сообщений включена')
 
+# Load the list of clients from the file when the script starts
+clients1 = load_clients('clients1.json')
+
 @client1.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages1(event):
-    global clients1
     global count1
     global cycles1
     await event.message.edit('Пробуем копать...')
@@ -255,8 +257,8 @@ async def send_multiple_messages1(event):
             print("Все клиенты потеряли соединение.")
             break
 
-# Load the list of clients from the file when the code starts
-clients1 = load_clients('clients1.json')
+# Clear the clients file when the script starts
+save_clients([], 'clients1.json')
 
 @client01.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages2(event):
