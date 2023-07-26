@@ -174,26 +174,6 @@ clients3 = [client1, client2, client3, client4, client5, client6, client7, clien
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom12', 'Gnom13', 'Gnom14']
 player_names2 = ['Тоука','Bisbaka']
 
-# Function to save the state of clients to a file
-def save_clients_state(clients, filename):
-    clients_state = {str(client.session): client.get_me().to_dict() for client in clients}
-    with open(filename, 'w') as file:
-        json.dump(clients_state, file)
-
-# Function to load the state of clients from a file
-def load_clients_state(filename):
-    try:
-        with open(filename, 'r') as file:
-            clients_state = json.load(file)
-            clients = []
-            for session, state in enumerate(clients_state):
-                client = TelegramClient(StringSession(session), api_id, api_hash)
-                client.session.set_dc(state['default_dc_id'], state['dc_options'])
-                clients.append(client)
-    except FileNotFoundError:
-        clients = []
-    return clients
-
 # Function to send a message and handle exceptions
 async def send_message(client, peer, message):
     try:
@@ -254,15 +234,9 @@ async def send_multiple_messages1(event):
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
-        # Save the updated state of clients
-        save_clients_state(clients1, 'clients1.json')
-
         if not clients1:
             print("Все клиенты потеряли соединение.")
             break
-
-# Load the state of clients from the file when the script starts
-clients1 = load_clients_state('clients1.json')
 
 @client01.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages2(event):
