@@ -186,7 +186,7 @@ def load_clients_state(filename):
         with open(filename, 'r') as file:
             clients_state = json.load(file)
             clients = []
-            for session, state in clients_state.items():
+            for session, state in enumerate(clients_state):
                 client = TelegramClient(StringSession(session), api_id, api_hash)
                 client.session.set_dc(state['default_dc_id'], state['dc_options'])
                 clients.append(client)
