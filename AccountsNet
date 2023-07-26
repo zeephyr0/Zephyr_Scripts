@@ -232,6 +232,7 @@ clients1 = load_clients('clients1.json')
 async def send_multiple_messages1(event):
     global count1
     global cycles1
+    global clients1
     await event.message.edit('Пробуем копать...')
     peer = await client1.get_input_entity(mine_evo)
     if stop_sending1:
