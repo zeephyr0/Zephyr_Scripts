@@ -177,14 +177,17 @@ player_names2 = ['Тоука','Bisbaka']
 # Function to send a message and handle exceptions
 async def send_message(client, peer, message):
     try:
-        entity = await client.get_input_entity(peer)
-        await client.send_message(peer, message)
+        if isinstance(peer, int) and peer < 0:  # Идентификатор чата
+            entity = await client.get_input_entity(peer)
+        else:  # Юзернейм пользователя, группы или канала
+            entity = await client.get_input_entity(f'@{peer}')
+        await client.send_message(entity, message)
     except FloodWaitError as e:
-        # Handle FloodWaitError
+        # Обработка FloodWaitError
         print(f"Ошибка FloodWaitError для клиента {client}: {e}")
         await client.disconnect()
     except Exception as e:
-        # Handle other exceptions
+        # Обработка остальных исключений
         print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
         await client.disconnect()
 
