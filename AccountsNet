@@ -2,7 +2,7 @@
 # good luck =]
 
 from telethon import TelegramClient, sync
-from telethon import events
+from telethon import events, utils
 from telethon.tl.functions.messages import GetDialogsRequest
 from telethon.tl.functions.messages import SendMessageRequest
 from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
@@ -177,7 +177,8 @@ player_names2 = ['Тоука','Bisbaka']
 # Function to send a message and handle exceptions
 async def send_message(client, peer, message):
     try:
-        await client.send_message(peer, message)
+        entity = await client.get_entity(peer)
+        await client.send_message(entity, message)
     except FloodWaitError as e:
         # Handle FloodWaitError
         print(f"Ошибка FloodWaitError для клиента {client}: {e}")
