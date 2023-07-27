@@ -229,7 +229,7 @@ async def send_multiple_messages1(event):
     while not stop_sending1:
         coroutines = []
         for client in clients1:
-            coroutines.append(send_message(client, peer, 'коп'))
+            coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
         count1 += 11
