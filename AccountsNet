@@ -37,10 +37,6 @@ api_id5 = '19179697'
 api_hash5 = 'dd96018b9f53d55342f0c2c754c4fb29'
 phone5 = '+79697678142'
 
-api_id6 = '10904880'
-api_hash6 = '0bce5ceebd00a5fe38dff632595b0bad'
-phone6 = '+79587314180'
-
 api_id7 = '29202662'
 api_hash7 = 'e093efde1201cc926ad478cc129a4ff5'
 phone7 = '+213774991926'
@@ -97,7 +93,6 @@ client2 = TelegramClient('session2', api_id2, api_hash2)
 client3 = TelegramClient('session3', api_id3, api_hash3)
 client4 = TelegramClient('session4', api_id4, api_hash4)
 client5 = TelegramClient('session5', api_id5, api_hash5)
-client6 = TelegramClient('session6', api_id6, api_hash6)
 client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
 client9 = TelegramClient('session9', api_id9, api_hash9)
@@ -135,10 +130,6 @@ client5.connect()
 if not client5.is_user_authorized():
     client5.send_code_request(phone5)
     client5.sign_in(phone5, input('Session-5 Введите код подтверждения: '))
-client6.connect()
-if not client6.is_user_authorized():
-    client6.send_code_request(phone6)
-    client6.sign_in(phone6, input('Session-6 Введите код подтверждения: '))
 client7.connect()
 if not client7.is_user_authorized():
     client7.send_code_request(phone7)
@@ -218,7 +209,6 @@ client2.start()
 client3.start()
 client4.start()
 client5.start()
-client6.start()
 client7.start()
 client8.start()
 client9.start()
@@ -246,9 +236,9 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16]
+clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client01, client02]
+clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client01, client02]
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20']
 player_names2 = ['Тоука','Bisbaka']
 
@@ -311,7 +301,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 16
+        count1 += 15
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -391,7 +381,7 @@ async def send_multiple_messages4(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 16
+        count1 += 15
         cycles1 += 1
 
 
