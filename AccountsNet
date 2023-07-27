@@ -175,21 +175,19 @@ player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 
 player_names2 = ['Тоука','Bisbaka']
 
 # Function to send a message and handle exceptions
-async def send_message(client, peer, message):
+# Функция для отправки сообщений
+async def send_message(client, mine_evo, message):
     try:
-        if isinstance(peer, int) and peer < 0:  # Идентификатор чата
-            entity = await client.get_input_entity(peer)
-        else:  # Юзернейм пользователя, группы или канала
-            entity = await client.get_input_entity(f'@{peer}')
-        await client.send_message(entity, message)
+        await client.send_message(mine_evo, message)
     except FloodWaitError as e:
-        # Обработка FloodWaitError
+        # Обработка ошибки FloodWaitError
         print(f"Ошибка FloodWaitError для клиента {client}: {e}")
-        await client.disconnect()
+        clients1.remove(client)
     except Exception as e:
-        # Обработка остальных исключений
+        # Обработка других исключений
         print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
-        await client.disconnect()
+        clients1.remove(client)
+
 
 @client1.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
