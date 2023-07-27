@@ -219,7 +219,7 @@ async def send_multiple_messages1(event):
     global cycles1
     global clients1  # Declare clients1 as a global variable
     await event.message.edit('Пробуем копать...')
-    peer = await client1.get_input_entity(mine_evo)
+    peer = await client1.get_entity(mine_evo)
     if stop_sending1:
         await asyncio.sleep(2) 
         await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
