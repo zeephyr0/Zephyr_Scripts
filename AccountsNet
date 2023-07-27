@@ -57,6 +57,30 @@ api_id10 = '24391372'
 api_hash10 = 'f91208774fb18619d661aa988357327d'
 phone10 = '+8801929321074'
 
+api_id11 = '27999436'
+api_hash11 = 'a762c27366b49c72c58cf0f265df61bc'
+phone11 = '+996504072710'
+
+api_id12 = '23662066'
+api_hash12 = '98b08a6ead003f524e6d456127f864ed'
+phone12 = '+79964453180'
+
+api_id13 = '28054215'
+api_hash13 = 'dca1c54af532f7dc0df4509bb5cd06fc'
+phone13 = '+79016810191'
+
+api_id14 = '20880148'
+api_hash14 = '4cefa3607decdacf8995fa4faac6d9c0'
+phone14 = '+79199250579'
+
+api_id15 = '20074210'
+api_hash15 = '40bf0e5e8441de28f0e30ef64190725b'
+phone15 = '+79507244663'
+
+api_id16 = '21931735'
+api_hash16 = '9b2e64e80a51e048e4f5062772b5ab7f'
+phone16 = '+380933888084'
+
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
@@ -78,6 +102,12 @@ client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
 client9 = TelegramClient('session9', api_id9, api_hash9)
 client10 = TelegramClient('session10', api_id10, api_hash10)
+client11 = TelegramClient('session11', api_id11, api_hash11)
+client12 = TelegramClient('session12', api_id12, api_hash12)
+client13 = TelegramClient('session13', api_id13, api_hash13)
+client14 = TelegramClient('session14', api_id14, api_hash14)
+client15 = TelegramClient('session15', api_id15, api_hash15)
+client16 = TelegramClient('session16', api_id16, api_hash16)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
@@ -131,6 +161,48 @@ if not client10.is_user_authorized():
         client10.sign_in(phone10, input('Session-10 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client10.sign_in(password=cloud_password1)
+client11.connect()
+if not client11.is_user_authorized():
+    client11.send_code_request(phone11)
+    try:
+        client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client11.sign_in(password=cloud_password1)
+client12.connect()
+if not client12.is_user_authorized():
+    client12.send_code_request(phone12)
+    try:
+        client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client12.sign_in(password=cloud_password1)
+client13.connect()
+if not client13.is_user_authorized():
+    client13.send_code_request(phone13)
+    try:
+        client13.sign_in(phone13, input('Session-13 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client13.sign_in(password=cloud_password1)
+client14.connect()
+if not client14.is_user_authorized():
+    client14.send_code_request(phone14)
+    try:
+        client14.sign_in(phone14, input('Session-14 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client14.sign_in(password=cloud_password1)
+client15.connect()
+if not client15.is_user_authorized():
+    client15.send_code_request(phone15)
+    try:
+        client15.sign_in(phone15, input('Session-15 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client15.sign_in(password=cloud_password1)
+client16.connect()
+if not client16.is_user_authorized():
+    client16.send_code_request(phone16)
+    try:
+        client16.sign_in(phone16, input('Session-16 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client16.sign_in(password=cloud_password1)
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -151,6 +223,12 @@ client7.start()
 client8.start()
 client9.start()
 client10.start()
+client11.start()
+client12.start()
+client13.start()
+client14.start()
+client15.start()
+client16.start()
 client01.start()
 client02.start()
 
@@ -168,10 +246,10 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10]
+clients1 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client01, client02]
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom12', 'Gnom13', 'Gnom14']
+clients3 = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client01, client02]
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20']
 player_names2 = ['Тоука','Bisbaka']
 
 async def send_message(client, mine_evo, message):
@@ -180,6 +258,10 @@ async def send_message(client, mine_evo, message):
     except FloodWaitError as e:
         # Обработка ошибки FloodWaitError
         print(f"Ошибка FloodWaitError для клиента {client}: {e}")
+        clients1.disconnect(client)
+    except ValueError as e:
+        # Обработка ошибки, если клиент не найден или нет доступа к аккаунту
+        print(f"Ошибка: {e} для клиента {client}")
         clients1.disconnect(client)
     except Exception as e:
         # Обработка других исключений
@@ -229,7 +311,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 11
+        count1 += 16
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -309,7 +391,7 @@ async def send_multiple_messages4(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 11
+        count1 += 16
         cycles1 += 1
 
 
