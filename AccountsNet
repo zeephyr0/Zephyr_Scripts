@@ -182,11 +182,11 @@ async def send_message(client, mine_evo, message):
     except FloodWaitError as e:
         # Обработка ошибки FloodWaitError
         print(f"Ошибка FloodWaitError для клиента {client}: {e}")
-        clients1.remove(client)
+        clients1.disconnect(client)
     except Exception as e:
         # Обработка других исключений
         print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
-        clients1.remove(client)
+        clients1.disconnect(client)
 
 
 @client1.on(events.NewMessage(pattern='m.off'))
