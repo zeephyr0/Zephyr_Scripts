@@ -476,6 +476,7 @@ async def cases_info1(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
     for client in clients1:
+        await asyncio.sleep(2)
         await client(SendMessageRequest(mine_evo, message))
 
 # Модуль для проверки кейсов
@@ -484,6 +485,7 @@ async def cases_info2(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
     for client in clients2:
+        await asyncio.sleep(2)
         await client(SendMessageRequest(mine_evo, message))
 
 
