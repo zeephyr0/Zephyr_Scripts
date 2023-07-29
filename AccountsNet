@@ -334,7 +334,7 @@ async def send_message(client, mine_evo, message):
     except ConnectionError:
         print('Ошибка подключения. Повторное подключение...')
         await asyncio.sleep(15)  # Ждем 5 секунд перед повторной попыткой
-        continue
+        return 
     except KeyboardInterrupt:
         break
     except Exception as e:
