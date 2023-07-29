@@ -77,6 +77,30 @@ api_id16 = '21931735'
 api_hash16 = '9b2e64e80a51e048e4f5062772b5ab7f'
 phone16 = '+380933888084'
 
+api_id17 = '23037561'
+api_hash17 = '9e11fc4b8528a8f605fc157c2fdf71e7'
+phone17 = '+79961630209'
+
+api_id18 = '29141499'
+api_hash18 = '77b4d4c1b20f95d8a09b05a1c5f67578'
+phone18 = '+79159670843'
+
+api_id19 = '20205793'
+api_hash19 = '537c5d400f59a6629e4fa788fc135394'
+phone19 = '+79494496325'
+
+api_id20 = '27464817'
+api_hash20 = '6c1ca996231bf26a05663aa787a0d1cc'
+phone20 = '+79781469611'
+
+api_id21 = '29104274'
+api_hash21 = '0b807245f3347d2d9c0b7704e29321b5'
+phone21 = '+380933908995'
+
+api_id22 = '22902136'
+api_hash22 = 'cc60ee0240ad2bd8eb08d09a679f0732'
+phone22 = '+251983243323'
+
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
@@ -103,6 +127,12 @@ client13 = TelegramClient('session13', api_id13, api_hash13)
 client14 = TelegramClient('session14', api_id14, api_hash14)
 client15 = TelegramClient('session15', api_id15, api_hash15)
 client16 = TelegramClient('session16', api_id16, api_hash16)
+client17 = TelegramClient('session17', api_id17, api_hash17)
+client18 = TelegramClient('session18', api_id18, api_hash18)
+client19 = TelegramClient('session19', api_id19, api_hash19)
+client20 = TelegramClient('session20', api_id20, api_hash20)
+client21 = TelegramClient('session21', api_id21, api_hash21)
+client22 = TelegramClient('session22', api_id22, api_hash22)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
@@ -194,6 +224,48 @@ if not client16.is_user_authorized():
         client16.sign_in(phone16, input('Session-16 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client16.sign_in(password=cloud_password1)
+client17.connect()
+if not client17.is_user_authorized():
+    client17.send_code_request(phone17)
+    try:
+        client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client17.sign_in(password=cloud_password1)
+client18.connect()
+if not client18.is_user_authorized():
+    client18.send_code_request(phone18)
+    try:
+        client18.sign_in(phone18, input('Session-18 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client18.sign_in(password=cloud_password1)
+client19.connect()
+if not client19.is_user_authorized():
+    client19.send_code_request(phone19)
+    try:
+        client19.sign_in(phone19, input('Session-19 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client19.sign_in(password=cloud_password1)
+client20.connect()
+if not client20.is_user_authorized():
+    client20.send_code_request(phone20)
+    try:
+        client20.sign_in(phone20, input('Session-20 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client20.sign_in(password=cloud_password1)
+client21.connect()
+if not client21.is_user_authorized():
+    client21.send_code_request(phone21)
+    try:
+        client21.sign_in(phone21, input('Session-21 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client21.sign_in(password=cloud_password1)
+client22.connect()
+if not client22.is_user_authorized():
+    client22.send_code_request(phone22)
+    try:
+        client22.sign_in(phone22, input('Session-22 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client22.sign_in(password=cloud_password1)
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -219,6 +291,12 @@ client13.start()
 client14.start()
 client15.start()
 client16.start()
+client17.start()
+client18.start()
+client19.start()
+client20.start()
+client21.start()
+client22.start()
 client01.start()
 client02.start()
 
@@ -236,9 +314,9 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16]
+clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client01, client02]
+clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client01, client02]
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20']
 player_names2 = ['Тоука','Bisbaka']
 
@@ -253,6 +331,12 @@ async def send_message(client, mine_evo, message):
         # Обработка ошибки, если клиент не найден или нет доступа к аккаунту
         print(f"Ошибка: {e} для клиента {client}")
         clients1.disconnect(client)
+    except ConnectionError:
+        print('Ошибка подключения. Повторное подключение...')
+        await asyncio.sleep(15)  # Ждем 5 секунд перед повторной попыткой
+        continue
+    except KeyboardInterrupt:
+        break
     except Exception as e:
         # Обработка других исключений
         print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
@@ -301,7 +385,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 15
+        count1 += 22
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -381,7 +465,7 @@ async def send_multiple_messages4(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 15
+        count1 += 22
         cycles1 += 1
 
 
@@ -471,6 +555,7 @@ for i, client in enumerate(clients1):
     async def handle_incoming_message(event, client=client):
         for player_name in player_names1:
             if f"📦 Кейсы игрока\n{player_name}" in event.raw_text:
+                await asyncio.sleep(2)
                 await send_transfer_messages1(client, event)
 
 # Определение функции обработчика входящих сообщений2
@@ -479,6 +564,7 @@ for i, client in enumerate(clients2):
     async def handle_incoming_message(event, client=client):
         for player_name in player_names2:
             if f"📦 Кейсы игрока\n{player_name}" in event.raw_text:
+                await asyncio.sleep(2)
                 await send_transfer_messages2(client, event)
 
 
