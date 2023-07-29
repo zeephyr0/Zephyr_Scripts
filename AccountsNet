@@ -317,12 +317,13 @@ stop_sending4 = False
 clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22]
 clients2 = [client01, client02]
 clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client01, client02]
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20']
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26']
 player_names2 = ['Тоука','Bisbaka']
 
 async def send_message(client, mine_evo, message):
     while True:
         try:
+            await asyncio.sleep(2)           
             await client.send_message(mine_evo, message)
         except FloodWaitError as e:
             # Обработка ошибки FloodWaitError
