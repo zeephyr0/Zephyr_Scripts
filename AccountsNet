@@ -321,26 +321,27 @@ player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 
 player_names2 = ['Тоука','Bisbaka']
 
 async def send_message(client, mine_evo, message):
-    try:
-        await client.send_message(mine_evo, message)
-    except FloodWaitError as e:
-        # Обработка ошибки FloodWaitError
-        print(f"Ошибка FloodWaitError для клиента {client}: {e}")
-        clients1.disconnect(client)
-    except ValueError as e:
-        # Обработка ошибки, если клиент не найден или нет доступа к аккаунту
-        print(f"Ошибка: {e} для клиента {client}")
-        clients1.disconnect(client)
-    except ConnectionError:
-        print('Ошибка подключения. Повторное подключение...')
-        await asyncio.sleep(15)  # Ждем 5 секунд перед повторной попыткой
-        return 
-    except KeyboardInterrupt:
-        break
-    except Exception as e:
-        # Обработка других исключений
-        print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
-        return
+    while True:
+        try:
+            await client.send_message(mine_evo, message)
+        except FloodWaitError as e:
+            # Обработка ошибки FloodWaitError
+            print(f"Ошибка FloodWaitError для клиента {client}: {e}")
+            clients1.disconnect(client)
+        except ValueError as e:
+            # Обработка ошибки, если клиент не найден или нет доступа к аккаунту
+            print(f"Ошибка: {e} для клиента {client}")
+            clients1.disconnect(client)
+        except ConnectionError:
+            print('Ошибка подключения. Повторное подключение...')
+            await asyncio.sleep(15)  # Ждем 5 секунд перед повторной попыткой
+            continue
+        except KeyboardInterrupt:
+            break
+        except Exception as e:
+            # Обработка других исключений
+            print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
+            return
 
 @client1.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
