@@ -57,10 +57,6 @@ api_id11 = '27999436'
 api_hash11 = 'a762c27366b49c72c58cf0f265df61bc'
 phone11 = '+996504072710'
 
-api_id12 = '23662066'
-api_hash12 = '98b08a6ead003f524e6d456127f864ed'
-phone12 = '+79964453180'
-
 api_id13 = '28054215'
 api_hash13 = 'dca1c54af532f7dc0df4509bb5cd06fc'
 phone13 = '+79016810191'
@@ -122,7 +118,6 @@ client8 = TelegramClient('session8', api_id8, api_hash8)
 client9 = TelegramClient('session9', api_id9, api_hash9)
 client10 = TelegramClient('session10', api_id10, api_hash10)
 client11 = TelegramClient('session11', api_id11, api_hash11)
-client12 = TelegramClient('session12', api_id12, api_hash12)
 client13 = TelegramClient('session13', api_id13, api_hash13)
 client14 = TelegramClient('session14', api_id14, api_hash14)
 client15 = TelegramClient('session15', api_id15, api_hash15)
@@ -189,13 +184,6 @@ if not client11.is_user_authorized():
         client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client11.sign_in(password=cloud_password1)
-client12.connect()
-if not client12.is_user_authorized():
-    client12.send_code_request(phone12)
-    try:
-        client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client12.sign_in(password=cloud_password1)
 client13.connect()
 if not client13.is_user_authorized():
     client13.send_code_request(phone13)
@@ -286,7 +274,6 @@ client8.start()
 client9.start()
 client10.start()
 client11.start()
-client12.start()
 client13.start()
 client14.start()
 client15.start()
@@ -314,9 +301,9 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22]
+clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client01, client02]
+clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client01, client02]
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26']
 player_names2 = ['Тоука','Bisbaka']
 
