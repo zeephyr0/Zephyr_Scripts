@@ -17,89 +17,89 @@ import concurrent.futures
 import json
 
 # Данные аккаунтов
-api_id1 = '12588062'
-api_hash1 = 'd0f061c565991d6ed274285c0d032f7a'
-phone1 = '+79816661471'
+api_id001 = '12588062'
+api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
+phone001 = '+79816661471'
 
-api_id2 = '13123883'
-api_hash2 = 'f1fab12098570c2bf8848ad6ea23c62f'
-phone2 = '+79676939873'
+api_id002 = '13123883'
+api_hash002 = 'f1fab12098570c2bf8848ad6ea23c62f'
+phone002 = '+79676939873'
 
-api_id3 = '19334807'
-api_hash3 = '4b4edde7a9d46172399f0ac4cb98ae63'
-phone3 = '+79842549006'
+api_id003 = '19334807'
+api_hash003 = '4b4edde7a9d46172399f0ac4cb98ae63'
+phone003 = '+79842549006'
 
-api_id4 = '16839412'
-api_hash4 = 'aaa86871e0831e2ef1c9df22b921c9d4'
-phone4 = '+79386950114'
+api_id004 = '16839412'
+api_hash004 = 'aaa86871e0831e2ef1c9df22b921c9d4'
+phone004 = '+79386950114'
 
-api_id5 = '19179697'
-api_hash5 = 'dd96018b9f53d55342f0c2c754c4fb29'
-phone5 = '+79697678142'
+api_id005 = '19179697'
+api_hash005 = 'dd96018b9f53d55342f0c2c754c4fb29'
+phone005 = '+79697678142'
 
-api_id7 = '29202662'
-api_hash7 = 'e093efde1201cc926ad478cc129a4ff5'
-phone7 = '+213774991926'
+api_id007 = '29202662'
+api_hash007 = 'e093efde1201cc926ad478cc129a4ff5'
+phone007 = '+213774991926'
 
-api_id8 = '23683219'
-api_hash8 = '3712b06daec849ace954b67a522acb63'
-phone8 = '+996999899010'
+api_id008 = '23683219'
+api_hash008 = '3712b06daec849ace954b67a522acb63'
+phone008 = '+996999899010'
 
-api_id9 = '26344028'
-api_hash9 = 'aa920e0ab554994282bddfae8e9743e1'
-phone9 = '+66644508357'
+api_id009 = '26344028'
+api_hash009 = 'aa920e0ab554994282bddfae8e9743e1'
+phone009 = '+66644508357'
 
-api_id10 = '24391372'
-api_hash10 = 'f91208774fb18619d661aa988357327d'
-phone10 = '+8801929321074'
+api_id010 = '24391372'
+api_hash010 = 'f91208774fb18619d661aa988357327d'
+phone010 = '+8801929321074'
 
-api_id11 = '27999436'
-api_hash11 = 'a762c27366b49c72c58cf0f265df61bc'
-phone11 = '+996504072710'
+api_id011 = '27999436'
+api_hash011 = 'a762c27366b49c72c58cf0f265df61bc'
+phone011 = '+996504072710'
 
-api_id12 = '22136069'
-api_hash12 = 'b8e5b6ef920de3a548f53e233ab9c5c0'
-phone12 = '+447424459503'
+api_id012 = '22136069'
+api_hash012 = 'b8e5b6ef920de3a548f53e233ab9c5c0'
+phone012 = '+447424459503'
 
-api_id13 = '28054215'
-api_hash13 = 'dca1c54af532f7dc0df4509bb5cd06fc'
-phone13 = '+79016810191'
+api_id013 = '28054215'
+api_hash013 = 'dca1c54af532f7dc0df4509bb5cd06fc'
+phone013 = '+79016810191'
 
-api_id14 = '20880148'
-api_hash14 = '4cefa3607decdacf8995fa4faac6d9c0'
-phone14 = '+79199250579'
+api_id014 = '20880148'
+api_hash014 = '4cefa3607decdacf8995fa4faac6d9c0'
+phone014 = '+79199250579'
 
-api_id15 = '20074210'
-api_hash15 = '40bf0e5e8441de28f0e30ef64190725b'
-phone15 = '+79507244663'
+api_id015 = '20074210'
+api_hash015 = '40bf0e5e8441de28f0e30ef64190725b'
+phone015 = '+79507244663'
 
-api_id16 = '21931735'
-api_hash16 = '9b2e64e80a51e048e4f5062772b5ab7f'
-phone16 = '+380933888084'
+api_id016 = '21931735'
+api_hash016 = '9b2e64e80a51e048e4f5062772b5ab7f'
+phone016 = '+380933888084'
 
-api_id17 = '23037561'
-api_hash17 = '9e11fc4b8528a8f605fc157c2fdf71e7'
-phone17 = '+79961630209'
+api_id017 = '23037561'
+api_hash017 = '9e11fc4b8528a8f605fc157c2fdf71e7'
+phone017 = '+79961630209'
 
-api_id18 = '29141499'
-api_hash18 = '77b4d4c1b20f95d8a09b05a1c5f67578'
-phone18 = '+79159670843'
+api_id018 = '29141499'
+api_hash018 = '77b4d4c1b20f95d8a09b05a1c5f67578'
+phone018 = '+79159670843'
 
-api_id19 = '20205793'
-api_hash19 = '537c5d400f59a6629e4fa788fc135394'
-phone19 = '+79494496325'
+api_id019 = '20205793'
+api_hash019 = '537c5d400f59a6629e4fa788fc135394'
+phone019 = '+79494496325'
 
-api_id20 = '27464817'
-api_hash20 = '6c1ca996231bf26a05663aa787a0d1cc'
-phone20 = '+79781469611'
+api_id020 = '27464817'
+api_hash020 = '6c1ca996231bf26a05663aa787a0d1cc'
+phone020 = '+79781469611'
 
-api_id21 = '29104274'
-api_hash21 = '0b807245f3347d2d9c0b7704e29321b5'
-phone21 = '+380933908995'
+api_id021 = '29104274'
+api_hash021 = '0b807245f3347d2d9c0b7704e29321b5'
+phone021 = '+380933908995'
 
-api_id22 = '20242585'
-api_hash22 = '77312de9aab579af857c5d2fdb4e1d64'
-phone22 = '+27608684454'
+api_id022 = '20242585'
+api_hash022 = '77312de9aab579af857c5d2fdb4e1d64'
+phone022 = '+27608684454
 
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
@@ -112,160 +112,42 @@ phone02 = '+79787917812'
 cloud_password1 = '2303'
 
 # Создание клиентов 
-client1 = TelegramClient('session1', api_id1, api_hash1)
-client2 = TelegramClient('session2', api_id2, api_hash2)
-client3 = TelegramClient('session3', api_id3, api_hash3)
-client4 = TelegramClient('session4', api_id4, api_hash4)
-client5 = TelegramClient('session5', api_id5, api_hash5)
-client7 = TelegramClient('session7', api_id7, api_hash7)
-client8 = TelegramClient('session8', api_id8, api_hash8)
-client9 = TelegramClient('session9', api_id9, api_hash9)
-client10 = TelegramClient('session10', api_id10, api_hash10)
-client11 = TelegramClient('session11', api_id11, api_hash11)
-client12 = TelegramClient('session12', api_id12, api_hash12)
-client13 = TelegramClient('session13', api_id13, api_hash13)
-client14 = TelegramClient('session14', api_id14, api_hash14)
-client15 = TelegramClient('session15', api_id15, api_hash15)
-client16 = TelegramClient('session16', api_id16, api_hash16)
-client17 = TelegramClient('session17', api_id17, api_hash17)
-client18 = TelegramClient('session18', api_id18, api_hash18)
-client19 = TelegramClient('session19', api_id19, api_hash19)
-client20 = TelegramClient('session20', api_id20, api_hash20)
-client21 = TelegramClient('session21', api_id21, api_hash21)
-client22 = TelegramClient('session22', api_id22, api_hash22)
+client001 = TelegramClient('session001', api_id001, api_hash001)
+client002 = TelegramClient('session002', api_id002, api_hash002)
+client003 = TelegramClient('session003', api_id003, api_hash003)
+client004 = TelegramClient('session004', api_id004, api_hash004)
+client005 = TelegramClient('session005', api_id005, api_hash005)
+client007 = TelegramClient('session007', api_id007, api_hash007)
+client008 = TelegramClient('session008', api_id008, api_hash008)
+client009 = TelegramClient('session009', api_id009, api_hash009)
+client010 = TelegramClient('session010', api_id010, api_hash010)
+client011 = TelegramClient('session011', api_id011, api_hash011)
+client012 = TelegramClient('session012', api_id012, api_hash012)
+client013 = TelegramClient('session013', api_id013, api_hash013)
+client014 = TelegramClient('session014', api_id014, api_hash014)
+client015 = TelegramClient('session015', api_id015, api_hash015)
+client016 = TelegramClient('session016', api_id016, api_hash016)
+client017 = TelegramClient('session017', api_id017, api_hash017)
+client018 = TelegramClient('session018', api_id018, api_hash018)
+client019 = TelegramClient('session019', api_id019, api_hash019)
+client020 = TelegramClient('session020', api_id020, api_hash020)
+client021 = TelegramClient('session021', api_id021, api_hash021)
+client022 = TelegramClient('session022', api_id022, api_hash022)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
 # Авторизация
-client1.connect()
-if not client1.is_user_authorized():
-    client1.send_code_request(phone1)
-    try:
-        client1.sign_in(phone1, input('Session-1 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client1.sign_in(password=cloud_password1)
-client2.connect()
-if not client2.is_user_authorized():
-    client2.send_code_request(phone2)
-    client2.sign_in(phone2, input('Session-2 Введите код подтверждения: '))
-client3.connect()
-if not client3.is_user_authorized():
-    client3.send_code_request(phone3)
-    client3.sign_in(phone3, input('Session-3 Введите код подтверждения: '))
-client4.connect()
-if not client4.is_user_authorized():
-    client4.send_code_request(phone4)
-    client4.sign_in(phone4, input('Session-4 Введите код подтверждения: '))
-client5.connect()
-if not client5.is_user_authorized():
-    client5.send_code_request(phone5)
-    client5.sign_in(phone5, input('Session-5 Введите код подтверждения: '))
-client7.connect()
-if not client7.is_user_authorized():
-    client7.send_code_request(phone7)
-    client7.sign_in(phone7, input('Session-7 Введите код подтверждения: '))
-client8.connect()
-if not client8.is_user_authorized():
-    client8.send_code_request(phone8)
-    client8.sign_in(phone8, input('Session-8 Введите код подтверждения: '))
-client9.connect()
-if not client9.is_user_authorized():
-    client9.send_code_request(phone9)
-    try:
-        client9.sign_in(phone9, input('Session-9 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client9.sign_in(password=cloud_password1)
-client10.connect()
-if not client10.is_user_authorized():
-    client10.send_code_request(phone10)
-    try:
-        client10.sign_in(phone10, input('Session-10 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client10.sign_in(password=cloud_password1)
-client11.connect()
-if not client11.is_user_authorized():
-    client11.send_code_request(phone11)
-    try:
-        client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client11.sign_in(password=cloud_password1)
-client12.connect()
-if not client12.is_user_authorized():
-    client12.send_code_request(phone12)
-    try:
-        client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client12.sign_in(password=cloud_password1)
-client13.connect()
-if not client13.is_user_authorized():
-    client13.send_code_request(phone13)
-    try:
-        client13.sign_in(phone13, input('Session-13 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client13.sign_in(password=cloud_password1)
-client14.connect()
-if not client14.is_user_authorized():
-    client14.send_code_request(phone14)
-    try:
-        client14.sign_in(phone14, input('Session-14 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client14.sign_in(password=cloud_password1)
-client15.connect()
-if not client15.is_user_authorized():
-    client15.send_code_request(phone15)
-    try:
-        client15.sign_in(phone15, input('Session-15 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client15.sign_in(password=cloud_password1)
-client16.connect()
-if not client16.is_user_authorized():
-    client16.send_code_request(phone16)
-    try:
-        client16.sign_in(phone16, input('Session-16 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client16.sign_in(password=cloud_password1)
-client17.connect()
-if not client17.is_user_authorized():
-    client17.send_code_request(phone17)
-    try:
-        client17.sign_in(phone17, input('Session-17 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client17.sign_in(password=cloud_password1)
-client18.connect()
-if not client18.is_user_authorized():
-    client18.send_code_request(phone18)
-    try:
-        client18.sign_in(phone18, input('Session-18 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client18.sign_in(password=cloud_password1)
-client19.connect()
-if not client19.is_user_authorized():
-    client19.send_code_request(phone19)
-    try:
-        client19.sign_in(phone19, input('Session-19 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client19.sign_in(password=cloud_password1)
-client20.connect()
-if not client20.is_user_authorized():
-    client20.send_code_request(phone20)
-    try:
-        client20.sign_in(phone20, input('Session-20 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client20.sign_in(password=cloud_password1)
-client21.connect()
-if not client21.is_user_authorized():
-    client21.send_code_request(phone21)
-    try:
-        client21.sign_in(phone21, input('Session-21 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client21.sign_in(password=cloud_password1)
-client22.connect()
-if not client22.is_user_authorized():
-    client22.send_code_request(phone22)
-    try:
-        client22.sign_in(phone22, input('Session-22 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client22.sign_in(password=cloud_password1)
+clients1 = [client001, client002, client003, client004, client005, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client018, client019, client020, client021, client022]
+clients2 = [client01, client02]
+for client in clients1:
+    client.connect()
+    if not client.is_user_authorized():
+        client.send_code_request(client.phone)
+        try:
+            client.sign_in(client.phone, input(f'Session {client.session_file} Введите код подтверждения: '))
+        except SessionPasswordNeededError:
+            client.sign_in(password=cloud_password1)
+
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
