@@ -57,6 +57,10 @@ api_id11 = '27999436'
 api_hash11 = 'a762c27366b49c72c58cf0f265df61bc'
 phone11 = '+996504072710'
 
+api_id12 = '22136069:
+api_hash12 = 'b8e5b6ef920de3a548f53e233ab9c5c0
+phone12 = '+447424459503'
+
 api_id13 = '28054215'
 api_hash13 = 'dca1c54af532f7dc0df4509bb5cd06fc'
 phone13 = '+79016810191'
@@ -93,9 +97,9 @@ api_id21 = '29104274'
 api_hash21 = '0b807245f3347d2d9c0b7704e29321b5'
 phone21 = '+380933908995'
 
-api_id22 = '22902136'
-api_hash22 = 'cc60ee0240ad2bd8eb08d09a679f0732'
-phone22 = '+251983243323'
+api_id22 = '20242585'
+api_hash22 = '77312de9aab579af857c5d2fdb4e1d64'
+phone22 = '+447424459503'
 
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
@@ -113,6 +117,7 @@ client2 = TelegramClient('session2', api_id2, api_hash2)
 client3 = TelegramClient('session3', api_id3, api_hash3)
 client4 = TelegramClient('session4', api_id4, api_hash4)
 client5 = TelegramClient('session5', api_id5, api_hash5)
+client6 = TelegramClient('session6', api_id6, api_hash6)
 client7 = TelegramClient('session7', api_id7, api_hash7)
 client8 = TelegramClient('session8', api_id8, api_hash8)
 client9 = TelegramClient('session9', api_id9, api_hash9)
@@ -184,6 +189,13 @@ if not client11.is_user_authorized():
         client11.sign_in(phone11, input('Session-11 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client11.sign_in(password=cloud_password1)
+client12.connect()
+if not client12.is_user_authorized():
+    client12.send_code_request(phone12)
+    try:
+        client12.sign_in(phone12, input('Session-12 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client12.sign_in(password=cloud_password1)
 client13.connect()
 if not client13.is_user_authorized():
     client13.send_code_request(phone13)
@@ -274,6 +286,7 @@ client8.start()
 client9.start()
 client10.start()
 client11.start()
+client12.start()
 client13.start()
 client14.start()
 client15.start()
@@ -301,10 +314,10 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22]
+clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22]
 clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client01, client02]
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26']
+clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client01, client02]
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28']
 player_names2 = ['Тоука','Bisbaka']
 
 async def send_message(client, mine_evo, message):
