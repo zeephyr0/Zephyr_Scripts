@@ -139,6 +139,7 @@ client02 = TelegramClient('session02', api_id02, api_hash02)
 # Авторизация
 clients1 = [client001, client002, client003, client004, client005, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client018, client019, client020, client021, client022]
 clients2 = [client01, client02]
+clients3 = clients1 + clients2
 for client in clients1:
     client.connect()
     if not client.is_user_authorized():
@@ -157,30 +158,10 @@ if not client02.is_user_authorized():
     client02.send_code_request(phone02)
     client02.sign_in(phone02, input('Session-02 Введите код подтверждения: '))
 
-# Запуск клиентов
-client1.start()
-client2.start()
-client3.start()
-client4.start()
-client5.start()
-client7.start()
-client8.start()
-client9.start()
-client10.start()
-client11.start()
-client12.start()
-client13.start()
-client14.start()
-client15.start()
-client16.start()
-client17.start()
-client18.start()
-client19.start()
-client20.start()
-client21.start()
-client22.start()
-client01.start()
-client02.start()
+for client in clients1:
+    client.start()
+for client in clients2:
+    client.start()
 
 # Адресы
 mineEvo_channel = '@mine_evo_news'
@@ -196,9 +177,6 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-clients1 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22]
-clients2 = [client01, client02]
-clients3 = [client1, client2, client3, client4, client5, client7, client8, client9, client10, client11, client12, client13, client14, client15, client16, client17, client18, client19, client20, client21, client22, client01, client02]
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28']
 player_names2 = ['Тоука','Bisbaka']
 
@@ -226,13 +204,13 @@ async def send_message(client, mine_evo, message):
             print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
             return
 
-@client1.on(events.NewMessage(pattern='m.off'))
+@client001.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
     global stop_sending1
     stop_sending1 = True
     await event.message.edit('❌Отправка сообщений выключена')
 
-@client1.on(events.NewMessage(pattern='m.on'))
+@client001.on(events.NewMessage(pattern='m.on'))
 async def start_sending_messages(event):
     global stop_sending1
     stop_sending1 = False
@@ -250,7 +228,7 @@ async def start_sending_messages(event):
     stop_sending2 = False
     await event.message.edit('✅Отправка сообщений включена')
 
-@client1.on(events.NewMessage(pattern='m.send'))
+@client001.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages1(event):
     global count1
     global cycles1
@@ -302,7 +280,7 @@ async def send_multiple_messages2(event):
         count2 += 2
         cycles2 += 1
 
-@client1.on(events.NewMessage(pattern='gl.send'))
+@client001.on(events.NewMessage(pattern='gl.send'))
 async def send_multiple_messages3(event):
     global count2
     global cycles2
@@ -354,7 +332,7 @@ async def send_multiple_messages4(event):
 
 
 # Модуль для проверки кейсов
-@client1.on(events.NewMessage(pattern='m.cases'))
+@client001.on(events.NewMessage(pattern='m.cases'))
 async def cases_info1(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
@@ -455,7 +433,7 @@ for i, client in enumerate(clients2):
 
 
 
-@client1.on(events.NewMessage(pattern='m.info'))
+@client001.on(events.NewMessage(pattern='m.info'))
 async def get_info1(event):
     global count1
     global cycles1
@@ -474,7 +452,7 @@ async def get_info1(event):
     await send_message(client01, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count2}\n🌀 Пройдено циклов: {cycles2}')
 
 # Промо-Коды
-@client1.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
+@client001.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
 async def process_new_message(event):
     # Сообщение которое будет проверяться 
     message = event.message
