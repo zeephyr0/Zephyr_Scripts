@@ -143,9 +143,9 @@ clients3 = clients1 + clients2
 for client in clients1:
     client.connect()
     if not client.is_user_authorized():
-        client.send_code_request(client.phone)
+        client.send_code_request(client._phone)
         try:
-            client.sign_in(client.phone, input(f'Session {client.session_file} Введите код подтверждения: '))
+            client.sign_in(client._phone, input(f'Session {client.session_file} Введите код подтверждения: '))
         except SessionPasswordNeededError:
             client.sign_in(password=cloud_password1)
 
