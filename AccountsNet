@@ -140,97 +140,16 @@ client02 = TelegramClient('session02', api_id02, api_hash02)
 clients1 = [client001, client002, client003, client004, client005, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client018, client019, client020, client021, client022]
 clients2 = [client01, client02]
 clients3 = clients1 + clients2
-client001.connect()
-if not client001.is_user_authorized():
-    client001.send_code_request(phone001)
-    try:
-        client001.sign_in(phone001, input('Session-001 Введите код подтверждения: '), password=cloud_password001)
-    except SessionPasswordNeededError:
-        client001.sign_in(password=cloud_password001)
-client002.connect()
-if not client002.is_user_authorized():
-    client002.send_code_request(phone002)
-    client002.sign_in(phone002, input('Session-002 Введите код подтверждения: '))
-client003.connect()
-if not client003.is_user_authorized():
-    client003.send_code_request(phone003)
-    client003.sign_in(phone003, input('Session-003 Введите код подтверждения: '))
-client004.connect()
-if not client004.is_user_authorized():
-    client004.send_code_request(phone004)
-    client004.sign_in(phone004, input('Session-004 Введите код подтверждения: '))
-client005.connect()
-if not client005.is_user_authorized():
-    client005.send_code_request(phone005)
-    client005.sign_in(phone005, input('Session-005 Введите код подтверждения: '))
-client006.connect()
-if not client006.is_user_authorized():
-    client006.send_code_request(phone006)
-    client006.sign_in(phone006, input('Session-006 Введите код подтверждения: '))
-client007.connect()
-if not client007.is_user_authorized():
-    client007.send_code_request(phone007)
-    client007.sign_in(phone007, input('Session-007 Введите код подтверждения: '))
-client008.connect()
-if not client008.is_user_authorized():
-    client008.send_code_request(phone008)
-    client008.sign_in(phone008, input('Session-008 Введите код подтверждения: '))
-client009.connect()
-if not client009.is_user_authorized():
-    client009.send_code_request(phone009)
-    client009.sign_in(phone009, input('Session-009 Введите код подтверждения: '))
-client010.connect()
-if not client010.is_user_authorized():
-    client010.send_code_request(phone010)
-    client010.sign_in(phone010, input('Session-010 Введите код подтверждения: '))
-client011.connect()
-if not client011.is_user_authorized():
-    client011.send_code_request(phone011)
-    client011.sign_in(phone011, input('Session-011 Введите код подтверждения: '))
-client012.connect()
-if not client012.is_user_authorized():
-    client012.send_code_request(phone012)
-    client012.sign_in(phone012, input('Session-012 Введите код подтверждения: '))
-client013.connect()
-if not client013.is_user_authorized():
-    client013.send_code_request(phone013)
-    client013.sign_in(phone013, input('Session-013 Введите код подтверждения: '))
-client014.connect()
-if not client014.is_user_authorized():
-    client014.send_code_request(phone014)
-    client014.sign_in(phone014, input('Session-014 Введите код подтверждения: '))
-client015.connect()
-if not client015.is_user_authorized():
-    client015.send_code_request(phone015)
-    client015.sign_in(phone015, input('Session-015 Введите код подтверждения: '))
-client016.connect()
-if not client016.is_user_authorized():
-    client016.send_code_request(phone016)
-    client016.sign_in(phone016, input('Session-016 Введите код подтверждения: '))
-client017.connect()
-if not client017.is_user_authorized():
-    client017.send_code_request(phone017)
-    client017.sign_in(phone017, input('Session-017 Введите код подтверждения: '))
-client018.connect()
-if not client018.is_user_authorized():
-    client018.send_code_request(phone018)
-    client018.sign_in(phone018, input('Session-018 Введите код подтверждения: '))
-client019.connect()
-if not client019.is_user_authorized():
-    client019.send_code_request(phone019)
-    client019.sign_in(phone019, input('Session-019 Введите код подтверждения: '))
-client020.connect()
-if not client020.is_user_authorized():
-    client020.send_code_request(phone020)
-    client020.sign_in(phone020, input('Session-020 Введите код подтверждения: '))
-client021.connect()
-if not client021.is_user_authorized():
-    client021.send_code_request(phone021)
-    client021.sign_in(phone021, input('Session-021 Введите код подтверждения: '))
-client022.connect()
-if not client022.is_user_authorized():
-    client022.send_code_request(phone022)
-    client022.sign_in(phone022, input('Session-022 Введите код подтверждения: '))
+# Авторизация
+for client in clients1:
+    client.connect()
+    if not client.is_user_authorized():
+        client.send_code_request(eval(f'phone{client.session_name[-1]}'))
+        try:
+            client.sign_in(eval(f'phone{client.session_name[-1]}'), input(f'Session-{client.session_name[-1]} Введите код подтверждения: '), password=eval(f'cloud_password{client.session_name[-1]}'))
+        except SessionPasswordNeededError:
+            client.sign_in(password=eval(f'cloud_password{client.session_name[-1]}'))
+
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
