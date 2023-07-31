@@ -99,7 +99,7 @@ phone021 = '+380933908995'
 
 api_id022 = '20242585'
 api_hash022 = '77312de9aab579af857c5d2fdb4e1d64'
-phone022 = '+27608684454'
+phone022 = '+447424459503'
 
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
@@ -141,14 +141,166 @@ clients1 = [client001, client002, client003, client004, client005, client007, cl
 clients2 = [client01, client02]
 clients3 = clients1 + clients2
 # Авторизация
-for client in clients1:
-    client.connect()
-    if not client.is_user_authorized():
-        client.send_code_request(eval(f'phone{client.session_name[-1]}'))
-        try:
-            client.sign_in(eval(f'phone{client.session_name[-1]}'), input(f'Session-{client.session_name[-1]} Введите код подтверждения: '), password=eval(f'cloud_password{client.session_name[-1]}'))
-        except SessionPasswordNeededError:
-            client.sign_in(password=eval(f'cloud_password{client.session_name[-1]}'))
+client001.connect()
+if not client001.is_user_authorized():
+    client001.send_code_request(phone001)
+    try:
+        client001.sign_in(phone001, input('Session-001 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client001.sign_in(password=cloud_password1)
+
+client002.connect()
+if not client002.is_user_authorized():
+    client002.send_code_request(phone002)
+    try:
+        client002.sign_in(phone002, input('Session-002 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client002.sign_in(password=cloud_password1)
+
+client003.connect()
+if not client003.is_user_authorized():
+    client003.send_code_request(phone003)
+    try:
+        client003.sign_in(phone003, input('Session-003 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client003.sign_in(password=cloud_password1)
+
+client004.connect()
+if not client004.is_user_authorized():
+    client004.send_code_request(phone004)
+    try:
+        client004.sign_in(phone004, input('Session-004 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client004.sign_in(password=cloud_password1)
+
+client005.connect()
+if not client005.is_user_authorized():
+    client005.send_code_request(phone005)
+    try:
+        client005.sign_in(phone005, input('Session-005 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client005.sign_in(password=cloud_password1)
+
+client007.connect()
+if not client007.is_user_authorized():
+    client007.send_code_request(phone007)
+    try:
+        client007.sign_in(phone007, input('Session-007 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client007.sign_in(password=cloud_password1)
+
+client008.connect()
+if not client008.is_user_authorized():
+    client008.send_code_request(phone008)
+    try:
+        client008.sign_in(phone008, input('Session-008 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client008.sign_in(password=cloud_password1)
+
+client009.connect()
+if not client009.is_user_authorized():
+    client009.send_code_request(phone009)
+    try:
+        client009.sign_in(phone009, input('Session-009 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client009.sign_in(password=cloud_password1)
+
+client010.connect()
+if not client010.is_user_authorized():
+    client010.send_code_request(phone010)
+    try:
+        client010.sign_in(phone010, input('Session-010 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client010.sign_in(password=cloud_password1)
+
+client011.connect()
+if not client011.is_user_authorized():
+    client011.send_code_request(phone011)
+    try:
+        client011.sign_in(phone011, input('Session-011 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client011.sign_in(password=cloud_password1)
+
+client012.connect()
+if not client012.is_user_authorized():
+    client012.send_code_request(phone012)
+    try:
+        client012.sign_in(phone012, input('Session-012 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client012.sign_in(password=cloud_password1)
+
+client013.connect()
+if not client013.is_user_authorized():
+    client013.send_code_request(phone013)
+    try:
+        client013.sign_in(phone013, input('Session-013 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client013.sign_in(password=cloud_password1)
+
+client014.connect()
+if not client014.is_user_authorized():
+    client014.send_code_request(phone014)
+    try:
+        client014.sign_in(phone014, input('Session-014 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client014.sign_in(password=cloud_password1)
+
+client015.connect()
+if not client015.is_user_authorized():
+    client015.send_code_request(phone015)
+    try:
+        client015.sign_in(phone015, input('Session-015 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client015.sign_in(password=cloud_password1)
+
+client016.connect()
+if not client016.is_user_authorized():
+    client016.send_code_request(phone016)
+    try:
+        client016.sign_in(phone016, input('Session-016 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client016.sign_in(password=cloud_password1)
+
+client017.connect()
+if not client017.is_user_authorized():
+    client017.send_code_request(phone017)
+    try:
+        client017.sign_in(phone017, input('Session-017 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client017.sign_in(password=cloud_password1)
+
+client018.connect()
+if not client018.is_user_authorized():
+    client018.send_code_request(phone018)
+    try:
+        client018.sign_in(phone018, input('Session-018 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client018.sign_in(password=cloud_password1)
+
+client019.connect()
+if not client019.is_user_authorized():
+    client019.send_code_request(phone019)
+    try:
+        client019.sign_in(phone019, input('Session-019 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client019.sign_in(password=cloud_password1)
+
+client020.connect()
+if not client020.is_user_authorized():
+    client020.send_code_request(phone020)
+    try:
+        client020.sign_in(phone020, input('Session-020 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client020.sign_in(password=cloud_password1)
+
+client021.connect()
+if not client021.is_user_authorized():
+    client021.send_code_request(phone021)
+    try:
+        client021.sign_in(phone021, input('Session-021 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client021.sign_in(password=cloud_password1)
+
 
 client01.connect()
 if not client01.is_user_authorized():
