@@ -118,7 +118,6 @@ client016 = TelegramClient('session016', api_id016, api_hash016)
 client017 = TelegramClient('session017', api_id017, api_hash017)
 client018 = TelegramClient('session018', api_id018, api_hash018)
 client019 = TelegramClient('session019', api_id019, api_hash019)
-client020 = TelegramClient('session020', api_id020, api_hash020)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
