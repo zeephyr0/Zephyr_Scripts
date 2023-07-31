@@ -279,9 +279,7 @@ if not client02.is_user_authorized():
     client02.send_code_request(phone02)
     client02.sign_in(phone02, input('Session-02 Введите код подтверждения: '))
 
-for client in clients1:
-    client.start()
-for client in clients2:
+for client in clients3:
     client.start()
 
 # Адресы
