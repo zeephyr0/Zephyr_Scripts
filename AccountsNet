@@ -37,6 +37,10 @@ api_id005 = '19179697'
 api_hash005 = 'dd96018b9f53d55342f0c2c754c4fb29'
 phone005 = '+79697678142'
 
+api_id006 = '10904880'
+api_hash006 = '0bce5ceebd00a5fe38dff632595b0bad'
+phone006 = '+79587314180'
+
 api_id007 = '29202662'
 api_hash007 = 'e093efde1201cc926ad478cc129a4ff5'
 phone007 = '+213774991926'
@@ -101,6 +105,7 @@ client002 = TelegramClient('session002', api_id002, api_hash002)
 client003 = TelegramClient('session003', api_id003, api_hash003)
 client004 = TelegramClient('session004', api_id004, api_hash004)
 client005 = TelegramClient('session005', api_id005, api_hash005)
+client006 = TelegramClient('session006', api_id006, api_hash006)
 client007 = TelegramClient('session007', api_id007, api_hash007)
 client008 = TelegramClient('session008', api_id008, api_hash008)
 client009 = TelegramClient('session009', api_id009, api_hash009)
@@ -117,7 +122,7 @@ client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019]
 clients2 = [client01, client02]
 clients3 = clients1 + clients2
 # Авторизация
@@ -160,6 +165,14 @@ if not client005.is_user_authorized():
         client005.sign_in(phone005, input('Session-005 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client005.sign_in(password=cloud_password1)
+
+client006.connect()
+if not client006.is_user_authorized():
+    client006.send_code_request(phone006)
+    try:
+        client006.sign_in(phone006, input('Session-006 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client006.sign_in(password=cloud_password1)
 
 client007.connect()
 if not client007.is_user_authorized():
