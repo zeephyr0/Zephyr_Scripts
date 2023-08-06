@@ -109,6 +109,18 @@ api_id024 = '28645267'
 api_hash024 = '9bb99e599cd7d22813f841c7a7ce47c6'
 phone024 = '+40701131736'
 
+api_id025 = '20410656'
+api_hash025 = '7f48793a7737fe3a910874c38a5f6e21'
+phone025 = '+60149256978'
+
+api_id026 = '29323507'
+api_hash026 = 'da5a2d254f6fe3666c0a278913b66b90'
+phone026 = '+447470541254'
+
+api_id027 = '24106632'
+api_hash027 = '65093abacde2ca064ce8802c84863fec'
+phone027 = '+447771411600'
+
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
@@ -143,11 +155,14 @@ client021 = TelegramClient('session021', api_id021, api_hash021)
 client022 = TelegramClient('session022', api_id022, api_hash022)
 client023 = TelegramClient('session023', api_id023, api_hash023)
 client024 = TelegramClient('session024', api_id024, api_hash024)
+client025 = TelegramClient('session025', api_id025, api_hash025)
+client026 = TelegramClient('session026', api_id026, api_hash026)
+client027 = TelegramClient('session027', api_id027, api_hash027)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client026, client027]
 clients2 = [client01, client02]
 clients3 = clients1 + clients2
 # Авторизация
@@ -335,6 +350,30 @@ if not client024.is_user_authorized():
     except SessionPasswordNeededError:
         client024.sign_in(password=cloud_password1)
 
+client025.connect()
+if not client025.is_user_authorized():
+    client025.send_code_request(phone025)
+    try:
+        client025.sign_in(phone025, input('Session-025 Введите код подтверждения: '), password=cloud_password2)
+    except SessionPasswordNeededError:
+        client025.sign_in(password=cloud_password1)
+
+client026.connect()
+if not client026.is_user_authorized():
+    client026.send_code_request(phone026)
+    try:
+        client026.sign_in(phone026, input('Session-026 Введите код подтверждения: '), password=cloud_password3)
+    except SessionPasswordNeededError:
+        client026.sign_in(password=cloud_password1)
+
+client027.connect()
+if not client027.is_user_authorized():
+    client027.send_code_request(phone027)
+    try:
+        client027.sign_in(phone027, input('Session-027 Введите код подтверждения: '), password=cloud_password4)
+    except SessionPasswordNeededError:
+        client027.sign_in(password=cloud_password1)
+
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -361,32 +400,28 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34']
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37']
 player_names2 = ['Тоука','Bisbaka']
 
 async def send_message(client, mine_evo, message):
-    while True:
-        try:
-            await asyncio.sleep(2)           
-            await client.send_message(mine_evo, message)
-        except FloodWaitError as e:
-            # Обработка ошибки FloodWaitError
-            print(f"Ошибка FloodWaitError для клиента {client}: {e}")
-            clients1.disconnect(client)
-        except ValueError as e:
-            # Обработка ошибки, если клиент не найден или нет доступа к аккаунту
-            print(f"Ошибка: {e} для клиента {client}")
-            clients1.disconnect(client)
-        except ConnectionError:
-            print('Ошибка подключения. Повторное подключение...')
-            await asyncio.sleep(15)  # Ждем 5 секунд перед повторной попыткой
-            continue
-        except KeyboardInterrupt:
-            break
-        except Exception as e:
-            # Обработка других исключений
-            print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
-            return
+    try:
+        await client.send_message(mine_evo, message)
+    except FloodWaitError as e:
+        # Обработка ошибки FloodWaitError
+        print(f"Ошибка FloodWaitError для клиента {client}: {e}")
+        clients1.disconnect(client)
+    except ValueError as e:
+        # Обработка ошибки, если клиент не найден или нет доступа к аккаунту
+        print(f"Ошибка: {e} для клиента {client}")
+        clients1.disconnect(client)
+    except ConnectionError:
+        print('Ошибка подключения. Повторное подключение...')
+        await asyncio.sleep(15)  # Ждем 5 секунд перед повторной попыткой
+    except KeyboardInterrupt:
+        pass
+    except Exception as e:
+        # Обработка других исключений
+        print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
 
 @client001.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
