@@ -113,13 +113,9 @@ api_id025 = '20410656'
 api_hash025 = '7f48793a7737fe3a910874c38a5f6e21'
 phone025 = '+60149256978'
 
-api_id026 = '29323507'
-api_hash026 = 'da5a2d254f6fe3666c0a278913b66b90'
-phone026 = '+447470541254'
-
-api_id027 = '24106632'
-api_hash027 = '65093abacde2ca064ce8802c84863fec'
-phone027 = '+447771411600'
+api_id026 = '24106632'
+api_hash026 = '65093abacde2ca064ce8802c84863fec'
+phone026 = '+447771411600'
 
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
@@ -157,12 +153,11 @@ client023 = TelegramClient('session023', api_id023, api_hash023)
 client024 = TelegramClient('session024', api_id024, api_hash024)
 client025 = TelegramClient('session025', api_id025, api_hash025)
 client026 = TelegramClient('session026', api_id026, api_hash026)
-client027 = TelegramClient('session027', api_id027, api_hash027)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client026, client027]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client026]
 clients2 = [client01, client02]
 clients3 = clients1 + clients2
 # Авторизация
