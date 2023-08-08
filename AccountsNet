@@ -361,14 +361,6 @@ if not client026.is_user_authorized():
     except SessionPasswordNeededError:
         client026.sign_in(password=cloud_password1)
 
-client027.connect()
-if not client027.is_user_authorized():
-    client027.send_code_request(phone027)
-    try:
-        client027.sign_in(phone027, input('Session-027 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client027.sign_in(password=cloud_password1)
-
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
