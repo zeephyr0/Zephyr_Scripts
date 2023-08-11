@@ -8,6 +8,7 @@ from telethon.tl.functions.messages import SendMessageRequest
 from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
 from telethon.errors import FloodWaitError
 from telethon.errors import SessionPasswordNeededError
+import datetime
 import requests
 import time
 import random
@@ -125,7 +126,16 @@ api_id02 = '28598285'
 api_hash02 = '01cb9ab33587a314e3b6bfeab6d91e6e'
 phone02 = '+79787917812'
 
+api_id03 = '20405618'
+api_hash03 = '88510a339fb00837a920a82a34d443a5'
+phone03 = '+14638009973'
+
+api_id04 = '20253928'
+api_hash04 = 'b6a31ca946b72d981c04f0b306c6de96'
+phone04 = '+40701162108'
+
 cloud_password1 = '2303'
+cloud_password2 = 'rein'
 
 # Создание клиентов 
 client001 = TelegramClient('session001', api_id001, api_hash001)
@@ -155,10 +165,15 @@ client025 = TelegramClient('session025', api_id025, api_hash025)
 client026 = TelegramClient('session026', api_id026, api_hash026)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
+client03 = TelegramClient('session03', api_id03, api_hash03)
+client04 = TelegramClient('session04', api_id04, api_hash04)
+
+# Время запуска скрипта
+start_time = datetime.datetime.now()
 
 # Авторизация
 clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client026]
-clients2 = [client01, client02]
+clients2 = [client01, client02, client03, client04]
 clients3 = clients1 + clients2
 # Авторизация
 client001.connect()
@@ -364,11 +379,34 @@ if not client026.is_user_authorized():
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
-    client01.sign_in(phone01, input('Session-01 Введите код подтверждения: '))
+    try:
+        client01.sign_in(phone01, input('Session-01 Введите код подтверждения: '), password=cloud_password2)
+    except SessionPasswordNeededError:
+        client01.sign_in(password=cloud_password2)
+
 client02.connect()
 if not client02.is_user_authorized():
     client02.send_code_request(phone02)
-    client02.sign_in(phone02, input('Session-02 Введите код подтверждения: '))
+    try:
+        client02.sign_in(phone02, input('Session-02 Введите код подтверждения: '), password=cloud_password2)
+    except SessionPasswordNeededError:
+        client02.sign_in(password=cloud_password2)
+
+client03.connect()
+if not client03.is_user_authorized():
+    client03.send_code_request(phone03)
+    try:
+        client03.sign_in(phone03, input('Session-03 Введите код подтверждения: '), password=cloud_password2)
+    except SessionPasswordNeededError:
+        client03.sign_in(password=cloud_password2)
+
+client04.connect()
+if not client04.is_user_authorized():
+    client04.send_code_request(phone04)
+    try:
+        client04.sign_in(phone04, input('Session-04 Введите код подтверждения: '), password=cloud_password2)
+    except SessionPasswordNeededError:
+        client04.sign_in(password=cloud_password2)
 
 for client in clients3:
     client.start()
@@ -388,7 +426,7 @@ stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
 player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37']
-player_names2 = ['Тоука','Bisbaka']
+player_names2 = ['Тоука','Bisbaka', 'Soufle', 'Unier']
 
 async def send_message(client, mine_evo, message):
     try:
@@ -453,7 +491,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 22
+        count1 += 26
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -483,7 +521,7 @@ async def send_multiple_messages2(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count2 += 2
+        count2 += 4
         cycles2 += 1
 
 @client001.on(events.NewMessage(pattern='gl.send'))
@@ -508,7 +546,7 @@ async def send_multiple_messages3(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 2
+        count1 += 4
         cycles1 += 1
 
 @client01.on(events.NewMessage(pattern='gl.send'))
@@ -533,7 +571,7 @@ async def send_multiple_messages4(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 22
+        count1 += 26
         cycles1 += 1
 
 
@@ -637,25 +675,32 @@ for i, client in enumerate(clients2):
                 await asyncio.sleep(2)
                 await send_transfer_messages2(client, event)
 
-
+# Функция определения времени работы скрипта
+def get_elapsed_time():
+    current_time = datetime.datetime.now()
+    elapsed_time = current_time - start_time
+    elapsed_time_str = str(elapsed_time).split('.')[0]  # Отсекаем миллисекунды
+    return elapsed_time_str
 
 @client001.on(events.NewMessage(pattern='m.info'))
 async def get_info1(event):
     global count1
     global cycles1
+    elapsed_time_str = get_elapsed_time()
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client1, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}')
+    await send_message(client1, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
 
 @client01.on(events.NewMessage(pattern='m.info'))
-async def get_info1(event):
+async def get_info2(event):
     global count2
     global cycles2
+    elapsed_time_str = get_elapsed_time()
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client01, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count2}\n🌀 Пройдено циклов: {cycles2}')
+    await send_message(client01, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count2}\n🌀 Пройдено циклов: {cycles2}\n⌛ Время работы скрипта: {elapsed_time_str}')
 
 # Промо-Коды
 @client001.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
