@@ -410,6 +410,7 @@ if not client04.is_user_authorized():
 
 for client in clients3:
     client.start()
+    print('Клиенты успешно запущены!')
 
 # Адресы
 mineEvo_channel = '@mine_evo_news'
