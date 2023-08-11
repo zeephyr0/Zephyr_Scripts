@@ -134,6 +134,14 @@ api_id030 = '24093503'
 api_hash030 = 'a052fff2a25eb5dc6d609295f26ce023'
 phone030 = '+905052205199'
 
+api_id031 = '22353684'
+api_hash031 = '98cf980e06b08c566679c9e17b317a41'
+phone031 = '+447983221564'
+
+api_id032 = '28254953'
+api_hash032 = '85a1580311447eaec43f26c0c12e7cda'
+phone032 = '+447405618130'
+
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
@@ -562,7 +570,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 26
+        count1 += 32
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -642,7 +650,7 @@ async def send_multiple_messages4(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 26
+        count1 += 32
         cycles1 += 1
 
 
