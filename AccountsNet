@@ -142,6 +142,14 @@ api_id032 = '28254953'
 api_hash032 = '85a1580311447eaec43f26c0c12e7cda'
 phone032 = '+447405618130'
 
+api_id033 = '23432483'
+api_hash033 = '68d100c6a514e67bf60ff86745bca406'
+phone033 = '+79857390622'
+
+api_id034 = '27837188'
+api_hash034 = '4749819f624de61b9b065220039014e4'
+phone034 = '+905342202995'
+
 api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
@@ -193,6 +201,8 @@ client029 = TelegramClient('session029', api_id029, api_hash029)
 client030 = TelegramClient('session030', api_id030, api_hash030)
 client031 = TelegramClient('session031', api_id031, api_hash031)
 client032 = TelegramClient('session032', api_id032, api_hash032)
+client033 = TelegramClient('session033', api_id033, api_hash033)
+client034 = TelegramClient('session034', api_id034, api_hash034)
 client01 = TelegramClient('session01', api_id01, api_hash01)
 client02 = TelegramClient('session02', api_id02, api_hash02)
 client03 = TelegramClient('session03', api_id03, api_hash03)
@@ -202,7 +212,7 @@ client04 = TelegramClient('session04', api_id04, api_hash04)
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client027, client028, client029, client030, client031, client032]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client027, client028, client029, client030, client031, client032, client033, client034]
 clients2 = [client01, client02, client03, client04]
 clients3 = clients1 + clients2
 # Авторизация
@@ -454,6 +464,22 @@ if not client032.is_user_authorized():
     except SessionPasswordNeededError:
         client032.sign_in(password=cloud_password1)
 
+client033.connect()
+if not client033.is_user_authorized():
+    client033.send_code_request(phone033)
+    try:
+        client033.sign_in(phone033, input('Session-033 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client033.sign_in(password=cloud_password1)
+
+client034.connect()
+if not client034.is_user_authorized():
+    client034.send_code_request(phone034)
+    try:
+        client034.sign_in(phone034, input('Session-034 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client034.sign_in(password=cloud_password1)
+
 client01.connect()
 if not client01.is_user_authorized():
     client01.send_code_request(phone01)
@@ -570,7 +596,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 32
+        count1 += 34
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -650,7 +676,7 @@ async def send_multiple_messages4(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 32
+        count1 += 34
         cycles1 += 1
 
 
