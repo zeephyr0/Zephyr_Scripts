@@ -531,7 +531,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 33
+        count1 += 29
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -611,7 +611,7 @@ async def send_multiple_messages4(event):
         await asyncio.gather(*coroutines)
         # Задержка
         await asyncio.sleep(2)
-        count1 += 33
+        count1 += 29
         cycles1 += 1
 
 
@@ -730,7 +730,7 @@ async def get_info1(event):
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client001, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: 33\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
+    await send_message(client001, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
 
 @client01.on(events.NewMessage(pattern='m.info'))
 async def get_info2(event):
