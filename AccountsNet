@@ -126,9 +126,9 @@ api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
 
-api_id05 = '28598285'
-api_hash05 = '01cb9ab33587a314e3b6bfeab6d91e6e'
-phone05 = '+79787917812'
+api_id02 = '28598285'
+api_hash0 = '01cb9ab33587a314e3b6bfeab6d91e6e'
+phone02 = '+79787917812'
 
 api_id03 = '20405618'
 api_hash03 = '88510a339fb00837a920a82a34d443a5'
@@ -169,7 +169,7 @@ client026 = TelegramClient('session026', api_id026, api_hash026)
 client027 = TelegramClient('session027', api_id027, api_hash027)
 client028 = TelegramClient('session028', api_id028, api_hash028)
 client01 = TelegramClient('session01', api_id01, api_hash01)
-client05 = TelegramClient('session05', api_id05, api_hash05)
+client02 = TelegramClient('session02', api_id02, api_hash02)
 client03 = TelegramClient('session03', api_id03, api_hash03)
 client04 = TelegramClient('session04', api_id04, api_hash04)
 
@@ -178,7 +178,7 @@ start_time = datetime.datetime.now()
 
 # Авторизация
 clients1 = [client001, client002, client003, client004, client005, client006, client008, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client027, client028]
-clients2 = [client01, client05, client03, client04]
+clients2 = [client01, client02, client03, client04]
 clients3 = clients1 + clients2
 # Авторизация
 client001.connect()
@@ -397,13 +397,13 @@ if not client01.is_user_authorized():
     except SessionPasswordNeededError:
         client01.sign_in(password=cloud_password2)
 
-client05.connect()
-if not client05.is_user_authorized():
-    client05.send_code_request(phone05)
+client02.connect()
+if not client02.is_user_authorized():
+    client02.send_code_request(phone02)
     try:
-        client05.sign_in(phone05, input('Session-02 Введите код подтверждения: '), password=cloud_password2)
+        client02.sign_in(phone02, input('Session-02 Введите код подтверждения: '), password=cloud_password2)
     except SessionPasswordNeededError:
-        client05.sign_in(password=cloud_password2)
+        client02.sign_in(password=cloud_password2)
 
 client03.connect()
 if not client03.is_user_authorized():
