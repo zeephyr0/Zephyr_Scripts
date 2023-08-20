@@ -126,17 +126,17 @@ api_id01 = '29017932'
 api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
 phone01 = '+79783210112'
 
-api_id02 = '28598285'
-api_hash02 = '01cb9ab33587a314e3b6bfeab6d91e6e'
-phone02 = '+79787917812'
+api_id02 = '20253928'
+api_hash02 = 'b6a31ca946b72d981c04f0b306c6de96'
+phone02 = '+40701162108'
 
 api_id03 = '20405618'
 api_hash03 = '88510a339fb00837a920a82a34d443a5'
 phone03 = '+14638009973'
 
-api_id04 = '20253928'
-api_hash04 = 'b6a31ca946b72d981c04f0b306c6de96'
-phone04 = '+40701162108'
+api_id04 = '28598285'
+api_hash04 = '01cb9ab33587a314e3b6bfeab6d91e6e'
+phone04 = '+79787917812'
 
 cloud_password1 = '2303'
 cloud_password2 = 'rein'
