@@ -169,7 +169,7 @@ client026 = TelegramClient('session026', api_id026, api_hash026)
 client027 = TelegramClient('session027', api_id027, api_hash027)
 client028 = TelegramClient('session028', api_id028, api_hash028)
 client01 = TelegramClient('session01', api_id01, api_hash01)
-client05 = TelegramClient('session02', api_id02, api_hash02)
+client05 = TelegramClient('session05', api_id05, api_hash05)
 client03 = TelegramClient('session03', api_id03, api_hash03)
 client04 = TelegramClient('session04', api_id04, api_hash04)
 
@@ -423,7 +423,8 @@ if not client04.is_user_authorized():
 
 for client in clients3:
     client.start()
-    print('Клиенты успешно запущены!')
+
+print('Клиенты успешно запущены!')
 
 # Адресы
 mineEvo_channel = '@mine_evo_news'
