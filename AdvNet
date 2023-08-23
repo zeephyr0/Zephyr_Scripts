@@ -20,6 +20,14 @@ api_hash = 'd0f061c565991d6ed274285c0d032f7a'  # Замени на свой API 
 # Создай экземпляр TelegramClient
 client = TelegramClient('session_name', api_id, api_hash)
 
+async def process_updates(chat_id):
+    updates = await client.get_messages(chat_id, limit=10)
+    for update in updates:
+        if update.chat_id == chat_id and await check_subscription(update):
+            if username in update.message:
+                await subscribe_to_channels(chat_id)
+                break
+
 async def check_subscription(message):
     # Проверка сообщений на наличие требования подписки
     return ("подписаться" in message.message.lower() or
@@ -34,18 +42,11 @@ async def subscribe_to_channels(chat_id):
         pass
 
 with client:
-    for _ in range(10):  # Задай количество отправляемых сообщений
+    for _ in range(10):
         chat_id = random.choice(chat_ids)
         message = random.choice(messages)
 
-        # Отправка сообщения
         client.send_message(chat_id, message)
 
-        # Проверка наличия требования подписки
-        time.sleep(delay)  # Задержка перед отправкой следующего сообщения
-        updates = await client.get_messages(chat_id, limit=10)
-        for update in updates:
-            if update.chat_id == chat_id and await check_subscription(update):
-                if username in update.message:
-                    await subscribe_to_channels(chat_id)
-                    break
+        time.sleep(delay)
+        await process_updates(chat_id)
