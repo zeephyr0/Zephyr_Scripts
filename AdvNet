@@ -1,8 +1,8 @@
+import asyncio
 import random
 import time
 from telethon.sync import TelegramClient
 from telethon.errors import UserAlreadyParticipantError
-
 # Задай список чатов и сообщений
 chat_ids = ["-1001870697043"]  # Замени на реальные chat_id
 messages = ["Сообщение 1", "Сообщение 2", "Сообщение 3"]  # Замени на реальные сообщения
