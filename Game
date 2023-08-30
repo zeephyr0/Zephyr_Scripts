@@ -117,9 +117,9 @@ def attack_monster(chat_id):
         if player_damage_dealt > 0:
             monster_health -= player_damage_dealt
             result_message += f"\nТы атаковал монстра! Монстру осталось {monster_health} здоровья."
-
-         bot.edit_message_text(chat_id, battle_result_message.message_id, result_message)
-         time.sleep(2)
+        
+        bot.edit_message_text(chat_id, battle_result_message.message_id, result_message)
+        time.sleep(2)
    
     if monster_health <= 0:
         bot.send_message(chat_id, f"Ты победил монстра {monster['имя']}!")
