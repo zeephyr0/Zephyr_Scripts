@@ -12,8 +12,21 @@ player_stats = {
     'здоровье': 100,
     'сила': 10,
     'защита': 1,
-    'золото': 0
+    'золото': 0,
+    'опыт': 0,
 }
+
+gold_events = [
+    'Ты нашел сундук с золотом!',
+    'Ты обнаружил золотую жилу!',
+    'Ты нашел утерянное золото!',
+]
+
+monsters = [
+    {'имя': 'Гоблин', 'здоровье': 30, 'сила': 5, 'опыт': 10},
+    {'имя': 'Орк', 'здоровье': 50, 'сила': 8, 'опыт': 15},
+    {'имя': 'Дракон', 'здоровье': 100, 'сила': 15, 'опыт': 25},
+]
 
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
@@ -37,9 +50,9 @@ def adventure(message):
     result = random.choice(['золото', 'монстр'])
     if result == 'золото':
         gold_amount = random.randint(1, 10)
-        # Обновляем характеристики игрока после находки золота
-        player_stats['золото'] = player_stats.get('золото', 0) + gold_amount
-        bot.send_message(chat_id, f'Ты нашел {gold_amount} золота!')
+        player_stats['золото'] += gold_amount
+        event_text = random.choice(gold_events)
+        bot.send_message(chat_id, f'{event_text} Ты нашел {gold_amount} золота!')
     elif result == 'монстр':
         bot.send_message(chat_id, 'Ты встретил монстра!')
         fight_or_run(chat_id)
@@ -57,7 +70,7 @@ def fight_or_run(chat_id):
 def profile(message):
     chat_id = message.chat.id
     # Выводим профиль игрока
-    profile_text = f"Никнейм: {player_stats['никнейм']}\nУровень: {player_stats['уровень']}\nЗдоровье: {player_stats['здоровье']}\nСила: {player_stats['сила']}\nЗащита: {player_stats['защита']}\nЗолото: {player_stats['золото']}"
+    profile_text = f"Никнейм: {player_stats['никнейм']}\nУровень: {player_stats['уровень']}\nЗдоровье: {player_stats['здоровье']}\nСила: {player_stats['сила']}\nЗащита: {player_stats['защита']}\nЗолото: {player_stats['золото']}\nОпыт: {player_stats['опыт']}"
     bot.send_message(chat_id, profile_text)
 
 def take_damage(chat_id, damage):
@@ -68,27 +81,45 @@ def take_damage(chat_id, damage):
         # Дополнительная логика по обработке смерти игрока
 
 def attack_monster(chat_id):
-    monster_health = 35
+    monster = random.choice(monsters)
+    monster_health = monster['здоровье']
+    monster_damage = monster['сила']
     player_damage = player_stats['сила']
     player_defense = player_stats['защита']
+    player_experience = player_stats['опыт']
+    
     while monster_health > 0 and player_stats['здоровье'] > 0:
-        # Нанесение урона монстру
-        monster_damage = random.randint(3, 8)
-        if monster_damage > player_defense:
-            player_stats['здоровье'] -= (monster_damage - player_defense)
-            bot.send_message(chat_id, f"Монстр атаковал тебя! Ты получил {monster_damage - player_defense} урона. Твое текущее здоровье: {player_stats['здоровье']}")
+        monster_damage_dealt = max(monster_damage - player_defense, 0)
+        player_damage_dealt = max(player_damage - monster_damage, 0)
+        
+        if monster_damage_dealt > 0:
+            player_stats['здоровье'] -= monster_damage_dealt
+            bot.send_message(chat_id, f"Монстр атаковал тебя! Ты получил {monster_damage_dealt} урона. Твое текущее здоровье: {player_stats['здоровье']}")
+        
         if player_stats['здоровье'] <= 0:
             bot.send_message(chat_id, "Ты погиб в бою!")
-            # Дополнительная логика по обработке смерти игрока
+            # Additional logic for handling player death
             return
-        # Нанесение урона игроку
-        monster_health -= player_damage
-        bot.send_message(chat_id, f"Ты атаковал монстра! Монстру осталось {monster_health} здоровья.")
+        
+        if player_damage_dealt > 0:
+            monster_health -= player_damage_dealt
+            bot.send_message(chat_id, f"Ты атаковал монстра! Монстру осталось {monster_health} здоровья.")
+
     if monster_health <= 0:
-        bot.send_message(chat_id, "Ты победил монстра!")
+        bot.send_message(chat_id, f"Ты победил монстра {monster['имя']}!")
         gold_amount = random.randint(10, 20)
         player_stats['золото'] += gold_amount
         bot.send_message(chat_id, f"Ты получил {gold_amount} золота!")
+        player_experience += monster['опыт']
+        player_stats['опыт'] = player_experience
+        
+        level_up_experience = 50 * player_stats['уровень']
+        if player_experience >= level_up_experience:
+            player_stats['уровень'] += 1
+            player_stats['здоровье'] += 20
+            player_stats['сила'] += 5
+            player_stats['защита'] += 1
+            bot.send_message(chat_id, f"Поздравляю! Ты достиг нового уровня: {player_stats['уровень']}!")
 
     # Создаем клавиатуру для выбора дальнейшего действия
     markup = types.InlineKeyboardMarkup(row_width=2)
