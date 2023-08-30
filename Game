@@ -49,11 +49,14 @@ def adventure(message):
     bot.send_message(chat_id, 'Ты отправился в путешествие!')
     result = random.choice(['золото', 'монстр'])
     if result == 'золото':
+        time.sleep(3)
         gold_amount = random.randint(1, 10)
         player_stats['золото'] += gold_amount
         event_text = random.choice(gold_events)
         bot.send_message(chat_id, f'{event_text} Ты нашел {gold_amount} золота!')
+        continue_or_run(chat_id)
     elif result == 'монстр':
+        time.sleep(3)
         bot.send_message(chat_id, 'Ты встретил монстра!')
         fight_or_run(chat_id)
 
@@ -63,6 +66,16 @@ def fight_or_run(chat_id):
     escape_button = types.InlineKeyboardButton("Сбежать", callback_data="escape")
     attack_button = types.InlineKeyboardButton("Атаковать", callback_data="attack")
     markup.add(escape_button, attack_button)
+    time.sleep(2)
+    bot.send_message(chat_id, "Выбери действие:", reply_markup=markup)
+
+def continue_or_run(chat_id)
+    # Создаем клавиатуру для выбора действия
+    markup = types.InlineKeyboardMarkup(row_width=2)
+    escape_button = types.InlineKeyboardButton("Вернуться", callback_data="escape")
+    continue_button = types.InlineKeyboardButton("Идти дальше", callback_data="continue")
+    markup.add(escape_button, attack_button)
+    time.sleep(2)
     bot.send_message(chat_id, "Выбери действие:", reply_markup=markup)
 
 # Обработчик команды /profile
@@ -94,7 +107,7 @@ def attack_monster(chat_id):
         
         if monster_damage_dealt > 0:
             player_stats['здоровье'] -= monster_damage_dealt
-            bot.send_message(chat_id, f"Монстр атаковал тебя! Ты получил {monster_damage_dealt} урона. Твое текущее здоровье: {player_stats['здоровье']}")
+            result_message += f"\nМонстр атаковал тебя! Ты получил {monster_damage_dealt} урона. Твое текущее здоровье: {player_stats['здоровье']}"
         
         if player_stats['здоровье'] <= 0:
             bot.send_message(chat_id, "Ты погиб в бою!")
@@ -103,11 +116,14 @@ def attack_monster(chat_id):
         
         if player_damage_dealt > 0:
             monster_health -= player_damage_dealt
-            bot.send_message(chat_id, f"Ты атаковал монстра! Монстру осталось {monster_health} здоровья.")
+            result_message += f"\nТы атаковал монстра! Монстру осталось {monster_health} здоровья."
 
+         bot.edit_message_text(chat_id, battle_result_message.message_id, result_message)
+         time.sleep(2)
+   
     if monster_health <= 0:
         bot.send_message(chat_id, f"Ты победил монстра {monster['имя']}!")
-        gold_amount = random.randint(10, 20)
+        gold_amount= random.randint(10, 20)
         player_stats['золото'] += gold_amount
         bot.send_message(chat_id, f"Ты получил {gold_amount} золота!")
         player_experience += monster['опыт']
