@@ -101,7 +101,9 @@ def attack_monster(chat_id):
     player_defense = player_stats['защита']
     player_experience = player_stats['опыт']
 
-    result_message = "" 
+    battle_result_message = bot.send_message(chat_id, "Битва началась!")
+    time.sleep(2)
+    result_message = "Битва началась!"
 
     while monster_health > 0 and player_stats['здоровье'] > 0:
         monster_damage_dealt = max(monster_damage - player_defense, 0)
