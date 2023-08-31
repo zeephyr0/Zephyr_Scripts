@@ -100,7 +100,9 @@ def attack_monster(chat_id):
     player_damage = player_stats['сила']
     player_defense = player_stats['защита']
     player_experience = player_stats['опыт']
-    
+
+    result_message = "" 
+
     while monster_health > 0 and player_stats['здоровье'] > 0:
         monster_damage_dealt = max(monster_damage - player_defense, 0)
         player_damage_dealt = max(player_damage - monster_damage, 0)
