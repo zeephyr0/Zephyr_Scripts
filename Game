@@ -74,7 +74,6 @@ def continue_or_run(chat_id):
     escape_button = types.InlineKeyboardButton("Вернуться", callback_data="escape")
     continue_button = types.InlineKeyboardButton("Идти дальше", callback_data="continue")
     markup.add(escape_button, continue_button)
-    ti
     bot.send_message(chat_id, "Выбери действие:", reply_markup=markup)
 
 # Обработчик команды /profile
