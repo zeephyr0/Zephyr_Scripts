@@ -9,11 +9,13 @@ bot = telebot.TeleBot(TOKEN)
 player_stats = {
     'никнейм': 'Player',
     'уровень': 1,
+    'опыт': 0,
+    'макс.опыт': 50,
     'здоровье': 100,
+    'макс.здоровье': 100,
     'сила': 10,
     'защита': 1,
     'золото': 0,
-    'опыт': 0,
 }
 
 gold_events = [
@@ -31,12 +33,24 @@ monsters = [
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
 def start(message):
-    chat_id = message.chat.id
-    bot.send_message(chat_id, 'Приветствую тебя, путник!\nЭто текстовая игра с элементами RPG, в которой ты можешь весело провести время\nЖелаю тебе удачи!\n\n💢Игра находится в стадии разработки, и имеет большое количество недоработок, просьба отнестись с пониманием')
+    chat_id = message_id
+    markup = types.ReplyKeyboardMarkup(row_width=2)
+    profile = types.KeyboardButton("👤 Профиль")
+    shop = types.KeyboardButton("⚖️ Рынок")
+    adventure = types.KeyboardButton("🏔️ Путешествие")
+    markup.add(profile, shop, adventure)
+    bot.send_message(chat_id, 'Приветствую тебя, путник!\nЭто текстовая игра с элементами RPG, в которой ты можешь весело провести время\nЖелаю тебе удачи!\n\n💢Игра находится в стадии разработки, и имеет большое количество недоработок, просьба отнестись с пониманием')   
 
 @bot.message_handler(commands=['menu'])
 def menu(message):
-    
+
+# Обработчик команды /profile
+@bot.message_handler(commands=['profile'])
+def profile(message):
+    chat_id = message.chat.id
+    # Выводим профиль игрока
+    profile_text = f"👤 Никнейм: {player_stats['никнейм']}\n💫 Уровень: {player_stats['уровень']} ({player_stats['опыт']/{player_stats['макс.опыт'])\n❤️ Здоровье: {player_stats['здоровье']}/{player_stats['макс.здоровье']}\n💪 Сила: {player_stats['сила']}\n🛡️ Защита: {player_stats['защита']}\n🪙 Золото: {player_stats['золото']}}"
+    bot.send_message(chat_id, profile_text)
 
 # Обработчик команды /rename
 @bot.message_handler(commands=['rename'])
@@ -78,14 +92,6 @@ def continue_or_run(chat_id):
     continue_button = types.InlineKeyboardButton("Идти дальше", callback_data="continue")
     markup.add(escape_button, continue_button)
     bot.send_message(chat_id, "Выбери действие:", reply_markup=markup)
-
-# Обработчик команды /profile
-@bot.message_handler(commands=['profile'])
-def profile(message):
-    chat_id = message.chat.id
-    # Выводим профиль игрока
-    profile_text = f"Никнейм: {player_stats['никнейм']}\nУровень: {player_stats['уровень']}\nЗдоровье: {player_stats['здоровье']}\nСила: {player_stats['сила']}\nЗащита: {player_stats['защита']}\nЗолото: {player_stats['золото']}\nОпыт: {player_stats['опыт']}"
-    bot.send_message(chat_id, profile_text)
 
 def take_damage(chat_id, damage):
     player_stats['здоровье'] -= damage
