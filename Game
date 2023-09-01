@@ -34,6 +34,10 @@ def start(message):
     chat_id = message.chat.id
     bot.send_message(chat_id, 'Приветствую тебя, путник!\nЭто текстовая игра с элементами RPG, в которой ты можешь весело провести время\nЖелаю тебе удачи!\n\n💢Игра находится в стадии разработки, и имеет большое количество недоработок, просьба отнестись с пониманием')
 
+@bot.message_handler(commands=['menu'])
+def menu(message):
+    
+
 # Обработчик команды /rename
 @bot.message_handler(commands=['rename'])
 def rename(message):
@@ -66,7 +70,6 @@ def fight_or_run(chat_id):
     escape_button = types.InlineKeyboardButton("Сбежать", callback_data="escape")
     attack_button = types.InlineKeyboardButton("Атаковать", callback_data="attack")
     markup.add(escape_button, attack_button)
-    time.sleep(2)
     bot.send_message(chat_id, "Выбери действие:", reply_markup=markup)
 
 def continue_or_run(chat_id):
