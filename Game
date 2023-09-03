@@ -177,11 +177,11 @@ def handle_button_click(message):
         else:
             damage = random.randint(20, 50)
             take_damage(chat_id, damage)
-    elif message.text == "Атаковать":
+    if message.text == "Атаковать":
         attack_monster(chat_id)
-    elif call.data == "Идти дальше":
+    if message.text == "Идти дальше":
         adventure(chat_id)
-    elif call.data == "Вернуться":
+    if message.text == "Вернуться":
         bot.send_message(chat_id, "Ты отправился домой, путь займет какое-то время...")
         menu(chat_id)
 
