@@ -30,10 +30,11 @@ monsters = [
     {'имя': 'Дракон', 'здоровье': 100, 'сила': 15, 'опыт': 25},
 ]
 
+chat_id = message.chat_id
+
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
 def start(message):
-    chat_id = message_id
     markup = types.ReplyKeyboardMarkup(row_width=2)
     profile = types.KeyboardButton("👤 Профиль")
     shop = types.KeyboardButton("⚖️ Рынок")
