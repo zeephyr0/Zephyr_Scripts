@@ -33,7 +33,7 @@ monsters = [
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
 def start(message):
-    chat_id = message.chat_id
+    chat_id = message.chat.id
     markup = types.ReplyKeyboardMarkup(row_width=2)
     profile = types.KeyboardButton("👤 Профиль")
     shop = types.KeyboardButton("⚖️ Рынок")
