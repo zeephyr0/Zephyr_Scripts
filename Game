@@ -139,8 +139,8 @@ def attack_monster(chat_id):
         time.sleep(2)
    
     if monster_health <= 0:
-        gold_amount= random.randint(5, 10)
-        exp_amount{ += monster['опыт']
+        gold_amount = random.randint(5, 10)
+        exp_amount += monster['опыт']
         player_stats['золото'] += gold_amount
         player_stats['опыт'] += exp_amount
         bot.send_message(chat_id, f"Ты победил монстра {monster['имя']}!\nТы получил 🪙 {gold_amount} золота а так же ☣️ {exp_amount} опыта!")
