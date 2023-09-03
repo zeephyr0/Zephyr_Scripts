@@ -165,22 +165,24 @@ def attack_monster(chat_id):
 @bot.message_handler(func=lambda message: True)
 def handle_button_click(message):
     if message.text == "👤 Профиль":
-        profile(message_id)
-    chat_id = call.message.chat.id
-    if call.data == "escape":
+        profile(chat_id)
+    if message.text == "⚖️ Рынок":
+        bot.send_message(chat_id, "В разработке")
+    if message.text == "🏔️ Путешествие":
+        adventure(chat_id)
+    if message.text == "Сбежать":
         escape_chance = random.randint(1, 10)
         if escape_chance <= 4:
             bot.send_message(chat_id, "Ты смог сбежать!")
         else:
             damage = random.randint(20, 50)
             take_damage(chat_id, damage)
-    elif call.data == "attack":
+    elif message.text == "Атаковать":
         attack_monster(chat_id)
-    elif call.data == "continue":
-        bot.send_message(chat_id, "Ты идешь дальше!")
+    elif call.data == "Идти дальше":
         adventure(chat_id)
-    elif call.data == "return_home":
-        bot.send_message(chat_id, "Ты вернулся домой!")
+    elif call.data == "Вернуться":
+        bot.send_message(chat_id, "Ты отправился домой, путь займет какое-то время...")
         menu(chat_id)
 
 bot.polling()
