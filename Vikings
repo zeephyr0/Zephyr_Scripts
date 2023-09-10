@@ -14,8 +14,8 @@ import asyncio
 import concurrent.futures
 
 # Данные аккаунтов
-api_id001 = '12588062'
-api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
+api_id001 = '4454263'
+api_hash001 = '61f812cbe0024e0353f475cb183ca47e'
 phone001 = '+998903175516'
 cloud_password1 = '2303'
 
