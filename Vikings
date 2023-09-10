@@ -33,6 +33,12 @@ if not client001.is_user_authorized():
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
+mine_evo = '@mine_evo_bot'
+twins_group = '@twinsFarm_byDem'
+
+count = 0
+automatic_mode = True
+
 async def send_message(client, mine_evo, message):
     try:
         await client.send_message(mine_evo, message)
@@ -86,3 +92,18 @@ async def send_multiple_messages1(event):
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
+# Функция определения времени работы скрипта
+def get_elapsed_time():
+    current_time = datetime.datetime.now()
+    elapsed_time = current_time - start_time
+    elapsed_time_str = str(elapsed_time).split('.')[0]  # Отсекаем миллисекунды
+    return elapsed_time_str
+
+@client001.on(events.NewMessage(pattern='m.info'))
+async def get_info(event):
+    global count
+    elapsed_time_str = get_elapsed_time()
+    # Определение id чата
+    chat_id = event.chat_id
+    # Отправка сообщения с информацией о количестве отправленных сообщений
+    await send_message(client001, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
