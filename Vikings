@@ -40,9 +40,7 @@ count = 0
 
 @client001.on(events.NewMessage(vikings_game))
 async def checker(event):
-    global count
-    global automatic_mode
-    chat_id = vikings 
+    global count 
     # Обработчик новых сообщений в конкретном чате
     if event.message.text == 'Дозор окончен':
         await event.respond('Стена')
