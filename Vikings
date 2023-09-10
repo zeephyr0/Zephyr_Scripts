@@ -1,1 +1,22 @@
+from telethon import TelegramClient, sync
+from telethon import events, utils
+from telethon.tl.functions.messages import GetDialogsRequest
+from telethon.tl.functions.messages import SendMessageRequest
+from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
+from telethon.errors import FloodWaitError
+from telethon.errors import SessionPasswordNeededError
+import datetime
+import requests
+import time
+import random
+import tracemalloc
+import asyncio
+import concurrent.futures
 
+# Данные аккаунтов
+api_id001 = '12588062'
+api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
+phone001 = '+79816661471'
+cloud_password1 = '2303'
+
+start_time
