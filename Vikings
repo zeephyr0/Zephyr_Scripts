@@ -40,7 +40,7 @@ count = 0
 automatic_mode = False
 
 @client001.on(events.NewMessage(pattern='v.off'))
-async def stop:
+async def stop(event):
     global automatic_mode
     automatic_mode = False
     await event.message.edit('❌ Автоматизация выключена')
