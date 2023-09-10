@@ -51,7 +51,7 @@ async def start(event):
     automatic_mode = True
     await event.message.edit('✅ Автоматизация включена')
 
-@client.on(events.NewMessage(chats=chat_id_to_check))
+@client.on(events.NewMessage(vikings_game)
 async def checker(event):
     global count
     global automatic_mode
@@ -62,7 +62,7 @@ async def checker(event):
                 await event.respond('Стена')
 
 # Обработчик редактированных сообщений в конкретном чате
-@client.on(events.MessageEdited(chats=chat_id_to_check))
+@client.on(events.MessageEdited(chats=vikings_game))
 async def handle_edited_message(event):
     if event.message.text == 'Стена - Дозор':
         # Обработка редактированного сообщения
