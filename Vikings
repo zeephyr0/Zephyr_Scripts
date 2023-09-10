@@ -38,7 +38,7 @@ vikings_game = '@vikingi_online_bot'
 
 count = 0
 
-@client.on(events.NewMessage(vikings_game))
+@client001.on(events.NewMessage(vikings_game))
 async def checker(event):
     global count
     global automatic_mode
@@ -48,7 +48,7 @@ async def checker(event):
         await event.respond('Стена')
 
 # Обработчик редактированных сообщений в конкретном чате
-@client.on(events.MessageEdited(chats=vikings_game))
+@client001.on(events.MessageEdited(chats=vikings_game))
 async def handle_edited_message(event):
     if event.message.text == 'Стена - Дозор':
         # Обработка редактированного сообщения
@@ -69,3 +69,6 @@ async def get_info(event):
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
     await send_message(client001, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
+
+# Запуск клиента
+client001.run_until_disconnected()
