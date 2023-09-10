@@ -37,29 +37,15 @@ start_time = datetime.datetime.now()
 vikings_game = '@vikingi_online_bot'
 
 count = 0
-automatic_mode = False
-
-@client001.on(events.NewMessage(pattern='v.off'))
-async def stop(event):
-    global automatic_mode
-    automatic_mode = False
-    await event.message.edit('❌ Автоматизация выключена')
-
-@client001.on(events.NewMessage(pattern='v.on'))
-async def start(event):
-    global automatic_mode
-    automatic_mode = True
-    await event.message.edit('✅ Автоматизация включена')
 
 @client.on(events.NewMessage(vikings_game))
 async def checker(event):
     global count
     global automatic_mode
     chat_id = vikings 
-    if automatic_mode True:
-        # Обработчик новых сообщений в конкретном чате
-        if event.message.text == 'Дозор окончен':
-            await event.respond('Стена')
+    # Обработчик новых сообщений в конкретном чате
+    if event.message.text == 'Дозор окончен':
+        await event.respond('Стена')
 
 # Обработчик редактированных сообщений в конкретном чате
 @client.on(events.MessageEdited(chats=vikings_game))
