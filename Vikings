@@ -56,10 +56,10 @@ async def checker(event):
     global count
     global automatic_mode
     chat_id = vikings 
-        if automatic_mode True:
-            # Обработчик новых сообщений в конкретном чате
-            if event.message.text == 'Дозор окончен':
-                await event.respond('Стена')
+    if automatic_mode True:
+        # Обработчик новых сообщений в конкретном чате
+        if event.message.text == 'Дозор окончен':
+            await event.respond('Стена')
 
 # Обработчик редактированных сообщений в конкретном чате
 @client.on(events.MessageEdited(chats=vikings_game))
