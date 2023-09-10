@@ -51,7 +51,7 @@ async def start(event):
     automatic_mode = True
     await event.message.edit('✅ Автоматизация включена')
 
-@client.on(events.NewMessage(vikings_game)
+@client.on(events.NewMessage(vikings_game))
 async def checker(event):
     global count
     global automatic_mode
