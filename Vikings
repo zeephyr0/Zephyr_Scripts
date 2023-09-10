@@ -16,11 +16,12 @@ import concurrent.futures
 # Данные аккаунтов
 api_id001 = '12588062'
 api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
-phone001 = '+79816661471'
+phone001 = '+998903175516'
 cloud_password1 = '2303'
 
 # Создание клиентов 
 client001 = TelegramClient('session001', api_id001, api_hash001)
+
 # Авторизация
 client001.connect()
 if not client001.is_user_authorized():
@@ -33,64 +34,39 @@ if not client001.is_user_authorized():
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
-mine_evo = '@mine_evo_bot'
-twins_group = '@twinsFarm_byDem'
+vikings_game = '@vikingi_online_bot'
 
 count = 0
-automatic_mode = True
-
-async def send_message(client, mine_evo, message):
-    try:
-        await client.send_message(mine_evo, message)
-    except FloodWaitError as e:
-        # Обработка ошибки FloodWaitError
-        print(f"Ошибка FloodWaitError для клиента {client}: {e}")
-        clients1.disconnect(client)
-    except ValueError as e:
-        # Обработка ошибки, если клиент не найден или нет доступа к аккаунту
-        print(f"Ошибка: {e} для клиента {client}")
-        clients1.disconnect(client)
-    except ConnectionError:
-        print('Ошибка подключения. Повторное подключение...')
-        await asyncio.sleep(15)  # Ждем 5 секунд перед повторной попыткой
-    except KeyboardInterrupt:
-        pass
-    except Exception as e:
-        # Обработка других исключений
-        print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
+automatic_mode = False
 
 @client001.on(events.NewMessage(pattern='v.off'))
-async def stop_sending_messages(event):
+async def stop:
     global automatic_mode
-    automatic_mode = True
+    automatic_mode = False
     await event.message.edit('❌ Автоматизация выключена')
 
 @client001.on(events.NewMessage(pattern='v.on'))
-async def start_sending_messages(event):
+async def start(event):
     global automatic_mode
-    automatic_mode = False
+    automatic_mode = True
     await event.message.edit('✅ Автоматизация включена')
 
-@client001.on(events.NewMessage(pattern='m.send'))
-async def send_multiple_messages1(event):
-    global count1
+@client.on(events.NewMessage(chats=chat_id_to_check))
+async def checker(event):
+    global count
     global automatic_mode
     chat_id = vikings 
-    if stop_sending1:
-        await asyncio.sleep(2) 
-        await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
-    else:
-        await asyncio.sleep(2)
-        await event.message.edit('💢Начинаем копать')
-    while not stop_sending1:
-        coroutines = []
-        for client in clients1:
-            coroutines.append(send_message(client, chat_id, 'коп'))
-        await asyncio.gather(*coroutines)
-        await asyncio.sleep(2)
-        count1 += 29
-        cycles1 += 1
-        clients1 = [client for client in clients1 if client.is_connected()]
+        if automatic_mode True:
+            # Обработчик новых сообщений в конкретном чате
+            if event.message.text == 'Дозор окончен':
+                await event.respond('Стена')
+
+# Обработчик редактированных сообщений в конкретном чате
+@client.on(events.MessageEdited(chats=chat_id_to_check))
+async def handle_edited_message(event):
+    if event.message.text == 'Стена - Дозор':
+        # Обработка редактированного сообщения
+        await message.click();
 
 # Функция определения времени работы скрипта
 def get_elapsed_time():
