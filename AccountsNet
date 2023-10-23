@@ -320,15 +320,6 @@ for i, client in enumerate(clients1):
                 await asyncio.sleep(2)
                 await send_transfer_messages1(client, event)
 
-# Определение функции обработчика входящих сообщений2
-for i, client in enumerate(clients2):
-    @client.on(events.NewMessage)
-    async def handle_incoming_message(event, client=client):
-        for player_name in player_names2:
-            if f"📦 Кейсы игрока\n{player_name}" in event.raw_text:
-                await asyncio.sleep(2)
-                await send_transfer_messages2(client, event)
-
 # Функция определения времени работы скрипта
 def get_elapsed_time():
     current_time = datetime.datetime.now()
@@ -345,16 +336,6 @@ async def get_info1(event):
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
     await send_message(client001, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
-
-@client01.on(events.NewMessage(pattern='m.info'))
-async def get_info2(event):
-    global count2
-    global cycles2
-    elapsed_time_str = get_elapsed_time()
-    # Определение id чата
-    chat_id = event.chat_id
-    # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client01, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: 4\n📨 Отправлено сообщений: {count2}\n🌀 Пройдено циклов: {cycles2}\n⌛ Время работы скрипта: {elapsed_time_str}')
 
 # Промо-Коды
 @client001.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
