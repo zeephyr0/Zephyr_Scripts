@@ -18,6 +18,7 @@ import concurrent.futures
 import json
 
 # Данные аккаунтов
+
 api_id001 = '12588062'
 api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
 phone001 = '+79816661471'
@@ -42,97 +43,28 @@ api_id006 = '10904880'
 api_hash006 = '0bce5ceebd00a5fe38dff632595b0bad'
 phone006 = '+79587314180'
 
-api_id009 = '26344028'
-api_hash009 = 'aa920e0ab554994282bddfae8e9743e1'
-phone009 = '+66644508357'
+api_id007 = '20242585'
+api_hash007 = '77312de9aab579af857c5d2fdb4e1d64'
+phone007 = '+447424459503'
 
-api_id010 = '24391372'
-api_hash010 = 'f91208774fb18619d661aa988357327d'
-phone010 = '+8801929321074'
+api_id008 = '28645267'
+api_hash008 = '9bb99e599cd7d22813f841c7a7ce47c6'
+phone008 = '+40701131736'
 
-api_id011 = '27999436'
-api_hash011 = 'a762c27366b49c72c58cf0f265df61bc'
-phone011 = '+996504072710'
+api_id009 = '20410656'
+api_hash009 = '7f48793a7737fe3a910874c38a5f6e21'
+phone009 = '+60149256978'
 
-api_id012 = '28054215'
-api_hash012 = 'dca1c54af532f7dc0df4509bb5cd06fc'
-phone012 = '+79016810191'
+api_id010 = '24106632'
+api_hash010 = '65093abacde2ca064ce8802c84863fec'
+phone010 = '+447771411600'
 
-api_id013 = '20880148'
-api_hash013 = '4cefa3607decdacf8995fa4faac6d9c0'
-phone013 = '+79199250579'
-
-api_id014 = '20074210'
-api_hash014 = '40bf0e5e8441de28f0e30ef64190725b'
-phone014 = '+79507244663'
-
-api_id015 = '21931735'
-api_hash015 = '9b2e64e80a51e048e4f5062772b5ab7f'
-phone015 = '+380933888084'
-
-api_id016 = '29141499'
-api_hash016 = '77b4d4c1b20f95d8a09b05a1c5f67578'
-phone016 = '+79159670843'
-
-api_id017 = '20205793'
-api_hash017 = '537c5d400f59a6629e4fa788fc135394'
-phone017 = '+79494496325'
-
-api_id019 = '20242585'
-api_hash019 = '77312de9aab579af857c5d2fdb4e1d64'
-phone019 = '+447424459503'
-
-api_id020 = '27847181'
-api_hash020 = 'd8bb609f8707d05ccd4050077bc2e51d'
-phone020 = '+40701114055'
-
-api_id021 = '26002707'
-api_hash021 = 'a1f640a3b304457b1a964a2adc98b86a'
-phone021 = '+40701114412'
-
-api_id022 = '26177379'
-api_hash022 = '079dafea2a2f15cc9c93baccae420765'
-phone022 = '+40701114425'
-
-api_id023 = '26199478'
-api_hash023 = 'f18d94ee8a35da4dff4d591d0aaa3d28'
-phone023 = '+40701114729'
-
-api_id024 = '28645267'
-api_hash024 = '9bb99e599cd7d22813f841c7a7ce47c6'
-phone024 = '+40701131736'
-
-api_id025 = '20410656'
-api_hash025 = '7f48793a7737fe3a910874c38a5f6e21'
-phone025 = '+60149256978'
-
-api_id026 = '24106632'
-api_hash026 = '65093abacde2ca064ce8802c84863fec'
-phone026 = '+447771411600'
-
-api_id027 = '22353684'
-api_hash027 = '98cf980e06b08c566679c9e17b317a41'
-phone027 = '+447983221564'
-
-api_id01 = '29017932'
-api_hash01 = '24ed16f256156d9c2562103ff8b9ca13'
-phone01 = '+79783210112'
-
-api_id0002 = '28598285'
-api_hash0002 = '01cb9ab33587a314e3b6bfeab6d91e6e'
-phone0002 = '+79787917812'
-
-api_id03 = '20405618'
-api_hash03 = '88510a339fb00837a920a82a34d443a5'
-phone03 = '+14638009973'
-
-api_id04 = '20253928'
-api_hash04 = 'b6a31ca946b72d981c04f0b306c6de96'
-phone04 = '+40701162108'
-
+api_id011 = '22353684'
+api_hash011 = '98cf980e06b08c566679c9e17b317a41'
+phone11 = '+447983221564'
 
 cloud_password1 = '2303'
-cloud_password2 = 'rein'
+
 
 # Создание клиентов 
 client001 = TelegramClient('session001', api_id001, api_hash001)
@@ -144,33 +76,12 @@ client006 = TelegramClient('session006', api_id006, api_hash006)
 client009 = TelegramClient('session009', api_id009, api_hash009)
 client010 = TelegramClient('session010', api_id010, api_hash010)
 client011 = TelegramClient('session011', api_id011, api_hash011)
-client012 = TelegramClient('session012', api_id012, api_hash012)
-client013 = TelegramClient('session013', api_id013, api_hash013)
-client014 = TelegramClient('session014', api_id014, api_hash014)
-client015 = TelegramClient('session015', api_id015, api_hash015)
-client016 = TelegramClient('session016', api_id016, api_hash016)
-client017 = TelegramClient('session017', api_id017, api_hash017)
-client019 = TelegramClient('session019', api_id019, api_hash019)
-client020 = TelegramClient('session020', api_id020, api_hash020)
-client021 = TelegramClient('session021', api_id021, api_hash021)
-client022 = TelegramClient('session022', api_id022, api_hash022)
-client023 = TelegramClient('session023', api_id023, api_hash023)
-client024 = TelegramClient('session024', api_id024, api_hash024)
-client025 = TelegramClient('session025', api_id025, api_hash025)
-client026 = TelegramClient('session026', api_id026, api_hash026)
-client027 = TelegramClient('session027', api_id027, api_hash027)
-client01 = TelegramClient('session01', api_id01, api_hash01)
-client0002 = TelegramClient('session0002', api_id0002, api_hash0002)
-client03 = TelegramClient('session03', api_id03, api_hash03)
-client04 = TelegramClient('session04', api_id04, api_hash04)
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client009, client010, client011, client012, client013, client014, client015, client016, client017, client019, client020, client021, client022, client023, client024, client025, client027]
-clients2 = [client01, client0002, client03, client04]
-clients3 = clients1 + clients2
+clients1 = [client001, client002, client003, client004, client005, client006, client009, client010, client011]
 # Авторизация
 client001.connect()
 if not client001.is_user_authorized():
@@ -244,159 +155,7 @@ if not client011.is_user_authorized():
     except SessionPasswordNeededError:
         client011.sign_in(password=cloud_password1)
 
-client012.connect()
-if not client012.is_user_authorized():
-    client012.send_code_request(phone012)
-    try:
-        client012.sign_in(phone012, input('Session-012 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client012.sign_in(password=cloud_password1)
-
-client013.connect()
-if not client013.is_user_authorized():
-    client013.send_code_request(phone013)
-    try:
-        client013.sign_in(phone013, input('Session-013 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client013.sign_in(password=cloud_password1)
-
-client014.connect()
-if not client014.is_user_authorized():
-    client014.send_code_request(phone014)
-    try:
-        client014.sign_in(phone014, input('Session-014 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client014.sign_in(password=cloud_password1)
-
-client015.connect()
-if not client015.is_user_authorized():
-    client015.send_code_request(phone015)
-    try:
-        client015.sign_in(phone015, input('Session-015 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client015.sign_in(password=cloud_password1)
-
-client016.connect()
-if not client016.is_user_authorized():
-    client016.send_code_request(phone016)
-    try:
-        client016.sign_in(phone016, input('Session-016 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client016.sign_in(password=cloud_password1)
-
-client017.connect()
-if not client017.is_user_authorized():
-    client017.send_code_request(phone017)
-    try:
-        client017.sign_in(phone017, input('Session-017 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client017.sign_in(password=cloud_password1)
-
-client019.connect()
-if not client019.is_user_authorized():
-    client019.send_code_request(phone019)
-    try:
-        client019.sign_in(phone019, input('Session-019 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client019.sign_in(password=cloud_password1)
-
-client020.connect()
-if not client020.is_user_authorized():
-    client020.send_code_request(phone020)
-    try:
-        client020.sign_in(phone020, input('Session-020 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client020.sign_in(password=cloud_password1)
-
-client021.connect()
-if not client021.is_user_authorized():
-    client021.send_code_request(phone021)
-    try:
-        client021.sign_in(phone021, input('Session-021 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client021.sign_in(password=cloud_password1)
-
-client022.connect()
-if not client022.is_user_authorized():
-    client022.send_code_request(phone022)
-    try:
-        client022.sign_in(phone022, input('Session-022 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client022.sign_in(password=cloud_password1)
-
-client023.connect()
-if not client023.is_user_authorized():
-    client023.send_code_request(phone023)
-    try:
-        client023.sign_in(phone023, input('Session-023 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client023.sign_in(password=cloud_password1)
-
-client024.connect()
-if not client024.is_user_authorized():
-    client024.send_code_request(phone024)
-    try:
-        client024.sign_in(phone024, input('Session-024 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client024.sign_in(password=cloud_password1)
-
-client025.connect()
-if not client025.is_user_authorized():
-    client025.send_code_request(phone025)
-    try:
-        client025.sign_in(phone025, input('Session-025 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client025.sign_in(password=cloud_password1)
-
-client026.connect()
-if not client026.is_user_authorized():
-    client026.send_code_request(phone026)
-    try:
-        client026.sign_in(phone026, input('Session-026 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client026.sign_in(password=cloud_password1)
-
-client027.connect()
-if not client027.is_user_authorized():
-    client027.send_code_request(phone027)
-    try:
-        client027.sign_in(phone027, input('Session-027 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client027.sign_in(password=cloud_password1)
-
-client01.connect()
-if not client01.is_user_authorized():
-    client01.send_code_request(phone01)
-    try:
-        client01.sign_in(phone01, input('Session-01 Введите код подтверждения: '), password=cloud_password2)
-    except SessionPasswordNeededError:
-        client01.sign_in(password=cloud_password2)
-
-client0002.connect()
-if not client0002.is_user_authorized():
-    client0002.send_code_request(phone0002)
-    try:
-        client0002.sign_in(phone0002, input('Session-02 Введите код подтверждения: '), password=cloud_password2)
-    except SessionPasswordNeededError:
-        client0002.sign_in(password=cloud_password2)
-
-client03.connect()
-if not client03.is_user_authorized():
-    client03.send_code_request(phone03)
-    try:
-        client03.sign_in(phone03, input('Session-03 Введите код подтверждения: '), password=cloud_password2)
-    except SessionPasswordNeededError:
-        client03.sign_in(password=cloud_password2)
-
-client04.connect()
-if not client04.is_user_authorized():
-    client04.send_code_request(phone04)
-    try:
-        client04.sign_in(phone04, input('Session-04 Введите код подтверждения: '), password=cloud_password2)
-    except SessionPasswordNeededError:
-        client04.sign_in(password=cloud_password2)
-
-for client in clients3:
+for client in clients1:
     client.start()
 
 print('Клиенты успешно запущены!')
@@ -488,31 +247,6 @@ async def send_multiple_messages1(event):
         if not clients1:
             print("Все клиенты потеряли соединение.")
             break
-
-@client01.on(events.NewMessage(pattern='m.send'))
-async def send_multiple_messages2(event):
-    global count2
-    global cycles2
-    await event.message.edit('Пробуем копать...')
-    # Определение id чата
-    chat_id = mine_evo
-    if stop_sending2:
-        await asyncio.sleep(2)
-        await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
-    else:
-        await asyncio.sleep(2)
-        await event.message.edit('💢Начинаем копать')
-    while not stop_sending2:  # Проверка флага перед каждой итерацией цикла
-        # Создание списка корутин для каждого клиента
-        coroutines = []
-        for client in clients2:
-            coroutines.append(send_message(client, chat_id, 'коп'))
-        # Одновременное выполнение всех корутин
-        await asyncio.gather(*coroutines)
-        # Задержка
-        await asyncio.sleep(2)
-        count2 += 4
-        cycles2 += 1
 
 @client001.on(events.NewMessage(pattern='gl.send'))
 async def send_multiple_messages3(event):
@@ -700,10 +434,10 @@ async def process_new_message(event):
     message = event.message
     if 'Промо' in message.message:
         promo_code = message.message.split('Промо ')[1].split()[0]
-        for client in clients3:
+        for client in clients1:
             await client(SendMessageRequest(mine_evo, f'промо {promo_code}'))
 
-for client in clients3:
+for client in clients1:
     try:
         client.run_until_disconnected()
     except KeyboardInterrupt:
