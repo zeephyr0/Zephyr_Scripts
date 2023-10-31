@@ -1,52 +1,80 @@
 import asyncio
-import random
-import time
-from telethon.sync import TelegramClient
-from telethon.errors import UserAlreadyParticipantError
-# Задай список чатов и сообщений
-chat_ids = ["-1001870697043"]  # Замени на реальные chat_id
-messages = ["Сообщение 1", "Сообщение 2", "Сообщение 3"]  # Замени на реальные сообщения
+from telethon.sync import TelegramClient, events
 
-# Задай задержку между отправкой сообщений (в секундах)
-delay = 5
+# Конфигурация клиентов Telegram
+clients = [
+    {
+        'api_id': '12588062',
+        'api_hash': 'd0f061c565991d6ed274285c0d032f7a',
+        'phone': '+79816661471'
+    },
+    {
+        'api_id': '13123883',
+        'api_hash': 'f1fab12098570c2bf8848ad6ea23c62f',
+        'phone': '+79676939873'
+    }
+]
 
-# Задай никнейм пользователя
-username = "@ehhehejdjx"  # Замени на свой никнейм
+chats = ['-1002054089527']
+messages = ['message1', 'message2', 'message3']
 
-# Задай значения для API ID и хэша клиента
-api_id = '12588062'  # Замени на свой API ID
-api_hash = 'd0f061c565991d6ed274285c0d032f7a'  # Замени на свой API хэш
+async def send_message(client, chat_id, message):
+    await client.send_message(chat_id, message)
 
-# Создай экземпляр TelegramClient
-client = TelegramClient('session_name', api_id, api_hash)
+async def start_sending(delay):
+    while True:
+        for client in clients:
+            with TelegramClient('session_name', client['api_id'], client['api_hash']) as client:
+                tasks = []
+                for chat_id in chats:
+                    for message in messages:
+                        tasks.append(send_message(client, chat_id, message))
+                await asyncio.gather(*tasks)
+        await asyncio.sleep(delay)
 
-async def process_updates(chat_id):
-    updates = await client.get_messages(chat_id, limit=10)
-    for update in updates:
-        if update.chat_id == chat_id and await check_subscription(update):
-            if username in update.message:
-                await subscribe_to_channels(chat_id)
-                break
+# Присоединение к чатам при запуске скрипта
+for client in clients:
+    with TelegramClient('session_name', client['api_id'], client['api_hash']) as client:
+        for chat_id in chats:
+            client.join_chat(chat_id)
 
-async def check_subscription(message):
-    # Проверка сообщений на наличие требования подписки
-    return ("подписаться" in message.message.lower() or
-            "прошу подпишитесь" in message.message.lower())
+# Обработчик событий для команд в Telegram
+@events.register(events.NewMessage(incoming=True, pattern=r'^start_sending \d+'))
+async def start_sending_command(event):
+    delay = int(event.raw_text.split()[1])
+    await start_sending(delay)
 
-async def subscribe_to_channels(chat_id):
-    # Подписка на каналы
-    try:
-        await client(JoinChannelRequest(channel=chat_id))
-        await client.send_message(chat_id, 'Подписываюсь на каналы...')
-    except UserAlreadyParticipantError:
-        pass
+@events.register(events.NewMessage(incoming=True, pattern=r'^stop_sending$'))
+async def stop_sending_command(event):
+    await event.respond('Остановка отправки сообщений')
+    raise KeyboardInterrupt
 
-with client:
-    for _ in range(10):
-        chat_id = random.choice(chat_ids)
-        message = random.choice(messages)
+# Получение никнейма клиента
+client_nickname = None
 
-        client.send_message(chat_id, message)
+@events.register(events.NewMessage(incoming=True))
+async def handle_new_message(event):
+    global client_nickname
 
-        time.sleep(delay)
-        await process_updates(chat_id)
+    if client_nickname is None:
+        # Получаем информацию о клиенте и его никнейме
+        me = await event.client.get_me()
+        client_nickname = me.first_name
+
+    sender_nickname = event.sender.first_name
+    message_text = event.raw_text
+
+    if client_nickname is not None:
+        # Проверяем, совпадает ли никнейм клиента с никнеймом в сообщении
+        if client_nickname.lower() in message_text.lower():
+            # Извлекаем ссылку на канал из сообщения
+            channel_link = message_text.split(':')[1].strip()
+            # Выполняем подписку на канал
+            await event.client(JoinChannelRequest(channel_link))
+
+# Запуск бота и обработка событий
+with TelegramClient('session_name', 'API_ID', 'API_HASH') as client:
+    client.add_event_handler(start_sending_command)
+    client.add_event_handler(stop_sending_command)
+    client.add_event_handler(handle_new_message)
+    client.run_until_disconnected()
