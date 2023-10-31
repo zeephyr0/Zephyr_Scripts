@@ -16,7 +16,7 @@ clients = [
     }
 ]
 
-chats = ['-1002054089527']
+chats = ['@dkkddkkrk']
 messages = ['message1', 'message2', 'message3']
 
 async def send_message(client, chat_id, message):
@@ -42,12 +42,12 @@ for client in clients:
         asyncio.run(join_channels(client, chats))
 
 # Обработчик событий для команд в Telegram
-@events.register(events.NewMessage(incoming=True, pattern=r'^start_sending \d+'))
+@events.register(events.NewMessage(incoming=True, pattern=r'start_sending'))
 async def start_sending_command(event):
     delay = int(event.raw_text.split()[1])
     await start_sending(delay)
 
-@events.register(events.NewMessage(incoming=True, pattern=r'^stop_sending$'))
+@events.register(events.NewMessage(incoming=True, pattern=r'stop_sending'))
 async def stop_sending_command(event):
     await event.respond('Остановка отправки сообщений')
     raise KeyboardInterrupt
