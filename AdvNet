@@ -1,5 +1,6 @@
 import asyncio
 from telethon.sync import TelegramClient, events
+from telethon.tl.functions.channels import JoinChannelRequest
 
 # Конфигурация клиентов Telegram
 clients = [
@@ -36,7 +37,7 @@ async def start_sending(delay):
 for client in clients:
     with TelegramClient('session_name', client['api_id'], client['api_hash']) as client:
         for chat_id in chats:
-            client.join_chat(chat_id)
+            await client(JoinChannelRequest(chat_id))
 
 # Обработчик событий для команд в Telegram
 @events.register(events.NewMessage(incoming=True, pattern=r'^start_sending \d+'))
