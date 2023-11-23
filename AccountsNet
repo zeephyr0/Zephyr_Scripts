@@ -245,7 +245,9 @@ cases_list = {
     "🕋": "миф",
     "💎": "кр",
     "🎲": "дк",
-    "🌌": "зв"
+    "🌌": "зв",
+    "👜": "ссп",
+    "💼": "псэ"
 }
 
 async def send_transfer_message1(client, chat_id, case_name, quantity):
