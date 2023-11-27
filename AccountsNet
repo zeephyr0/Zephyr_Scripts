@@ -69,6 +69,8 @@ client003 = TelegramClient('session003', api_id003, api_hash003)
 client004 = TelegramClient('session004', api_id004, api_hash004)
 client005 = TelegramClient('session005', api_id005, api_hash005)
 client006 = TelegramClient('session006', api_id006, api_hash006)
+client007 = TelegramClient('session007', api_id007, api_hash007)
+client008 = TelegramClient('session008', api_id008, api_hash008)
 client009 = TelegramClient('session009', api_id009, api_hash009)
 client010 = TelegramClient('session010', api_id010, api_hash010)
 
@@ -76,7 +78,7 @@ client010 = TelegramClient('session010', api_id010, api_hash010)
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client009, client010]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010]
 # Авторизация
 client001.connect()
 if not client001.is_user_authorized():
@@ -125,6 +127,22 @@ if not client006.is_user_authorized():
         client006.sign_in(phone006, input('Session-006 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client006.sign_in(password=cloud_password1)
+
+client007.connect()
+if not client007.is_user_authorized():
+    client007.send_code_request(phone007)
+    try:
+        client007.sign_in(phone007, input('Session-007 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client007.sign_in(password=cloud_password1)
+
+client008.connect()
+if not client008.is_user_authorized():
+    client008.send_code_request(phone008)
+    try:
+        client008.sign_in(phone008, input('Session-008 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client008.sign_in(password=cloud_password1)
 
 client009.connect()
 if not client009.is_user_authorized():
@@ -216,7 +234,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 29
+        count1 += 10
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
