@@ -233,7 +233,7 @@ async def send_multiple_messages1(event):
         for client in clients1:
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
-        await asyncio.sleep(2)
+        await asyncio.sleep(4)
         count1 += 10
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
