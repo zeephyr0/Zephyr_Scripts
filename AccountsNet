@@ -223,7 +223,7 @@ async def send_multiple_messages1(event):
     await event.message.edit('Пробуем копать...')
     chat_id = mine_evo
     if stop_sending1:
-        await asyncio.sleep(2) 
+        await asyncio.sleep(4) 
         await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
     else:
         await asyncio.sleep(2)
