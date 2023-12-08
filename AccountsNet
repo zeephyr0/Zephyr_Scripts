@@ -59,6 +59,22 @@ api_id010 = '22353684'
 api_hash010 = '98cf980e06b08c566679c9e17b317a41'
 phone010 = '+447983221564'
 
+api_id011 = '18891442'
+api_hash011 = '6de91c8dc7d2627d00672d2e2afa6e96'
+phone011 = '+6285711807058'
+
+api_id012 = '29995919'
+api_hash012 = '34c10e77458052bd113fe1894559d825'
+phone012 = '+6283866847345'
+
+api_id013 = '26548292'
+api_hash013 = 'df05f4f6ce98247be33fb96a3aa49f68'
+phone013 = '+6285760686200'
+
+api_id014 = '21508341'
+api_hash014 = '881f0242e26144ace5304a31e5fd8321'
+phone014 = '+6283831738463'
+
 cloud_password1 = '2303'
 
 
@@ -73,12 +89,16 @@ client007 = TelegramClient('session007', api_id007, api_hash007)
 client008 = TelegramClient('session008', api_id008, api_hash008)
 client009 = TelegramClient('session009', api_id009, api_hash009)
 client010 = TelegramClient('session010', api_id010, api_hash010)
+client011 = TelegramClient('session011', api_id011, api_hash011)
+client012 = TelegramClient('session012', api_id012, api_hash012)
+client013 = TelegramClient('session013', api_id013, api_hash013)
+client014 = TelegramClient('session014', api_id014, api_hash014)
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014]
 # Авторизация
 client001.connect()
 if not client001.is_user_authorized():
