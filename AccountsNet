@@ -180,6 +180,38 @@ if not client010.is_user_authorized():
     except SessionPasswordNeededError:
         client010.sign_in(password=cloud_password1)
 
+client011.connect()
+if not client011.is_user_authorized():
+    client011.send_code_request(phone011)
+    try:
+        client011.sign_in(phone011, input('Session-011 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client011.sign_in(password=cloud_password1)
+
+client012.connect()
+if not client012.is_user_authorized():
+    client012.send_code_request(phone012)
+    try:
+        client012.sign_in(phone012, input('Session-012 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client012.sign_in(password=cloud_password1)
+
+client013.connect()
+if not client013.is_user_authorized():
+    client013.send_code_request(phone013)
+    try:
+        client013.sign_in(phone013, input('Session-013 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client013.sign_in(password=cloud_password1)
+
+client014.connect()
+if not client014.is_user_authorized():
+    client014.send_code_request(phone014)
+    try:
+        client014.sign_in(phone014, input('Session-014 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client014.sign_in(password=cloud_password1)
+
 for client in clients1:
     client.start()
 
@@ -187,21 +219,18 @@ print('Клиенты успешно запущены!')
 
 # Адресы
 mineEvo_channel = '@mine_evo_news'
+mineEvo_group = '@mineevochat'
 my_channel = '@Demo_minePromo'
 mine_evo = '@mine_evo_bot'
 twins_group = '@twinsFarm_byDem'
 
 count1 = 0
 cycles1 = 0
-count2 = 0
-cycles2 = 0
 stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37', 'Gnom38', 'Gnom39', 'Gnom40', 'Gnom40', 'Gnom42', 'Gnom43']
-player_names2 = ['Тоука','Bisbaka', 'Soufle', 'Unier']
-
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37', 'Gnom38', 'Gnom39', 'Gnom40', 'Gnom40', 'Gnom42', 'Gnom43', 'Gnom44', 'Gnom45', 'Gnom46', 'Gnom47']
 async def send_message(client, mine_evo, message):
     try:
         await client.send_message(mine_evo, message)
@@ -254,7 +283,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(4)
-        count1 += 10
+        count1 += 14
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
@@ -268,6 +297,15 @@ async def send_multiple_messages1(event):
 async def cases_info1(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
+    for client in clients1:
+        await asyncio.sleep(2)
+        await client(SendMessageRequest(mine_evo, message))
+
+# Модуль для ежедневного бонуса
+@client001.on(events.NewMessage(pattern='m.day'))
+async def cases_info1(event):
+    # Текст для отправки сообщения 
+    message = 'еб'
     for client in clients1:
         await asyncio.sleep(2)
         await client(SendMessageRequest(mine_evo, message))
@@ -365,7 +403,7 @@ async def get_info1(event):
     await send_message(client001, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
 
 # Промо-Коды
-@client001.on(events.NewMessage(chats=[mineEvo_channel, my_channel]))  
+@client001.on(events.NewMessage(chats=[mineEvo_channel, mineEvo_group, my_channel]))  
 async def process_new_message(event):
     # Сообщение которое будет проверяться 
     message = event.message
