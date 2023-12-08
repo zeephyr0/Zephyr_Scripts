@@ -351,31 +351,6 @@ async def send_transfer_messages1(client, event):
                         item = item[1].strip()
                         await send_transfer_message1(client, chat_id, case, item)
 
-async def send_transfer_message2(client, chat_id, case_name, quantity):
-    # Определение названия кейса для передачи
-    case_alias = cases_list.get(case_name, "")
-    # Сообщение о передаче
-    transfer_message2 = f"Передать Reinu_olp {case_alias} {quantity}"
-    await client.send_message(chat_id, transfer_message2)
-    # Задержка 
-    await asyncio.sleep(3)
-async def send_transfer_messages2(client, event):
-    # Определение id чата
-    chat_id = '@mine_evo_bot'
-    # Сообщение которое будет проверяться 
-    message = event.raw_text
-    lines = message.split("\n")
-    # Обработка сообщения и отправка
-    for line in lines:
-        for case in cases_list:
-            if case in line:
-                item = line.split("шт.")
-                if len(item) >= 2:
-                    item = item[0].split(":")
-                    if len(item) >= 2:
-                        item = item[1].strip()
-                        await send_transfer_message2(client, chat_id, case, item)
-
 # Определение функции обработчика входящих сообщений1
 for i, client in enumerate(clients1):
     @client.on(events.NewMessage)
