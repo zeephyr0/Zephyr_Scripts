@@ -355,7 +355,6 @@ async def handle_incoming_message(event, client=client):
     global pse
     global ssp 
     if event.sender_id == 5522271758:
-        if "Найден Конверт +1" in event.raw_text:
         if "✨ ✉ Найден Конверт +1" in event.raw_text:
             kt += 1
         elif "✨ 🧧 Найден Редкий Конверт +1" in event.raw_text:
