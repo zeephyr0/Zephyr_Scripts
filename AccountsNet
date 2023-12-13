@@ -84,7 +84,6 @@ start_time = datetime.datetime.now()
 
 # Авторизация
 clients1 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010]
-clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
 # Авторизация
 client0.connect()
 if not client0.is_user_authorized():
