@@ -19,6 +19,10 @@ import json
 
 # Данные аккаунтов
 
+api_id0 = '4454263'
+api_hash0 = '61f812cbe0024e0353f475cb183ca47e'
+phine0 = '+998903175516'
+
 api_id001 = '12588062'
 api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
 phone001 = '+79816661471'
@@ -63,6 +67,7 @@ cloud_password1 = '2303'
 
 
 # Создание клиентов 
+client0 = TelegramClient('session0', api_id0, api_hash0)
 client001 = TelegramClient('session001', api_id001, api_hash001)
 client002 = TelegramClient('session002', api_id002, api_hash002)
 client003 = TelegramClient('session003', api_id003, api_hash003)
@@ -78,8 +83,16 @@ client010 = TelegramClient('session010', api_id010, api_hash010)
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010]
+clients1 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010]
 # Авторизация
+client0.connect()
+if not client0.is_user_authorized():
+    client0.send_code_request(phone0)
+    try:
+        client0.sign_in(phone001, input('Session-0 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client0.sign_in(password=cloud_password1)
+
 client001.connect()
 if not client001.is_user_authorized():
     client001.send_code_request(phone001)
