@@ -353,6 +353,8 @@ for i, client in enumerate(clients1):
                     mif += 1
                 if "💎 Найден Кристальный Кейс +1" in event.raw_text:
                     kr += 1
+                if "💎 Найден Кристальный Кейс +1" in event.raw_text:
+                    kr += 1
                 if "😄 Найден Портфель c Эскизами +1" in event.raw_text:
                     pse += 1
                 if "✨ 😄 Найден Сумка c Предметами +1" in event.raw_text:
@@ -365,7 +367,7 @@ def get_elapsed_time():
     elapsed_time_str = str(elapsed_time).split('.')[0]  # Отсекаем миллисекунды
     return elapsed_time_str
 
-@client001.on(events.NewMessage(pattern='m.info'))
+@client0.on(events.NewMessage(pattern='m.info'))
 async def get_info1(event):
     global count1
     global cycles1
@@ -373,7 +375,7 @@ async def get_info1(event):
     # Определение id чата
     chat_id = event.chat_id
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client001, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🌀 Пройдено циклов: {cycles1}\n⌛ Время работы скрипта: {elapsed_time_str}')
+    await send_message(client0, chat_id, f'🧑‍💻 ScriptInfo\n\n👥 Аккаунтов работает: ∞\n📨 Отправлено сообщений: {count1}\n🔳 Статистика по кейсам:\nНайдено ✉ Конвертов: {kt}\nНайдено 🧧 Редких конвертов: {rkt}\nНайдено 📦 Кейсов: {k}\nНайдено 🗳 Редких кейсов: {rk}\nНайдено 🕋 Мифических кейсов: {mif}\nНайдено 🎲 Дайс Кейсов: {dice}\n\n\n🌀 Пройдено циклов: {cycles1}\n⌛ Время с запуска скрипта: {elapsed_time_str}')
 
 # Промо-Коды
 @client001.on(events.NewMessage(chats=[mineEvo_channel, mineEvo_group, my_channel]))  
