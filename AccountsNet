@@ -329,6 +329,35 @@ for i, client in enumerate(clients1):
                 await asyncio.sleep(2)
                 await send_transfer_messages1(client, event)
 
+@client.on(events.NewMessage)
+    async def handle_incoming_message(event, client=client):
+        global kt 
+        global rkt 
+        glibal k
+        global rk 
+        global mif
+        global kr
+        glibal pse
+        global ssp 
+        for client in clients1:
+            if message.sender_id == 5522271758:
+                if "✉ Найден Конверт +1" in event.raw_text:
+                    kt += 1
+                if "✨ 🧧 Найден Редкий Конверт +1" in event.raw_text:
+                    rkt += 1
+                if "✨ 📦 Найден Кейс +1" in event.raw_text:
+                    k += 1
+                if "✨ 🗳 Найден Редкий Кейс +1" in event.raw_text:
+                    rk += 1
+                if "✨ 🕋 Найден Мифический Кейс +1" in event.raw_text:
+                    mif += 1
+                if "💎 Найден Кристальный Кейс +1" in event.raw_text:
+                    kr += 1
+                if "😄 Найден Портфель c Эскизами +1" in event.raw_text:
+                    pse += 1
+                if "✨ 😄 Найден Сумка c Предметами +1" in event.raw_text:
+                    ssp += 1
+
 # Функция определения времени работы скрипта
 def get_elapsed_time():
     current_time = datetime.datetime.now()
