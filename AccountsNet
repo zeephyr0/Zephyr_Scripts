@@ -187,6 +187,14 @@ twins_group = '@twinsFarm_byDem'
 
 count1 = 0
 cycles1 = 0
+kt = 0
+rkt = 0
+k = 0
+rk = 0
+mif = 0
+kr = 0
+pse = 0
+ssp = 0
 stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
