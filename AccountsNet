@@ -95,7 +95,7 @@ client0.connect()
 if not client0.is_user_authorized():
     client0.send_code_request(phone0)
     try:
-        client0.sign_in(phone00, input('Session-0 Введите код подтверждения: '), password=cloud_password1)
+        client0.sign_in(phone0, input('Session-0 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client0.sign_in(password=cloud_password1)
 
