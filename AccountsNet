@@ -63,6 +63,10 @@ api_id010 = '22353684'
 api_hash010 = '98cf980e06b08c566679c9e17b317a41'
 phone010 = '+447983221564'
 
+api_id011 = '20702885'
+api_hash011 = '5d8bb2c5dfc7ce14dd4a1f2e0ce8a019'
+phone011 = '+6281251078148'
+
 cloud_password1 = '2303'
 
 
@@ -78,12 +82,14 @@ client007 = TelegramClient('session007', api_id007, api_hash007)
 client008 = TelegramClient('session008', api_id008, api_hash008)
 client009 = TelegramClient('session009', api_id009, api_hash009)
 client010 = TelegramClient('session010', api_id010, api_hash010)
+client011 = TelegramClient('session011', api_id011, api_hash011)
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
 clients1 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010]
+clients1 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
 # Авторизация
 client0.connect()
 if not client0.is_user_authorized():
@@ -173,7 +179,15 @@ if not client010.is_user_authorized():
     except SessionPasswordNeededError:
         client010.sign_in(password=cloud_password1)
 
-for client in clients1:
+client011.connect()
+if not client011.is_user_authorized():
+    client011.send_code_request(phone011)
+    try:
+        client011.sign_in(phone011, input('Session-011 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client011.sign_in(password=cloud_password1)
+
+for client in clients2:
     client.start()
 
 print('Клиенты успешно запущены!')
@@ -221,20 +235,20 @@ async def send_message(client, mine_evo, message):
         # Обработка других исключений
         print(f"Ошибка при отправке сообщения для клиента {client}: {e}")
 
-@client001.on(events.NewMessage(pattern='m.off'))
+@client0.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
     global stop_sending1
     stop_sending1 = True
     await event.message.edit('❌Отправка сообщений выключена')
 
-@client001.on(events.NewMessage(pattern='m.on'))
+@client0.on(events.NewMessage(pattern='m.on'))
 async def start_sending_messages(event):
     global stop_sending1
     stop_sending1 = False
     await event.message.edit('✅Отправка сообщений включена')
 
 
-@client001.on(events.NewMessage(pattern='m.send'))
+@client0.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages1(event):
     global count1
     global cycles1
@@ -262,7 +276,7 @@ async def send_multiple_messages1(event):
             break
 
 # Модуль для проверки кейсов
-@client001.on(events.NewMessage(pattern='m.cases'))
+@client0.on(events.NewMessage(pattern='m.cases'))
 async def cases_info1(event):
     # Текст для отправки сообщения 
     message = 'кейсы'
@@ -275,7 +289,7 @@ async def cases_info1(event):
 async def cases_info1(event):
     # Текст для отправки сообщения 
     message = 'еб'
-    for client in clients1:
+    for client in clients2:
         await asyncio.sleep(2)
         await client(SendMessageRequest(mine_evo, message))
 
@@ -386,10 +400,10 @@ async def process_new_message(event):
     message = event.message
     if 'Промо' in message.message:
         promo_code = message.message.split('Промо ')[1].split()[0]
-        for client in clients1:
+        for client in clients2:
             await client(SendMessageRequest(mine_evo, f'промо {promo_code}'))
 
-for client in clients1:
+for client in clients2:
     try:
         client.run_until_disconnected()
     except KeyboardInterrupt:
