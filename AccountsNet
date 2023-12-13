@@ -227,12 +227,16 @@ async def stop_sending_messages(event):
     global stop_sending1
     stop_sending1 = True
     await event.message.edit('❌Отправка сообщений выключена')
+    await sleep(10);
+    await message.delete();
 
 @client0.on(events.NewMessage(pattern='m.on'))
 async def start_sending_messages(event):
     global stop_sending1
     stop_sending1 = False
     await event.message.edit('✅Отправка сообщений включена')
+    await sleep(10);
+    await message.delete();
 
 
 @client0.on(events.NewMessage(pattern='m.send'))
@@ -245,9 +249,13 @@ async def send_multiple_messages1(event):
     if stop_sending1:
         await asyncio.sleep(4) 
         await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
+        await sleep(10);
+        await message.delete();
     else:
         await asyncio.sleep(2)
         await event.message.edit('💢Начинаем копать')
+        await sleep(10);
+        await message.delete();
     while not stop_sending1:
         coroutines = []
         for client in clients1:
@@ -265,6 +273,8 @@ async def send_multiple_messages1(event):
 # Модуль для проверки кейсов
 @client0.on(events.NewMessage(pattern='m.cases'))
 async def cases_info1(event):
+    await sleep(10);
+    await message.delete();
     # Текст для отправки сообщения 
     message = 'кейсы'
     for client in clients1:
@@ -274,6 +284,8 @@ async def cases_info1(event):
 # Модуль для ежедневного бонуса
 @client001.on(events.NewMessage(pattern='m.day'))
 async def cases_info1(event):
+    await sleep(10);
+    await message.delete();
     # Текст для отправки сообщения 
     message = 'еб'
     for client in clients1:
