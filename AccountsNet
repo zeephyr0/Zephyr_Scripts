@@ -330,7 +330,7 @@ for i, client in enumerate(clients1):
                 await send_transfer_messages1(client, event)
 
 #сбор статистики
-@client.on(events.NewMessage)
+@client.on(events.NewMessage, message)
 async def handle_incoming_message(event, client=client):
     global kt 
     global rkt 
