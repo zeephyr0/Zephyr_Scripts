@@ -228,7 +228,7 @@ async def stop_sending_messages(event):
     stop_sending1 = True
     await event.message.edit('❌Отправка сообщений выключена')
     await asyncio.sleep(10);
-    await message.delete();
+    await event.message.delete();
 
 @client0.on(events.NewMessage(pattern='m.on'))
 async def start_sending_messages(event):
@@ -236,7 +236,7 @@ async def start_sending_messages(event):
     stop_sending1 = False
     await event.message.edit('✅Отправка сообщений включена')
     await asyncio.sleep(10);
-    await message.delete();
+    await event.message.delete();
 
 
 @client0.on(events.NewMessage(pattern='m.send'))
@@ -250,12 +250,12 @@ async def send_multiple_messages1(event):
         await asyncio.sleep(4) 
         await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
         await asyncio.sleep(10);
-        await message.delete();
+        await event.message.delete();
     else:
         await asyncio.sleep(2)
         await event.message.edit('💢Начинаем копать')
         await asyncio.sleep(10);
-        await message.delete();
+        await event.message.delete();
     while not stop_sending1:
         coroutines = []
         for client in clients1:
@@ -274,7 +274,7 @@ async def send_multiple_messages1(event):
 @client0.on(events.NewMessage(pattern='m.cases'))
 async def cases_info1(event):
     await asyncio.sleep(10);
-    await message.delete();
+    await event.message.delete();
     # Текст для отправки сообщения 
     message = 'кейсы'
     for client in clients1:
@@ -285,7 +285,7 @@ async def cases_info1(event):
 @client001.on(events.NewMessage(pattern='m.day'))
 async def cases_info1(event):
     await asyncio.sleep(10);
-    await message.delete();
+    await event.message.delete();
     # Текст для отправки сообщения 
     message = 'еб'
     for client in clients1:
