@@ -330,7 +330,7 @@ for i, client in enumerate(clients1):
                 await send_transfer_messages1(client, event)
 
 #сбор статистики
-@client.on(events.NewMessage, message)
+@client.on(events.NewMessage)
 async def handle_incoming_message(event, client=client):
     global kt 
     global rkt 
@@ -342,7 +342,7 @@ async def handle_incoming_message(event, client=client):
     global pse
     global ssp 
     for client in clients1:
-        if message.sender_id == 5522271758:
+        if event.sender_id == 5522271758:
             if "✉ Найден Конверт +1" in event.raw_text:
                 kt += 1
             elif "🧧 Найден Редкий Конверт +1" in event.raw_text:
