@@ -1,4 +1,4 @@
-# coded by DEM
+# coded by DEM)
 # good luck =]
 
 from telethon import TelegramClient, sync
@@ -197,6 +197,7 @@ kr = 0
 dice = 0
 pse = 0
 ssp = 0
+zv = 0
 stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
@@ -227,7 +228,7 @@ async def stop_sending_messages(event):
     global stop_sending1
     stop_sending1 = True
     await event.message.edit('❌Отправка сообщений выключена')
-    await asyncio.sleep(10);
+    await asyncio.sleep(5);
     await event.message.delete();
 
 @client0.on(events.NewMessage(pattern='m.on'))
@@ -235,7 +236,7 @@ async def start_sending_messages(event):
     global stop_sending1
     stop_sending1 = False
     await event.message.edit('✅Отправка сообщений включена')
-    await asyncio.sleep(10);
+    await asyncio.sleep(5);
     await event.message.delete();
 
 
@@ -247,14 +248,14 @@ async def send_multiple_messages1(event):
     await event.message.edit('Пробуем копать...')
     chat_id = mine_evo
     if stop_sending1:
-        await asyncio.sleep(4) 
+        await asyncio.sleep(2) 
         await event.message.edit('☠️Невозможно начать копать\nОтправка сообщений выключена')
-        await asyncio.sleep(10);
+        await asyncio.sleep(3);
         await event.message.delete();
     else:
         await asyncio.sleep(2)
         await event.message.edit('💢Начинаем копать')
-        await asyncio.sleep(10);
+        await asyncio.sleep(3);
         await event.message.delete();
     while not stop_sending1:
         coroutines = []
@@ -273,7 +274,7 @@ async def send_multiple_messages1(event):
 # Модуль для проверки кейсов
 @client0.on(events.NewMessage(pattern='m.cases'))
 async def cases_info1(event):
-    await asyncio.sleep(10);
+    await asyncio.sleep(3);
     await event.message.delete();
     # Текст для отправки сообщения 
     message = 'кейсы'
@@ -283,8 +284,8 @@ async def cases_info1(event):
 
 # Модуль для ежедневного бонуса
 @client001.on(events.NewMessage(pattern='m.day'))
-async def cases_info1(event):
-    await asyncio.sleep(10);
+async def mday(event):
+    await asyncio.sleep(3);
     await event.message.delete();
     # Текст для отправки сообщения 
     message = 'еб'
@@ -353,26 +354,29 @@ async def handle_incoming_message(event, client=client):
     global kr
     global dice
     global pse
-    global ssp 
-    if event.sender_id == 5522271758:
-        if "✨ ✉ Найден Конверт +1" in event.raw_text:
-            kt += 1
-        if "✨ 🧧 Найден Редкий Конверт +1" in event.raw_text:
-            rkt += 1
-        if "✨ 📦 Найден Кейс +1" in event.raw_text:
-            k += 1
-        if "✨ 🗳 Найден Редкий Кейс +1" in event.raw_text:
-            rk += 1
-        if "✨ 🕋 Найден Мифический Кейс +1" in event.raw_text:
-            mif += 1
-        if "💎 Найден Кристальный Кейс +1" in event.raw_text:
-            kr += 1
-        if "🎲 Найден Дайс Кейс +1" in event.raw_text:
-            dice += 1
-        if "😄 Найден Портфель c Эскизами +1" in event.raw_text:
-            pse += 1
-        if "✨ 😄 Найден Сумка c Предметами +1" in event.raw_text:
-            ssp += 1
+    global ssp
+    global zv
+        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "Найден" in message.raw_text:
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "✉" in message.raw_text and "Конверт" in message.raw_text:
+                kt += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🧧" in message.raw_text and "Редкий Конверт" in message.raw_text:
+                rkt += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "📦" in message.raw_text and "Кейс" in message.raw_text:
+                k += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🗳" in message.raw_text and "Редкий Кейс" in message.raw_text:
+                rk += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🕋" in message.raw_text and "Мифический Кейс" in message.raw_text:
+                mif += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "Портфель" in message.raw_text:
+                pse += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "Сумка" in message.raw_text:    
+                ssp += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "💎" in message.raw_text and "Кристальный Кейс" in message.raw_text:
+                kr += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🎲" in message.raw_text and "Дайс Кейс" in message.raw_text:
+                dice += 1
+            if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🌌" in message.raw_text and "Звёздный Кейс" in message.raw_text or hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "💫" in message.raw_text:
+                zv += 1
 
 # Функция определения времени работы скрипта
 def get_elapsed_time():
@@ -391,7 +395,7 @@ async def get_info1(event):
     await asyncio.sleep(10);
     await event.message.delete();
     # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client0, chat_id, f'☠️ ScriptInfo\n\n👥 Аккаунтов работает: ×\n📨 Отправлено сообщений: {count1}\n🔳 Статистика по кейсам:\nНайдено ✉ Конвертов: {kt}\nНайдено 🧧 Редких конвертов: {rkt}\nНайдено 📦 Кейсов: {k}\nНайдено 🗳 Редких кейсов: {rk}\nНайдено 🕋 Мифических кейсов: {mif}\nНайдено 💎 Кристальных Кейсов: {kr}\nНайдено 🎲 Дайс Кейсов: {dice}\nНайдено 💼 Портфелей с Эскизами: {pse}\nНайдено 👜 Сумок с Предметами: {ssp}\n\n⌛ Время с запуска скрипта: {elapsed_time_str}')
+    await send_message(client0, chat_id, f'☠️ ScriptInfo\n\n👥 Аккаунтов работает: ×\n📨 Отправлено сообщений: {count1}\n\n🔆 Статистика по кейсам:\nНайдено ✉ Конвертов: {kt}\nНайдено 🧧 Редких конвертов: {rkt}\nНайдено 📦 Кейсов: {k}\nНайдено 🗳 Редких кейсов: {rk}\nНайдено 🕋 Мифических кейсов: {mif}\nНайдено 💎 Кристальных Кейсов: {kr}\nНайдено 🎲 Дайс Кейсов: {dice}\nНайдено 💼 Портфелей с Эскизами: {pse}\nНайдено 👜 Сумок с Предметами: {ssp}\nНайдено 🌌 Звёздных кейсов: {zv}\n\n⌛ Время с запуска скрипта: {elapsed_time_str}')
 
 # Промо-Коды
 @client001.on(events.NewMessage(chats=[mineEvo_channel, mineEvo_group, my_channel]))  
