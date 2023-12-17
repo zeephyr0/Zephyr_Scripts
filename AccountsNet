@@ -283,7 +283,7 @@ async def cases_info1(event):
         await client(SendMessageRequest(mine_evo, message))
 
 # Модуль для ежедневного бонуса
-@client001.on(events.NewMessage(pattern='m.day'))
+@client0.on(events.NewMessage(pattern='m.day'))
 async def mday(event):
     await asyncio.sleep(3);
     await event.message.delete();
