@@ -71,14 +71,14 @@ channel_links = []
 for client in clients:
     client.start()
     tracemalloc.start()
-    print("клиенты запущены");
+print("клиенты запущены");
 
 # Функция для подписки на каналы
 async def join_channel(client, link):
     await client.join_channel(link)
     print(f'Присоединился к каналу: {link}')
-except Exception as e:
-    print(f'Ошибка при подписке клиента на канал {link}: {e}')
+    except Exception as e:
+        print(f'Ошибка при подписке клиента на канал {link}: {e}')
 # Функция для подписки на группу
 def join_chat(client):
     try:
