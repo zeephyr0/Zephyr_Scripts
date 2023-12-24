@@ -36,7 +36,7 @@ client002 = TelegramClient('session002', api_id002, api_hash002)
 client003 = TelegramClient('session003', api_id003, api_hash003)
 
 # Авторизация
-clients1 = [client001, client002, client003]
+clients = [client001, client002, client003]
 
 client001.connect()
 if not client001.is_user_authorized():
@@ -76,7 +76,7 @@ def join_channel(client, link):
 # Функция для подписки на группу
 def join_chat(client):
     try:
-        client(JoinChannelRequest('@281'))
+        client(JoinChannelRequest('@twinsFarm_byDem'))
         print(f'Клиент {client.session.user_id} присоединился к группе @281')
     except Exception as e:
         print(f'Ошибка при присоединении клиента {client.session.user_id} к группе @281: {e}')
