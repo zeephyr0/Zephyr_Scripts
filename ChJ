@@ -10,7 +10,6 @@ from telethon.errors import SessionPasswordNeededError
 from telethon.tl.functions.channels import InviteToChannelRequest
 import datetime
 import requests
-import async 
 import time
 import random
 import tracemalloc
