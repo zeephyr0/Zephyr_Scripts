@@ -75,17 +75,15 @@ print("клиенты запущены");
 
 # Функция для подписки на каналы
 async def join_channel(client, link):
-    await client.join_channel(link)
+    await client.join_chat(link)
     print(f'Присоединился к каналу: {link}')
-
 # Функция для подписки на группу
 async def join_chat(client):
     try:
-        client(JoinChannelRequest('@twinsFarm_byDem'))
+        await client(JoinChannelRequest('@twinsFarm_byDem'))
         print(f'Клиент присоединился к группе')
     except Exception as e:
         print(f'Ошибка при присоединении клиента к группе @281: {e}')
-
 # Функция-обработчик новых сообщений в группе
 async def handle_group_message(event):
     message_text = event.message.message.lower()
@@ -98,7 +96,7 @@ async def handle_group_message(event):
             time.sleep(3)
     elif message_text.startswith('join_chat'):
         for client in clients:
-            join_chat(client)
+            await join_chat(client)
             time.sleep(7)
 
 # Запускаем клиентов и подписываемся на события новых сообщений в группе
