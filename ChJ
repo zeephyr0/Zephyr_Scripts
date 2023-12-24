@@ -1,5 +1,20 @@
-import time
+#coded by DEM =]
 from telethon.sync import TelegramClient, events
+from telethon import TelegramClient, sync
+from telethon import events, utils
+from telethon.tl.functions.messages import GetDialogsRequest
+from telethon.tl.functions.messages import SendMessageRequest
+from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
+from telethon.errors import FloodWaitError
+from telethon.errors import SessionPasswordNeededError
+import datetime
+import requests
+import time
+import random
+import tracemalloc
+import asyncio
+import concurrent.futures
+import json
 
 api_id001 = '12588062'
 api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
