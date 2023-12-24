@@ -4,6 +4,7 @@ from telethon import TelegramClient, sync
 from telethon import events, utils
 from telethon.tl.functions.messages import GetDialogsRequest
 from telethon.tl.functions.messages import SendMessageRequest
+from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import InputPeerEmpty, PeerUser, PeerChat, PeerChannel
 from telethon.errors import FloodWaitError
 from telethon.errors import SessionPasswordNeededError
@@ -75,7 +76,7 @@ print("клиенты запущены");
 
 # Функция для подписки на каналы
 async def join_channel(client, link):
-    await client.join_chat(link)
+    await client(JoinChannelRequest(link))
     print(f'Присоединился к каналу: {link}')
 # Функция для подписки на группу
 async def join_chat(client):
