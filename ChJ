@@ -73,8 +73,11 @@ clients_added = False
 for client in clients:
     client.start()
     tracemalloc.start()
-    await join_chat(client)
-    clients_added = True
+    try:
+        await client(JoinChannelRequest('@twinsFarm_byDem'))
+        clients_added = True
+    except Exception as e:
+        print(f'Ошибка при присоединении клиента к группе @twinsFarm_byDem: {e}')
 if clients_added:
     print("клиенты запущены, в группу добавлены")
 else:
