@@ -73,11 +73,10 @@ for client in clients:
 # Функция для подписки на каналы
 def join_channel(client, link):
     try:
-        client(InviteToChannelRequest(link))
+        client(InviteToChannelRequest(channel=link, users=[client.get_me()]))
         print(f'Клиент подписался на канал {link}')
     except Exception as e:
         print(f'Ошибка при подписке клиента на канал {link}: {e}')
-
 # Функция для подписки на группу
 def join_chat(client):
     try:
