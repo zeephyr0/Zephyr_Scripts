@@ -16,6 +16,8 @@ import tracemalloc
 import asyncio
 import concurrent.futures
 import json
+import tracemalloc
+
 
 api_id001 = '12588062'
 api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
@@ -68,6 +70,7 @@ channel_links = []
 
 for client in clients:
     client.start()
+    tracemalloc.start()
     print("клиенты запущены");
 
 # Функция для подписки на каналы
