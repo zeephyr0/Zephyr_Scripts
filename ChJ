@@ -73,17 +73,17 @@ for client in clients:
 def join_channel(client, link):
     try:
         client(InviteToChannelRequest(link))
-        print(f'Клиент {client.session.user_id} подписался на канал {link}')
+        print(f'Клиент подписался на канал {link}')
     except Exception as e:
-        print(f'Ошибка при подписке клиента {client.session.user_id} на канал {link}: {e}')
+        print(f'Ошибка при подписке клиента на канал {link}: {e}')
 
 # Функция для подписки на группу
 def join_chat(client):
     try:
         client(JoinChannelRequest('@twinsFarm_byDem'))
-        print(f'Клиент {client.session.user_id} присоединился к группе')
+        print(f'Клиент присоединился к группе')
     except Exception as e:
-        print(f'Ошибка при присоединении клиента {client.session.user_id} к группе @281: {e}')
+        print(f'Ошибка при присоединении клиента к группе @281: {e}')
 
 # Функция-обработчик новых сообщений в группе
 def handle_group_message(event):
