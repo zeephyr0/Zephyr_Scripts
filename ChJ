@@ -77,8 +77,7 @@ print("клиенты запущены");
 async def join_channel(client, link):
     await client.join_channel(link)
     print(f'Присоединился к каналу: {link}')
-    except Exception as e:
-        print(f'Ошибка при подписке клиента на канал {link}: {e}')
+
 # Функция для подписки на группу
 def join_chat(client):
     try:
