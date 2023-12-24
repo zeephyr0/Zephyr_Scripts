@@ -69,22 +69,20 @@ if not client003.is_user_authorized():
 # Создаем список для хранения ссылок на каналы
 channel_links = []
 
+clients_added = False
 for client in clients:
     client.start()
     tracemalloc.start()
-print("клиенты запущены");
-
+    await join_chat(client)
+    clients_added = True
+if clients_added:
+    print("клиенты запущены, в группу добавлены")
+else:
+    print("клиенты запущены, группа подготовлена")
 # Функция для подписки на каналы
 async def join_channel(client, link):
     await client(JoinChannelRequest(link))
     print(f'Присоединился к каналу: {link}')
-# Функция для подписки на группу
-async def join_chat(client):
-    try:
-        await client(JoinChannelRequest('@twinsFarm_byDem'))
-        print(f'Клиент присоединился к группе')
-    except Exception as e:
-        print(f'Ошибка при присоединении клиента к группе @281: {e}')
 # Функция-обработчик новых сообщений в группе
 async def handle_group_message(event):
     message_text = event.message.message.lower()
@@ -95,11 +93,6 @@ async def handle_group_message(event):
         for client in clients:
             await join_channel(client, link)
             time.sleep(3)
-    elif message_text.startswith('join_chat'):
-        for client in clients:
-            await join_chat(client)
-            time.sleep(7)
-
 # Запускаем клиентов и подписываемся на события новых сообщений в группе
 for client in clients:
     client.add_event_handler(handle_group_message, events.NewMessage(chats='@twinsFarm_byDem'))
