@@ -74,7 +74,7 @@ for client in clients:
     client.start()
     tracemalloc.start()
     try:
-        await client(JoinChannelRequest('@twinsFarm_byDem'))
+        client(JoinChannelRequest('@twinsFarm_byDem'))
         clients_added = True
     except Exception as e:
         print(f'Ошибка при присоединении клиента к группе @twinsFarm_byDem: {e}')
