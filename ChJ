@@ -77,7 +77,7 @@ def join_channel(client, link):
 def join_chat(client):
     try:
         client(JoinChannelRequest('@twinsFarm_byDem'))
-        print(f'Клиент {client.session.user_id} присоединился к группе @281')
+        print(f'Клиент {client.session.user_id} присоединился к группе')
     except Exception as e:
         print(f'Ошибка при присоединении клиента {client.session.user_id} к группе @281: {e}')
 
@@ -97,7 +97,7 @@ def handle_group_message(event):
             time.sleep(7)
 
 # Запускаем клиентов и подписываемся на события новых сообщений в группе
-for client_data in clients:
-    with TelegramClient('session_name', client_data['api_id'], client_data['api_hash']) as client:
-        client.add_event_handler(handle_group_message, events.NewMessage(chats='group_username'))
+for client in clients:
+    with client001:
+        client.add_event_handler(handle_group_message, events.NewMessage(chats='@twinsFarm_byDem'))
         client.run_until_disconnected()
