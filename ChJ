@@ -79,7 +79,7 @@ async def join_channel(client, link):
     print(f'Присоединился к каналу: {link}')
 
 # Функция для подписки на группу
-def join_chat(client):
+acync def join_chat(client):
     try:
         client(JoinChannelRequest('@twinsFarm_byDem'))
         print(f'Клиент присоединился к группе')
@@ -87,7 +87,7 @@ def join_chat(client):
         print(f'Ошибка при присоединении клиента к группе @281: {e}')
 
 # Функция-обработчик новых сообщений в группе
-def handle_group_message(event):
+acync def handle_group_message(event):
     message_text = event.message.message.lower()
     if message_text.startswith('join'):
         link = message_text.split(' ')[1]
