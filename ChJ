@@ -1,20 +1,24 @@
 import time
 from telethon.sync import TelegramClient, events
 
-# Здесь нужно указать данные для каждого клиента
-api_id1 = 'API_ID_1'
-api_hash1 = 'API_HASH_1'
-api_id2 = 'API_ID_2'
-api_hash2 = 'API_HASH_2'
-api_id3 = 'API_ID_3'
-api_hash3 = 'API_HASH_3'
+api_id001 = '12588062'
+api_hash001 = 'd0f061c565991d6ed274285c0d032f7a'
+phone001 = '+79816661471'
 
-# Создаем список с данными для каждого клиента
-clients = [
-    {'api_id': api_id1, 'api_hash': api_hash1},
-    {'api_id': api_id2, 'api_hash': api_hash2},
-    {'api_id': api_id3, 'api_hash': api_hash3}
-]
+api_id002 = '13123883'
+api_hash002 = 'f1fab12098570c2bf8848ad6ea23c62f'
+phone002 = '+79676939873'
+
+api_id003 = '19334807'
+api_hash003 = '4b4edde7a9d46172399f0ac4cb98ae63'
+phone003 = '+79842549006'
+
+cloud_password1 = '2303'
+
+# Создание клиентов 
+client001 = TelegramClient('session001', api_id001, api_hash001)
+client002 = TelegramClient('session002', api_id002, api_hash002)
+client003 = TelegramClient('session003', api_id003, api_hash003)
 
 # Создаем список для хранения ссылок на каналы
 channel_links = []
