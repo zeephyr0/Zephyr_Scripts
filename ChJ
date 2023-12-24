@@ -65,6 +65,10 @@ if not client003.is_user_authorized():
 # Создаем список для хранения ссылок на каналы
 channel_links = []
 
+for client in clients2:
+    client.start()
+    print("клиенты запущены");
+
 # Функция для подписки на каналы
 def join_channel(client, link):
     try:
