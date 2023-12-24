@@ -98,6 +98,5 @@ def handle_group_message(event):
 
 # Запускаем клиентов и подписываемся на события новых сообщений в группе
 for client in clients:
-    with client001:
-        client.add_event_handler(handle_group_message, events.NewMessage(chats='@twinsFarm_byDem'))
-        client.run_until_disconnected()
+    client.add_event_handler(handle_group_message, events.NewMessage(chats='@twinsFarm_byDem'))
+    client.run_until_disconnected()
