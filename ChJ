@@ -10,6 +10,7 @@ from telethon.errors import SessionPasswordNeededError
 from telethon.tl.functions.channels import InviteToChannelRequest
 import datetime
 import requests
+import async 
 import time
 import random
 import tracemalloc
@@ -74,12 +75,11 @@ for client in clients:
     print("клиенты запущены");
 
 # Функция для подписки на каналы
-def join_channel(client, link):
-    try:
-        client(InviteToChannelRequest(channel=link, users=[client.get_me()]))
-        print(f'Клиент подписался на канал {link}')
-    except Exception as e:
-        print(f'Ошибка при подписке клиента на канал {link}: {e}')
+async def join_channel(client, link):
+    await client.join_channel(link)
+    print(f'Присоединился к каналу: {link}')
+except Exception as e:
+    print(f'Ошибка при подписке клиента на канал {link}: {e}')
 # Функция для подписки на группу
 def join_chat(client):
     try:
@@ -96,7 +96,7 @@ def handle_group_message(event):
         channel_links.append(link)
         print(f'Добавлена ссылка на канал: {link}')
         for client in clients:
-            join_channel(client, link)
+            await join_channel(client, link)
             time.sleep(3)
     elif message_text.startswith('join_chat'):
         for client in clients:
