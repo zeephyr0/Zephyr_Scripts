@@ -325,6 +325,10 @@ cases_list = {
 } 
 
 async def send_transfer_message1(client, chat_id, case_name, quantity):
+    # Обновление статистики
+    if case_alias not in statistics:
+        statistics[case_alias] = 0
+    statistics[case_alias] += quantity
     # Определение названия кейса для передачи
     case_alias = cases_list.get(case_name, "")
     # Сообщение о передаче
@@ -348,10 +352,6 @@ async def send_transfer_messages1(client, event):
                     if len(item) >= 2:
                         item = item[1].strip()
                         await send_transfer_message1(client, chat_id, case, item)
-    # Обновление статистики
-    if case_alias not in statistics:
-        statistics[case_alias] = 0
-    statistics[case_alias] += quantity
 
 async def send_statistics(client, chat_id):
     # Формирование сообщения со статистикой
@@ -368,41 +368,6 @@ for i, client in enumerate(clients1):
             if f"📦 Кейсы игрока\n{player_name}" in event.raw_text:
                 await asyncio.sleep(2)
                 await send_transfer_messages1(client, event)
-
-#сбор статистики
-@client.on(events.NewMessage)
-async def handle_incoming_message(event, client=client):
-    global kt 
-    global rkt 
-    global k
-    global rk 
-    global mif
-    global kr
-    global dice
-    global pse
-    global ssp
-    global zv
-    if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "Найден" in message.raw_text:
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "✉" in message.raw_text and "Конверт" in message.raw_text:
-            kt += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🧧" in message.raw_text and "Редкий Конверт" in message.raw_text:
-            rkt += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "📦" in message.raw_text and "Кейс" in message.raw_text:
-            k += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🗳" in message.raw_text and "Редкий Кейс" in message.raw_text:
-            rk += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🕋" in message.raw_text and "Мифический Кейс" in message.raw_text:
-            mif += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "Портфель" in message.raw_text:
-            pse += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "Сумка" in message.raw_text:    
-            ssp += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "💎" in message.raw_text and "Кристальный Кейс" in message.raw_text:
-            kr += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🎲" in message.raw_text and "Дайс Кейс" in message.raw_text:
-            dice += 1
-        if hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "🌌" in message.raw_text and "Звёздный Кейс" in message.raw_text or hasattr(message, 'from_id') and message.from_id == 5522271758 and message.chat_id == 5522271758 and "💫" in message.raw_text:
-            zv += 1
 
 # Функция определения времени работы скрипта
 def get_elapsed_time():
