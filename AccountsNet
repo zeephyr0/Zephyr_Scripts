@@ -67,10 +67,6 @@ api_id011 = '26597700'
 api_hash011 = '37c5e71632bb0ec82077a76febff0d0d'
 phone011 = '+254773806800'
 
-api_id012 = '20464274'
-api_hash012 = 'eeed44766fde2feba1da240a214b3d97'
-phone012 = '+15877063810'
-
 cloud_password1 = '2303'
 
 
@@ -87,14 +83,13 @@ client008 = TelegramClient('session008', api_id008, api_hash008)
 client009 = TelegramClient('session009', api_id009, api_hash009)
 client010 = TelegramClient('session010', api_id010, api_hash010)
 client011 = TelegramClient('session011', api_id011, api_hash011)
-client012 = TelegramClient('session012', api_id012, api_hash012)
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012]
-clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
+clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
 
 # Авторизация
 client0.connect()
@@ -193,14 +188,6 @@ if not client011.is_user_authorized():
     except SessionPasswordNeededError:
         client011.sign_in(password=cloud_password1)
 
-client012.connect()
-if not client012.is_user_authorized():
-    client012.send_code_request(phone012)
-    try:
-        client012.sign_in(phone012, input('Session-012 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client012.sign_in(password=cloud_password1)
-
 for client in clients2:
     client.start()
 
@@ -291,7 +278,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(2)
-        count1 += 12
+        count1 += 11
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
 
