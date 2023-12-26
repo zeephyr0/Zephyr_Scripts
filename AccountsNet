@@ -348,10 +348,7 @@ async def send_transfer_messages1(client, event):
                     if len(item) >= 2:
                         item = item[1].strip()
                         await send_transfer_message1(client, chat_id, case, item)
-                    # Обновление статистики
-                    if case_alias not in statistics:
-                       statistics[case_alias] = 0
-                    statistics[case_alias] += quantity
+
 
 async def send_statistics(client, chat_id):
     # Формирование сообщения со статистикой
