@@ -329,13 +329,13 @@ async def send_transfer_message1(client, chat_id, case_name, quantity):
     case_alias = cases_list.get(case_name, "")
     # Сообщение о передаче
     transfer_message1 = f"Передать GOD_ZEPHYR {case_alias} {quantity}"
-    await client.send_message(chat_id, transfer_message1)
-    # Задержка 
-    await asyncio.sleep(3)
     # Обновление статистики
     if case_alias not in statistics:
         statistics[case_alias] = 0
     statistics[case_alias] += quantity
+    await client.send_message(chat_id, transfer_message1)
+    # Задержка 
+    await asyncio.sleep(3)
 async def send_transfer_messages1(client, event):
     # Определение id чата
     chat_id = '@mine_evo_bot'
