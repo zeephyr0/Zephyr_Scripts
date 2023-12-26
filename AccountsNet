@@ -372,7 +372,7 @@ async def send_statistics(client, chat_id):
     statistics_message = "Статистика:\n"
     for case, quantity in statistics.items():
         statistics_message += f"{case}: {quantity}\n"
-    await client.send_message(chat_id, statistics_message
+    await client.send_message(chat_id, statistics_message)
 
 # Определение функции обработчика входящих сообщений1
 for i, client in enumerate(clients1):
