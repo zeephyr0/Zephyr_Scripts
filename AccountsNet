@@ -193,6 +193,20 @@ for client in clients2:
 
 print('Клиенты успешно запущены!')
 
+# Создание переменных для статистики по кейсам
+stats = {
+    "кт": 0,
+    "ркт": 0,
+    "к": 0,
+    "рк": 0,
+    "миф": 0,
+    "кр": 0,
+    "дк": 0,
+    "зв": 0,
+    "ссп": 0,
+    "псэ": 0
+}
+
 # Адресы
 mineEvo_channel = '@mine_evo_news'
 mineEvo_group = '@mineevochat'
@@ -202,16 +216,6 @@ twins_group = '@twinsFarm_byDem'
 
 count1 = 0
 cycles1 = 0
-kt = 0
-rkt = 0
-k = 0
-rk = 0
-mif = 0
-kr = 0
-dice = 0
-pse = 0
-ssp = 0
-zv = 0
 stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
@@ -330,8 +334,11 @@ async def send_transfer_message1(client, chat_id, case_name, quantity):
     # Сообщение о передаче
     transfer_message1 = f"Передать GOD_ZEPHYR {case_alias} {quantity}"
     await client.send_message(chat_id, transfer_message1)
+    # Увеличение значения статистики для переданного кейса
+    stats[case_alias] += int(quantity)
     # Задержка 
     await asyncio.sleep(3)
+
 async def send_transfer_messages1(client, event):
     # Определение id чата
     chat_id = '@mine_evo_bot'
@@ -349,13 +356,18 @@ async def send_transfer_messages1(client, event):
                         item = item[1].strip()
                         await send_transfer_message1(client, chat_id, case, item)
 
+# Функция для получения статистики по кейсам
+async def get_stats():
+    stats_message = "Статистика по кейсам:\n"
+    for case, count in stats.items():
+        stats_message += f"{cases_list[case]}: {count}\n"
+    return stats_message
 
-async def send_statistics(client, chat_id):
-    # Формирование сообщения со статистикой
-    statistics_message = "Статистика:\n"
-    for case, quantity in statistics.items():
-        statistics_message += f"{case}: {quantity}\n"
-    await client.send_message(chat_id, statistics_message)
+@client0.on(events.NewMessage(pattern='m.stats'))
+async def send_stats():
+    stats = stats_message()
+    chat_id = event.chat_id
+    await send_message(client0, chat_id, stats)
 
 # Определение функции обработчика входящих сообщений1
 for i, client in enumerate(clients1):
@@ -373,11 +385,6 @@ def get_elapsed_time():
     elapsed_time_str = str(elapsed_time).split('.')[0]  # Отсекаем миллисекунды
     return elapsed_time_str
 
-@client0.on(events.NewMessage(pattern='m.stat'))
-async def get_statistic(event):
-    await asyncio.sleep(4)
-    await event.message.delete();
-    await send_statistics(client, event.chat_id)
 
 @client0.on(events.NewMessage(pattern='m.info'))
 async def get_info1(event):
