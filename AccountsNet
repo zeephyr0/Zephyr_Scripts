@@ -258,6 +258,22 @@ async def start_sending_messages(event):
     await asyncio.sleep(5);
     await event.message.delete();
 
+@client1.on(events.NewMessage(pattern='m.off'))
+async def stop_sending_messages(event):
+    global stop_sending1
+    stop_sending1 = True
+    await event.message.edit('❌Отправка сообщений выключена')
+    await asyncio.sleep(5);
+    await event.message.delete();
+
+@client1.on(events.NewMessage(pattern='m.on'))
+async def start_sending_messages(event):
+    global stop_sending1
+    stop_sending1 = False
+    await event.message.edit('✅Отправка сообщений включена')
+    await asyncio.sleep(5);
+    await event.message.delete();
+
 
 @client0.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages1(event):
@@ -385,6 +401,19 @@ def get_elapsed_time():
     elapsed_time_str = str(elapsed_time).split('.')[0]  # Отсекаем миллисекунды
     return elapsed_time_str
 
+@client0.on(events.NewMessage(pattern='m.help'))
+async def get_help1(event):
+    await asyncio.sleep(1);
+    await event.message.delete();
+    # Отправка сообщения с информацией о количестве отправленных сообщений
+    await send_message(client0, chat_id, 'Руководство по командам:\n• m.on|m on – дает разрешение на использование модуля копки\n• m.off|m on – дает запрет на использование модуля для копки\n• m.send|m send – ключает модуль для копки\n• m.cases|m cases – запуск модуля отправки кейсов. используется после выключения копки\n• m.info|m info – получить инфо о скрипте')
+
+@client1.on(events.NewMessage(pattern='m.help'))
+async def get_help2(event):
+    await asyncio.sleep(1);
+    await event.message.delete();
+    # Отправка сообщения с информацией о количестве отправленных сообщений
+    await send_message(client0, chat_id, 'Руководство по командам:\n• m.on|m on – дает разрешение на использование модуля копки\n• m.off|m on – дает запрет на использование модуля для копки\n• m.send|m send – ключает модуль для копки\n• m.cases|m cases – запуск модуля отправки кейсов. используется после выключения копки\n• m.info|m info – получить инфо о скрипте')
 
 @client0.on(events.NewMessage(pattern='m.info'))
 async def get_info1(event):
