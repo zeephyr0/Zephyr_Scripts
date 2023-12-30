@@ -258,7 +258,7 @@ async def start_sending_messages(event):
     await asyncio.sleep(5);
     await event.message.delete();
 
-@client1.on(events.NewMessage(pattern='m.off'))
+@client001.on(events.NewMessage(pattern='m.off'))
 async def stop_sending_messages(event):
     global stop_sending1
     stop_sending1 = True
@@ -266,7 +266,7 @@ async def stop_sending_messages(event):
     await asyncio.sleep(5);
     await event.message.delete();
 
-@client1.on(events.NewMessage(pattern='m.on'))
+@client001.on(events.NewMessage(pattern='m.on'))
 async def start_sending_messages(event):
     global stop_sending1
     stop_sending1 = False
