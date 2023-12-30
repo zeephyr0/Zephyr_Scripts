@@ -403,6 +403,7 @@ def get_elapsed_time():
 
 @client0.on(events.NewMessage(pattern='m.help'))
 async def get_help1(event):
+    chat_id = event.chat_id
     await asyncio.sleep(1);
     await event.message.delete();
     # Отправка сообщения с информацией о количестве отправленных сообщений
@@ -410,6 +411,7 @@ async def get_help1(event):
 
 @client001.on(events.NewMessage(pattern='m.help'))
 async def get_help2(event):
+    chat_id = event.chat_id
     await asyncio.sleep(1);
     await event.message.delete();
     # Отправка сообщения с информацией о количестве отправленных сообщений
