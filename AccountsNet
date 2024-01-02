@@ -373,7 +373,7 @@ async def send_transfer_messages1(client, event):
                         await send_transfer_message1(client, chat_id, case, item)
 
 @client0.on(events.NewMessage(pattern='m.stats'))
-async def send_stats():
+async def send_stats(event):
     stats_message = "Статистика по переданным кейсам:\n"
     for case_name, case_quantity in stats.items():
         stats_message += f"{cases_list[case_name]}: {case_quantity}\n"
