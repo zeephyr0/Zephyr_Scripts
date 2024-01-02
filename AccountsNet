@@ -244,23 +244,6 @@ async def start_sending_messages(event):
     await asyncio.sleep(5);
     await event.message.delete();
 
-@client001.on(events.NewMessage(pattern='m.off'))
-async def stop_sending_messages(event):
-    global stop_sending1
-    stop_sending1 = True
-    await event.message.edit('❌Отправка сообщений выключена')
-    await asyncio.sleep(5);
-    await event.message.delete();
-
-@client001.on(events.NewMessage(pattern='m.on'))
-async def start_sending_messages(event):
-    global stop_sending1
-    stop_sending1 = False
-    await event.message.edit('✅Отправка сообщений включена')
-    await asyncio.sleep(5);
-    await event.message.delete();
-
-
 @client0.on(events.NewMessage(pattern='m.send'))
 async def send_multiple_messages1(event):
     global count1
@@ -336,8 +319,6 @@ async def send_transfer_message1(client, chat_id, case_name, quantity):
     # Сообщение о передаче
     transfer_message1 = f"Передать GOD_ZEPHYR {case_alias} {quantity}"
     await client.send_message(chat_id, transfer_message1)
-    # Увеличение значения статистики для переданного кейса
-    stats[case_alias] += int(quantity)
     # Задержка 
     await asyncio.sleep(3)
 
@@ -358,30 +339,6 @@ async def send_transfer_messages1(client, event):
                         item = item[1].strip()
                         await send_transfer_message1(client, chat_id, case, item)
 
-@client0.on(events.NewMessage)
-async def handle_incoming_message(event):
-    # Определите переменные chat_id, message и stats в соответствии с вашими настройками
-    chat_id = '@mine_evo_bot'
-    message = event.raw_text
-    stats = {
-        "кт": 0,
-        "ркт": 0,
-        "к": 0,
-        "рк": 0,
-        "миф": 0,
-        "кр": 0,
-        "дк": 0,
-        "зв": 0,
-        "ссп": 0,
-        "псэ": 0
-    }
-    # Определите функцию send_transfer_message1 здесь
-    # Обработка команды m.stats
-    if message == "m.stats":
-        stats_message = "Статистика по переданным кейсам:\n"
-        for case_name, case_quantity in stats.items():
-            stats_message += f"{cases_list[case_name]}: {case_quantity}\n"
-        await client0.send_message(chat_id, stats_message)
 
 # Определение функции обработчика входящих сообщений1
 for i, client in enumerate(clients1):
@@ -401,14 +358,6 @@ def get_elapsed_time():
 
 @client0.on(events.NewMessage(pattern='m.help'))
 async def get_help1(event):
-    chat_id = event.chat_id
-    await asyncio.sleep(1);
-    await event.message.delete();
-    # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client0, chat_id, 'Руководство по командам:\n• m.on|m on – дает разрешение на использование модуля копки\n• m.off|m on – дает запрет на использование модуля для копки\n• m.send|m send – ключает модуль для копки\n• m.cases|m cases – запуск модуля отправки кейсов. используется после выключения копки\n• m.info|m info – получить инфо о скрипте\n• m.day|m day – запускает модуль сбора еб')
-
-@client001.on(events.NewMessage(pattern='m.help'))
-async def get_help2(event):
     chat_id = event.chat_id
     await asyncio.sleep(1);
     await event.message.delete();
