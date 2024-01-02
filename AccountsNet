@@ -193,20 +193,6 @@ for client in clients2:
 
 print('Клиенты успешно запущены!')
 
-# Создание переменных для статистики по кейсам
-stats = {
-    "кт": 0,   # количество переданных кейсов "✉"
-    "ркт": 0,  # количество переданных кейсов "🧧"
-    "к": 0,    # количество переданных кейсов "📦"
-    "рк": 0,   # количество переданных кейсов "🗳"
-    "миф": 0,  # количество переданных кейсов "🕋"
-    "кр": 0,   # количество переданных кейсов "💎"
-    "дк": 0,   # количество переданных кейсов "🎲"
-    "зв": 0,   # количество переданных кейсов "🌌"
-    "ссп": 0,  # количество переданных кейсов "👜"
-    "псэ": 0   # количество переданных кейсов "💼"
-}
-
 # Адресы
 mineEvo_channel = '@mine_evo_news'
 mineEvo_group = '@mineevochat'
@@ -372,12 +358,30 @@ async def send_transfer_messages1(client, event):
                         item = item[1].strip()
                         await send_transfer_message1(client, chat_id, case, item)
 
-@client0.on(events.NewMessage(pattern='m.stats'))
-async def send_stats(event):
-    stats_message = "Статистика по переданным кейсам:\n"
-    for case_name, case_quantity in stats.items():
-        stats_message += f"{cases_list[case_name]}: {case_quantity}\n"
-    await client.send_message(chat_id, stats_message)
+@client0.on(events.NewMessage)
+async def handle_incoming_message(event):
+    # Определите переменные chat_id, message и stats в соответствии с вашими настройками
+    chat_id = '@mine_evo_bot'
+    message = event.raw_text
+    stats = {
+        "кт": 0,
+        "ркт": 0,
+        "к": 0,
+        "рк": 0,
+        "миф": 0,
+        "кр": 0,
+        "дк": 0,
+        "зв": 0,
+        "ссп": 0,
+        "псэ": 0
+    }
+    # Определите функцию send_transfer_message1 здесь
+    # Обработка команды m.stats
+    if message == "m.stats":
+        stats_message = "Статистика по переданным кейсам:\n"
+        for case_name, case_quantity in stats.items():
+            stats_message += f"{cases_list[case_name]}: {case_quantity}\n"
+        await client0.send_message(chat_id, stats_message)
 
 # Определение функции обработчика входящих сообщений1
 for i, client in enumerate(clients1):
