@@ -102,7 +102,7 @@ client0003 = TelegramClient('session0003', api_id0003, api_hash0003)
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client0001, client0002, client0003]
 clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client0001, client0002, client0003]
 
 # Авторизация
