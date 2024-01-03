@@ -103,13 +103,18 @@ client008 = TelegramClient('session008', api_id008, api_hash008)
 client009 = TelegramClient('session009', api_id009, api_hash009)
 client010 = TelegramClient('session010', api_id010, api_hash010)
 client011 = TelegramClient('session011', api_id011, api_hash011)
+client012 = TelegramClient('session012', api_id012, api_hash012)
+client013 = TelegramClient('session013', api_id013, api_hash013)
+client014 = TelegramClient('session014', api_id014, api_hash014)
+client015 = TelegramClient('session015', api_id015, api_hash015)
+client016 = TelegramClient('session016', api_id016, api_hash016)
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
 clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
-clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
+clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015, client016]
 
 # Авторизация
 client0.connect()
