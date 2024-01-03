@@ -68,7 +68,7 @@ api_hash011 = 'eeed44766fde2feba1da240a214b3d97'
 phone011 = '+15877063810'
 
 api_id0001 = '22785810'
-api_hash0001 = '22785810'
+api_hash0001 = 'b5bcdb5405df299e4c30bd25fdefa62b'
 phone0001 = '+380633622230'
 
 api_id0002 = '23724146'
@@ -78,6 +78,7 @@ phone0002 = '+380682543489'
 api_id0003 = '24475762'
 api_hash0003 = 'af27d31ef4362391d63d5c034a5e9688'
 phone0003 = '+380639505680'
+
 cloud_password1 = '2303'
 
 
