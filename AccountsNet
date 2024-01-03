@@ -67,21 +67,17 @@ api_id011 = '20464274'
 api_hash011 = 'eeed44766fde2feba1da240a214b3d97'
 phone011 = '+15877063810'
 
-api_id012 = '18969817'
-api_hash012 = '42ec4a15f3edf29c9c8f9fe04933cc81'
-phone012 = '+6283829144850'
+api_id012 = '27766350'
+api_hash012 = 'f59d45d6af26f1dba8bdba3a73cdc901'
+phone012 = '+19866897538'
 
-api_id013 = '27766350'
-api_hash013 = 'f59d45d6af26f1dba8bdba3a73cdc901'
-phone013 = '+19866897538'
+api_id013 = '28035589'
+api_hash013 = 'ca3893fa848420e73cfeb52c62af2612'
+phone013 = '+15733713961'
 
-api_id014 = '28035589'
-api_hash014 = 'ca3893fa848420e73cfeb52c62af2612'
-phone014 = '+15733713961'
-
-api_id015 = '24836678'
-api_hash015 = '8bb83ee9d566515e34ef0108c8301c3f'
-phone015 = '+18167746752'
+api_id014 = '24836678'
+api_hash014 = '8bb83ee9d566515e34ef0108c8301c3f'
+phone014 = '+18167746752'
 
 cloud_password1 = '2303'
 
@@ -102,14 +98,13 @@ client011 = TelegramClient('session011', api_id011, api_hash011)
 client012 = TelegramClient('session012', api_id012, api_hash012)
 client013 = TelegramClient('session013', api_id013, api_hash013)
 client014 = TelegramClient('session014', api_id014, api_hash014)
-client015 = TelegramClient('session015', api_id015, api_hash015)
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
 clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011]
-clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014, client015]
+clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client012, client013, client014]
 
 # Авторизация
 client0.connect()
@@ -231,14 +226,6 @@ if not client014.is_user_authorized():
         client014.sign_in(phone014, input('Session-014 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client014.sign_in(password=cloud_password1)
-
-client015.connect()
-if not client015.is_user_authorized():
-    client015.send_code_request(phone015)
-    try:
-        client015.sign_in(phone015, input('Session-015 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client015.sign_in(password=cloud_password1)
 
 for client in clients2:
     client.start()
