@@ -274,7 +274,7 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37', 'Gnom38', 'Gnom39', 'Gnom40', 'Gnom40', 'Gnom42', 'Gnom43', 'Gnom44', 'Gnom45', 'Gnom46', 'Gnom47']
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37', 'Gnom38', 'Gnom39', 'Gnom40', 'Gnom40', 'Gnom42', 'Gnom43', 'Gnom44', 'Gnom45', 'Gnom46', 'Gnom47', Gword]
 statistics = {}
 async def send_message(client, mine_evo, message):
     try:
@@ -334,7 +334,7 @@ async def send_multiple_messages1(event):
         for client in clients1:
             coroutines.append(send_message(client, chat_id, 'коп'))
         await asyncio.gather(*coroutines)
-        await asyncio.sleep(3)
+        await asyncio.sleep(4)
         count1 += 11
         cycles1 += 1
         clients1 = [client for client in clients1 if client.is_connected()]
