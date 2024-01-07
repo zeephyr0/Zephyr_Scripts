@@ -79,14 +79,6 @@ api_id015 = '24475762'
 api_hash015 = 'af27d31ef4362391d63d5c034a5e9688'
 phone015 = '+380639505680'
 
-api_id019 = '19910702'
-api_hash019 = '6829d8f7673aa442aaa29b8ef7df014d'
-phone019 = '+19316745933'
-
-api_id020 = '21152483'
-api_hash020 = '87556514a7d5215a6d87088b5f5604d5'
-phone020 = '+12346778802'
-
 
 cloud_password1 = '2303'
 
@@ -107,17 +99,14 @@ client011 = TelegramClient('session011', api_id011, api_hash011)
 client013 = TelegramClient('session013', api_id013, api_hash013)
 client014 = TelegramClient('session014', api_id014, api_hash014)
 client015 = TelegramClient('session015', api_id015, api_hash015)
-client019 = TelegramClient('session019', api_id019, api_hash019)
-client020 = TelegramClient('session020', api_id020, api_hash020)
-
 
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client013, client014, client015, client019, client020]
-clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client013, client014, client015, client019, client020]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client013, client014, client015]
+clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client011, client013, client014, client015]
 
 # Авторизация
 client0.connect()
@@ -240,22 +229,6 @@ if not client015.is_user_authorized():
     except SessionPasswordNeededError:
         client015.sign_in(password=cloud_password1)
 
-client019.connect()
-if not client019.is_user_authorized():
-    client019.send_code_request(phone019)
-    try:
-        client019.sign_in(phone019, input('Session-019 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client019.sign_in(password=cloud_password1)
-
-client020.connect()
-if not client020.is_user_authorized():
-    client020.send_code_request(phone020)
-    try:
-        client020.sign_in(phone020, input('Session-020 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client020.sign_in(password=cloud_password1)
-
 for client in clients2:
     client.start()
 
@@ -274,7 +247,7 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37', 'Gnom38', 'Gnom39', 'Gnom40', 'Gnom40', 'Gnom42', 'Gnom43', 'Gnom44', 'Gnom45', 'Gnom46', 'Gnom47', Gword]
+player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37', 'Gnom38', 'Gnom39', 'Gnom40', 'Gnom40', 'Gnom42', 'Gnom43', 'Gnom44', 'Gnom45', 'Gnom46', 'Gnom47', 'jombor', 'bronw', 'frost']
 statistics = {}
 async def send_message(client, mine_evo, message):
     try:
