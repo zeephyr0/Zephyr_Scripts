@@ -358,7 +358,7 @@ async def send_transfer_message1(client, chat_id, case_name, quantity):
     # Определение названия кейса для передачи
     case_alias = cases_list.get(case_name, "")
     # Сообщение о передаче
-    transfer_message1 = f"Передать GOD_ZEPHYR {case_alias} {quantity}"
+    transfer_message1 = f"Передать GODmode_ZEPHYR {case_alias} {quantity}"
     await client.send_message(chat_id, transfer_message1)
     # Задержка 
     await asyncio.sleep(3)
