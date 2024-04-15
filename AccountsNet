@@ -155,6 +155,7 @@ for client in clients2:
 print('Клиенты успешно запущены!')
 
 # Адресы
+mine_evo = "@@rankAirdropBot"
 
 count1 = 0
 cycles1 = 0
@@ -218,11 +219,9 @@ async def send_multiple_messages1(event):
     while not stop_sending1:
         coroutines = []
         for client in clients1:
-            coroutines.append(send_message(client, chat_id, 'коп'))
+            coroutines.append(send_message(client, chat_id, '👨‍💻 Майнинг'))
         await asyncio.gather(*coroutines)
-        await asyncio.sleep(4)
-        count1 += 11
-        cycles1 += 1
+        await asyncio.sleep(5);
         clients1 = [client for client in clients1 if client.is_connected()]
 
         if not clients1:
