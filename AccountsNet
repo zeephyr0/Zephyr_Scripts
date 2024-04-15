@@ -43,38 +43,17 @@ api_id005 = '19179697'
 api_hash005 = 'dd96018b9f53d55342f0c2c754c4fb29'
 phone005 = '+79697678142'
 
-api_id006 = '10904880'
-api_hash006 = '0bce5ceebd00a5fe38dff632595b0bad'
-phone006 = '+79587314180'
+api_id006 = '20242585'
+api_hash006 = '77312de9aab579af857c5d2fdb4e1d64'
+phone006 = '+447424459503'
 
-api_id007 = '20242585'
-api_hash007 = '77312de9aab579af857c5d2fdb4e1d64'
-phone007 = '+447424459503'
+api_id007 = '20410656'
+api_hash007 = '7f48793a7737fe3a910874c38a5f6e21'
+phone007 = '+60149256978'
 
-api_id008 = '20410656'
-api_hash008 = '7f48793a7737fe3a910874c38a5f6e21'
-phone008 = '+60149256978'
-
-api_id009 = '24106632'
-api_hash009 = '65093abacde2ca064ce8802c84863fec'
-phone009 = '+447771411600'
-
-api_id010 = '22353684'
-api_hash010 = '98cf980e06b08c566679c9e17b317a41'
-phone010 = '+447983221564'
-
-api_id013 = '22785810'
-api_hash013 = 'b5bcdb5405df299e4c30bd25fdefa62b'
-phone013 = '+380633622230'
-
-api_id014 = '23724146'
-api_hash014 = '4802afa460cfdda6b9a3a4515feb943e'
-phone014 = '+380682543489'
-
-api_id015 = '24475762'
-api_hash015 = 'af27d31ef4362391d63d5c034a5e9688'
-phone015 = '+380639505680'
-
+api_id008 = '24106632'
+api_hash008 = '65093abacde2ca064ce8802c84863fec'
+phone008 = '+447771411600'
 
 cloud_password1 = '2303'
 
@@ -89,19 +68,13 @@ client005 = TelegramClient('session005', api_id005, api_hash005)
 client006 = TelegramClient('session006', api_id006, api_hash006)
 client007 = TelegramClient('session007', api_id007, api_hash007)
 client008 = TelegramClient('session008', api_id008, api_hash008)
-client009 = TelegramClient('session009', api_id009, api_hash009)
-client010 = TelegramClient('session010', api_id010, api_hash010)
-client013 = TelegramClient('session013', api_id013, api_hash013)
-client014 = TelegramClient('session014', api_id014, api_hash014)
-client015 = TelegramClient('session015', api_id015, api_hash015)
-
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client013, client014, client015]
-clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008, client009, client010, client013, client014, client015]
+clients1 = [client001, client002, client003, client004, client005, client006, client007, client008]
+clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008]
 
 # Авторизация
 client0.connect()
@@ -176,57 +149,12 @@ if not client008.is_user_authorized():
     except SessionPasswordNeededError:
         client008.sign_in(password=cloud_password1)
 
-client009.connect()
-if not client009.is_user_authorized():
-    client009.send_code_request(phone009)
-    try:
-        client009.sign_in(phone009, input('Session-009 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client009.sign_in(password=cloud_password1)
-
-client010.connect()
-if not client010.is_user_authorized():
-    client010.send_code_request(phone010)
-    try:
-        client010.sign_in(phone010, input('Session-010 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client010.sign_in(password=cloud_password1)
-
-client013.connect()
-if not client013.is_user_authorized():
-    client013.send_code_request(phone013)
-    try:
-        client013.sign_in(phone013, input('Session-013 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client013.sign_in(password=cloud_password1)
-
-client014.connect()
-if not client014.is_user_authorized():
-    client014.send_code_request(phone014)
-    try:
-        client014.sign_in(phone014, input('Session-014 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client014.sign_in(password=cloud_password1)
-
-client015.connect()
-if not client015.is_user_authorized():
-    client015.send_code_request(phone015)
-    try:
-        client015.sign_in(phone015, input('Session-015 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client015.sign_in(password=cloud_password1)
-
 for client in clients2:
     client.start()
 
 print('Клиенты успешно запущены!')
 
 # Адресы
-mineEvo_channel = '@mine_evo_news'
-mineEvo_group = '@mineevochat'
-my_channel = '@Demo_minePromo'
-mine_evo = '@mine_evo_bot'
-twins_group = '@twinsFarm_byDem'
 
 count1 = 0
 cycles1 = 0
@@ -234,8 +162,6 @@ stop_sending1 = True
 stop_sending2 = True
 stop_sending3 = False
 stop_sending4 = False
-player_names1 = ['Gnom1', 'Gnom2', 'Gnom3', 'Gnom4', 'Gnom5', 'Gnom6', 'Gnom7', 'Gnom8', 'Gnom13', 'Gnom14', 'Gnom15', 'Gnom16', 'Gnom17', 'Gnom18', 'Gnom19', 'Gnom20', 'Gnom21', 'Gnom22', 'Gnom23', 'Gnom24', 'Gnom25', 'Gnom26', 'Gnom27', 'Gnom28', 'Gnom28', 'Gnom29', 'Gnom30', 'Gnom31', 'Gnom32', 'Gnom33', 'Gnom34', 'Gnom35', 'Gnom36', 'Gnom37', 'Gnom38', 'Gnom39', 'Gnom40', 'Gnom40', 'Gnom42', 'Gnom43', 'Gnom44', 'Gnom45', 'Gnom46', 'Gnom47', 'jombor', 'bronw', 'frost']
-statistics = {}
 async def send_message(client, mine_evo, message):
     try:
         await client.send_message(mine_evo, message)
@@ -302,117 +228,6 @@ async def send_multiple_messages1(event):
         if not clients1:
             print("Все клиенты потеряли соединение.")
             break
-
-# Модуль для проверки кейсов
-@client0.on(events.NewMessage(pattern='m.cases'))
-async def cases_info1(event):
-    await asyncio.sleep(3);
-    await event.message.delete();
-    # Текст для отправки сообщения 
-    message = 'кейсы'
-    for client in clients1:
-        await asyncio.sleep(2)
-        await client(SendMessageRequest(mine_evo, message))
-
-# Модуль для ежедневного бонуса
-@client0.on(events.NewMessage(pattern='m.day'))
-async def mday(event):
-    await asyncio.sleep(3);
-    await event.message.delete();
-    # Текст для отправки сообщения 
-    message = 'еб'
-    for client in clients1:
-        await asyncio.sleep(2)
-        await client(SendMessageRequest(mine_evo, message))
-
-# Отправка кейсов
-
-# Список кейсов
-cases_list = {
-    "✉": "кт",
-    "🧧": "ркт",
-    "📦": "к",
-    "🗳": "рк",
-    "🕋": "миф",
-    "💎": "кр",
-    "🎲": "дк",
-    "🌌": "зв",
-    "👜": "ссп",
-    "💼": "псэ"
-} 
-
-async def send_transfer_message1(client, chat_id, case_name, quantity):
-    # Определение названия кейса для передачи
-    case_alias = cases_list.get(case_name, "")
-    # Сообщение о передаче
-    transfer_message1 = f"Передать GODmode_ZEPHYR {case_alias} {quantity}"
-    await client.send_message(chat_id, transfer_message1)
-    # Задержка 
-    await asyncio.sleep(3)
-
-async def send_transfer_messages1(client, event):
-    # Определение id чата
-    chat_id = '@mine_evo_bot'
-    # Сообщение которое будет проверяться 
-    message = event.raw_text
-    lines = message.split("\n")
-    # Обработка сообщения и отправка
-    for line in lines:
-        for case in cases_list:
-            if case in line:
-                item = line.split("шт.")
-                if len(item) >= 2:
-                    item = item[0].split(":")
-                    if len(item) >= 2:
-                        item = item[1].strip()
-                        await send_transfer_message1(client, chat_id, case, item)
-
-
-# Определение функции обработчика входящих сообщений1
-for i, client in enumerate(clients1):
-    @client.on(events.NewMessage)
-    async def handle_incoming_message(event, client=client):
-        for player_name in player_names1:
-            if f"📦 Кейсы игрока\n{player_name}" in event.raw_text:
-                await asyncio.sleep(2)
-                await send_transfer_messages1(client, event)
-
-# Функция определения времени работы скрипта
-def get_elapsed_time():
-    current_time = datetime.datetime.now()
-    elapsed_time = current_time - start_time
-    elapsed_time_str = str(elapsed_time).split('.')[0]  # Отсекаем миллисекунды
-    return elapsed_time_str
-
-@client0.on(events.NewMessage(pattern='m.help'))
-async def get_help1(event):
-    chat_id = event.chat_id
-    await asyncio.sleep(1);
-    await event.message.delete();
-    # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client0, chat_id, 'Руководство по командам:\n• m.on|m on – дает разрешение на использование модуля копки\n• m.off|m on – дает запрет на использование модуля для копки\n• m.send|m send – ключает модуль для копки\n• m.cases|m cases – запуск модуля отправки кейсов. используется после выключения копки\n• m.info|m info – получить инфо о скрипте\n• m.day|m day – запускает модуль сбора еб')
-
-@client0.on(events.NewMessage(pattern='m.info'))
-async def get_info1(event):
-    global count1
-    global cycles1
-    elapsed_time_str = get_elapsed_time()
-    # Определение id чата
-    chat_id = event.chat_id
-    await asyncio.sleep(4);
-    await event.message.delete();
-    # Отправка сообщения с информацией о количестве отправленных сообщений
-    await send_message(client0, chat_id, f'☠️ ScriptInfo\n\n👥 Аккаунтов работает: ×\n📨 Отправлено сообщений: {count1}\n\n🔆 Статистика по кейсам:\nНайдено ✉ Конвертов: {kt}\nНайдено 🧧 Редких конвертов: {rkt}\nНайдено 📦 Кейсов: {k}\nНайдено 🗳 Редких кейсов: {rk}\nНайдено 🕋 Мифических кейсов: {mif}\nНайдено 💎 Кристальных Кейсов: {kr}\nНайдено 🎲 Дайс Кейсов: {dice}\nНайдено 💼 Портфелей с Эскизами: {pse}\nНайдено 👜 Сумок с Предметами: {ssp}\nНайдено 🌌 Звёздных кейсов: {zv}\n\n⌛ Время с запуска скрипта: {elapsed_time_str}')
-
-# Промо-Коды
-@client001.on(events.NewMessage(chats=[mineEvo_channel, mineEvo_group, my_channel]))  
-async def process_new_message(event):
-    # Сообщение которое будет проверяться 
-    message = event.message
-    if 'Промо' in message.message:
-        promo_code = message.message.split('Промо ')[1].split()[0]
-        for client in clients2:
-            await client(SendMessageRequest(mine_evo, f'промо {promo_code}'))
 
 for client in clients2:
     try:
