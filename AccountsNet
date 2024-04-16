@@ -155,7 +155,7 @@ for client in clients2:
 print('Клиенты успешно запущены!')
 
 # Адресы
-mine_evo = "@rankAirdropBot"
+mine_evo = "@PrankAirdropBot"
 
 count1 = 0
 cycles1 = 0
