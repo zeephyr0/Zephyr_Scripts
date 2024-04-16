@@ -222,7 +222,7 @@ async def send_multiple_messages1(event):
             coroutines.append(send_message(client, chat_id, '👨‍💻 Майнинг'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(4);
-        clients1 = [client for client in clients1 if client.is_connected()]
+        clients2 = [client for client in clients2 if client.is_connected()]
 
         if not clients1:
             print("Все клиенты потеряли соединение.")
