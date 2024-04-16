@@ -203,7 +203,7 @@ async def start_sending_messages(event):
 async def send_multiple_messages1(event):
     global count1
     global cycles1
-    global clients1  # Declare clients1 as a global variable
+    global clients2  # Declare clients1 as a global variable
     await event.message.edit('Пробуем копать...')
     chat_id = mine_evo
     if stop_sending1:
@@ -218,7 +218,7 @@ async def send_multiple_messages1(event):
         await event.message.delete();
     while not stop_sending1:
         coroutines = []
-        for client in clients1:
+        for client in clients2:
             coroutines.append(send_message(client, chat_id, '👨‍💻 Майнинг'))
         await asyncio.gather(*coroutines)
         await asyncio.sleep(5);
