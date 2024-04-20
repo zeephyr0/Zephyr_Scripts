@@ -51,6 +51,18 @@ api_id008 = '24106632'
 api_hash008 = '65093abacde2ca064ce8802c84863fec'
 phone008 = '+447771411600'
 
+api_id009 = '22785810'
+api_hash009 = '22785810'
+phone009 = '+380633622230'
+
+api_id010 = '23724146'
+api_hash010 = '4802afa460cfdda6b9a3a4515feb943e'
+phone010 = '+380682543489'
+
+api_id011 = '24475762'
+api_hash011 = 'af27d31ef4362391d63d5c034a5e9688'
+phone011 = '+380639505680'
+
 cloud_password1 = '2303'
 
 
@@ -63,13 +75,16 @@ client005 = TelegramClient('session005', api_id005, api_hash005)
 client006 = TelegramClient('session006', api_id006, api_hash006)
 client007 = TelegramClient('session007', api_id007, api_hash007)
 client008 = TelegramClient('session008', api_id008, api_hash008)
+client009 = TelegramClient('session009', api_id009, api_hash009)
+client010 = TelegramClient('session010', api_id010, api_hash010)
+client011 = TelegramClient('session011', api_id011, api_hash011)
 
 # Время запуска скрипта
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client004, client005, client006, client007, client008]
-clients2 = [client0, client001, client002, client004, client005, client006, client007, client008]
+clients1 = [client001, client002, client004, client005, client006, client007, client008, client009, client010, client011]
+clients2 = [client0, client001, client002, client004, client005, client006, client007, client008, client009, client010, client011]
 
 # Авторизация
 client0.connect()
@@ -135,6 +150,14 @@ if not client008.is_user_authorized():
         client008.sign_in(phone008, input('Session-008 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client008.sign_in(password=cloud_password1)
+
+client009.connect()
+if not client009.is_user_authorized():
+    client009.send_code_request(phone009)
+    try:
+        client009.sign_in(phone008, input('Session-009 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client009.sign_in(password=cloud_password1)
 
 for client in clients2:
     client.start()
