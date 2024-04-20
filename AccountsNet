@@ -159,6 +159,22 @@ if not client009.is_user_authorized():
     except SessionPasswordNeededError:
         client009.sign_in(password=cloud_password1)
 
+client010.connect()
+if not client010.is_user_authorized():
+    client010.send_code_request(phone010)
+    try:
+        client008.sign_in(phone010, input('Session-010 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client010.sign_in(password=cloud_password1)
+
+client011.connect()
+if not client011.is_user_authorized():
+    client011.send_code_request(phone011)
+    try:
+        client011.sign_in(phone011, input('Session-011 Введите код подтверждения: '), password=cloud_password1)
+    except SessionPasswordNeededError:
+        client011.sign_in(password=cloud_password1)
+
 for client in clients2:
     client.start()
 
@@ -231,7 +247,7 @@ async def send_multiple_messages1(event):
         for client in clients2:
             coroutines.append(send_message(client, chat_id, '👨‍💻 Майнинг'))
         await asyncio.gather(*coroutines)
-        await asyncio.sleep(5);
+        await asyncio.sleep(6);
         clients2 = [client for client in clients2 if client.is_connected()]
 
         if not clients1:
