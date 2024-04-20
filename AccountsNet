@@ -183,7 +183,7 @@ async def start_sending_messages(event):
     global stop_sending1
     stop_sending1 = False
     await event.message.edit('✅Отправка сообщений включена')
-    await asyncio.sleep(5);
+    await asyncio.sleep(6);
     await event.message.delete();
 
 @client0.on(events.NewMessage(pattern='m.send'))
