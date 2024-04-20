@@ -31,10 +31,6 @@ api_id002 = '13123883'
 api_hash002 = 'f1fab12098570c2bf8848ad6ea23c62f'
 phone002 = '+79676939873'
 
-api_id003 = '19334807'
-api_hash003 = '4b4edde7a9d46172399f0ac4cb98ae63'
-phone003 = '+79842549006'
-
 api_id004 = '16839412'
 api_hash004 = 'aaa86871e0831e2ef1c9df22b921c9d4'
 phone004 = '+79386950114'
@@ -62,7 +58,6 @@ cloud_password1 = '2303'
 client0 = TelegramClient('session0', api_id0, api_hash0)
 client001 = TelegramClient('session001', api_id001, api_hash001)
 client002 = TelegramClient('session002', api_id002, api_hash002)
-client003 = TelegramClient('session003', api_id003, api_hash003)
 client004 = TelegramClient('session004', api_id004, api_hash004)
 client005 = TelegramClient('session005', api_id005, api_hash005)
 client006 = TelegramClient('session006', api_id006, api_hash006)
@@ -73,8 +68,8 @@ client008 = TelegramClient('session008', api_id008, api_hash008)
 start_time = datetime.datetime.now()
 
 # Авторизация
-clients1 = [client001, client002, client003, client004, client005, client006, client007, client008]
-clients2 = [client0, client001, client002, client003, client004, client005, client006, client007, client008]
+clients1 = [client001, client002, client004, client005, client006, client007, client008]
+clients2 = [client0, client001, client002, client004, client005, client006, client007, client008]
 
 # Авторизация
 client0.connect()
@@ -100,14 +95,6 @@ if not client002.is_user_authorized():
         client002.sign_in(phone002, input('Session-002 Введите код подтверждения: '), password=cloud_password1)
     except SessionPasswordNeededError:
         client002.sign_in(password=cloud_password1)
-
-client003.connect()
-if not client003.is_user_authorized():
-    client003.send_code_request(phone003)
-    try:
-        client003.sign_in(phone003, input('Session-003 Введите код подтверждения: '), password=cloud_password1)
-    except SessionPasswordNeededError:
-        client003.sign_in(password=cloud_password1)
 
 client004.connect()
 if not client004.is_user_authorized():
