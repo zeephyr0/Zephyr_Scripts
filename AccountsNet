@@ -20,6 +20,8 @@ import json
 # Данные аккаунтов
 
 api_id0 = '4454263'
+
+api_id0 = '4454263'
 api_hash0 = '61f812cbe0024e0353f475cb183ca47e'
 phone0 = '+998903175516'
 
@@ -67,9 +69,9 @@ api_id012 = '26145938'
 api_hash012 = '80c6af9093d79b843d4d5c61c2fa0543'
 phone012 = '+13412416967'
 
-api_id013 = '29055156'
-api_hash013 = 'd9849d2ddedb11d1d3e5b4a13ae16897'
-phone013 = '+16814242741'
+api_id013 = '25675616'
+api_hash013 = 'aaf8baeda75f2755c11cf16d56aade23'
+phone013 = '+12724432544'
 
 api_id014 = '20322427'
 api_hash014 = '99c53a881e351f493633e52440dbc9a4'
@@ -79,9 +81,9 @@ api_id015 = '27690812'
 api_hash015 = '1936c6a72ff8f002b3f456fb2a3e18bc'
 phone015 = '+18459935555'
 
-api_id016 = '21108666'
-api_hash016 = '8744151c7839c710bd95ad95abcc654c'
-phone016 = '+12247741103'
+api_id016 = '28239752'
+api_hash016 = 'd66c4739a9a6a0dbd1d23a9827550da1'
+phone016 = '+18287211995'
 
 cloud_password1 = '2303'
 
